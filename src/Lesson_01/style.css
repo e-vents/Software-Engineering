@@ -1,0 +1,9 @@
+
+.button {
+  -fx-font-size: 90px;
+  -fx-font-weight: bold;
+  -fx-font-style: italic;
+  -fx-text-fill: #1014ea;
+  -fx-min-width: 200;
+  -fx-min-height: 200;
+}

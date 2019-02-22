@@ -1,0 +1,49 @@
+/* Allow buttons to grow,
+   by setting a large max-size */
+.button {
+  -fx-max-height: 1000px;
+  -fx-max-width: 1000px;
+  -fx-background-radius: 0;
+  -fx-background-color: #ededed;
+  
+  -fx-border-color: #000000;
+  -fx-border-width: 0.2px;
+  -fx-border-style: solid;
+  -fx-font-size: 20px
+}
+
+#btnClear {
+	-fx-background-color: #f9870c;
+	-fx-text-fill: white;
+}
+#btnClear:hover {
+	-fx-background-color: #fcc16a;
+}
+
+#btnPlus {
+	-fx-background-color: #f9870c;
+	-fx-text-fill: white;
+}
+#btnPlus:hover {
+	-fx-background-color: #fcc16a;
+}
+
+#btnEquals {
+	-fx-background-color: #f9870c;
+	-fx-text-fill: white;
+}
+#btnEquals:hover {
+	-fx-background-color: #fcc16a;
+}
+/* Right-align the text-field */
+.text-field {
+  -fx-alignment: bottom-right;
+  -fx-opacity: 1.0;
+  -fx-background-color: #262020;
+  -fx-text-fill: #edeaea;
+  -fx-font-size: 40px;
+  -fx-background-radius: 0;
+}
+.button:hover {
+	-fx-background-color: #d1d3d1;
+}

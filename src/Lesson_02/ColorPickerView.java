@@ -16,7 +16,6 @@ public class ColorPickerView extends Application {
 		gp = new GridPane();
 		cp = new ColorPicker();
 		cp.autosize();
-		
 		gp.add(cp, 0, 0);
 	}
 	

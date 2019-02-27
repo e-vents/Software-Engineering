@@ -18,6 +18,5 @@ public class Calculator extends Application {
 		this.root = new CalculatorView(stage, controller);
 		this.model = new CalculatorModel();
 		this.controller = new CalculatorController(root, model);
-		//bk
 	}
 }

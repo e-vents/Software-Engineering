@@ -1,27 +1,66 @@
 package Lesson_02;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class ValiController {
 	
 	final private ValiModel model;
 	final private ValiView view;
+	private boolean validIp = false;
+	private boolean validPort = false;
+	private SimpleStringProperty tpy;
 	
 	public ValiController(ValiModel model, ValiView view) {
 		this.model = model;
 		this.view = view;
 		
+		
+		// ChangeListener for the text-property of the web address
 		view.ip.textProperty().addListener(
-				(observable, oldValue, newValue) -> validateIp(newValue));
-		
+				// Parameters of any PropertyChangeListener
+				(observable, oldValue, newValue) -> {
+					validateIp(newValue);
+				});
+
+		// ChangeListener for the text-property of the port number
 		view.port.textProperty().addListener(
-				(observable, oldValue, newValue) -> validatePort(newValue));
+				// Parameters of any PropertyChangeListener
+				(observable, oldValue, newValue) -> {
+					validatePort(newValue);
+				});
 	}
-	public void validateIp(String s) {
-		
-		
-	}
-	public void validatePort(String s) {
-		
-		
-	}
+	public void validateIp(String newValue) {
 	
+		boolean valid = this.model.isValidIp(newValue);
+		
+		if(valid)
+			view.ip.setStyle("-fx-text-inner-color: green;");
+		else
+			view.ip.setStyle("-fx-text-inner-color: red");
+		
+		this.validIp = valid;
+		
+		enableButton();
+	}
+	public void validatePort(String newValue) {
+		
+		boolean valid = this.model.isValidPort(newValue);
+		
+		if(valid)
+			view.port.setStyle("-fx-text-inner-color: green;");
+		else
+			view.port.setStyle("-fx-text-inner-color: red");
+		
+		this.validPort = valid;
+		
+		enableButton();
+		
+	}
+	public void enableButton() {
+		if(this.validIp && this.validPort)
+			view.btn.setDisable(false);
+	}
+	public SimpleStringProperty getEvents() {
+		return tpy;
+	}
 }

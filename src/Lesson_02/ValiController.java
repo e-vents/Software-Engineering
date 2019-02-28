@@ -1,14 +1,11 @@
 package Lesson_02;
 
-import javafx.beans.property.SimpleStringProperty;
-
 public class ValiController {
 	
 	final private ValiModel model;
 	final private ValiView view;
 	private boolean validIp = false;
 	private boolean validPort = false;
-	private SimpleStringProperty tpy;
 	
 	public ValiController(ValiModel model, ValiView view) {
 		this.model = model;
@@ -59,8 +56,5 @@ public class ValiController {
 	public void enableButton() {
 		if(this.validIp && this.validPort)
 			view.btn.setDisable(false);
-	}
-	public SimpleStringProperty getEvents() {
-		return tpy;
 	}
 }

@@ -19,7 +19,7 @@ public class ValiController {
 					validateIp(newValue);
 				});
 
-		// ChangeListener for the text-property of the port number
+		// ChangeListener for the text-property of the port numbers
 		view.port.textProperty().addListener(
 				// Parameters of any PropertyChangeListener
 				(observable, oldValue, newValue) -> {

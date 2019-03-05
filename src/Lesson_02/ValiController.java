@@ -1,5 +1,7 @@
 package Lesson_02;
 
+import javafx.beans.Observable;
+
 public class ValiController {
 	
 	final private ValiModel model;
@@ -13,11 +15,7 @@ public class ValiController {
 		
 		
 		// ChangeListener for the text-property of the web address
-		view.ip.textProperty().addListener(
-				// Parameters of any PropertyChangeListener
-				(observable, oldValue, newValue) -> {
-					validateIp(newValue);
-				});
+		view.ip.textProperty().addListener(this::validateIp);
 
 		// ChangeListener for the text-property of the port numbers
 		view.port.textProperty().addListener(
@@ -26,7 +24,7 @@ public class ValiController {
 					validatePort(newValue);
 				});
 	}
-	public void validateIp(String newValue) {
+	public void validateIp(Observable obs, String oldValue, String newValue) {
 	
 		boolean valid = this.model.isValidIp(newValue);
 		

@@ -17,13 +17,15 @@ public class Animate extends Application {
 	
 		Group group = new Group();
 		this.eck = new Rectangle(50, 50, Color.GREEN);
+		eck.setStroke(Color.BLUE);
+		eck.setStrokeWidth(2);
 		group.getChildren().add(eck);
 	
-		PathElement p1 = new MoveTo(0, 400);
-		PathElement p2 = new MoveTo(400, 400);
-		PathElement p3 = new MoveTo(400, 0);
-		PathElement p4 = new MoveTo(0, 0);
-		PathElement p5 = new MoveTo(0, 400);
+		PathElement p1 = new MoveTo(25, 25);
+		PathElement p2 = new LineTo(375, 25);
+		PathElement p3 = new LineTo(375, 375);
+		PathElement p4 = new LineTo(25, 375);
+		PathElement p5 = new LineTo(25, 25);
 	
 		Path path = new Path();
 		path.getElements().add(p1);
@@ -34,16 +36,13 @@ public class Animate extends Application {
 	
 		PathTransition move = new PathTransition(Duration.millis(4000), path, eck);
 		move.setCycleCount((Animation.INDEFINITE));
-		move.play();
 		
-		/*
-		FillTransition fill = new FillTransition(Duration.millis(500));
-		fill.setToValue(Color.RED);
-		//ParallelTransition squash = new ParallelTransition(fill);
-		
-		SequentialTransition sequence = new SequentialTransition(path, fill);
-		sequence.play();
-		*/
+		FillTransition fill = new FillTransition(Duration.millis(5000));
+		fill.setToValue(Color.BROWN);
+		ParallelTransition run = new ParallelTransition(fill, move);
+		run.setNode(eck);
+		run.setCycleCount(Animation.INDEFINITE);
+		run.play();
 		
 		Scene scene = new Scene(group, 400, 400);
 		stage.setScene(scene);

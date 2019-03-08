@@ -43,7 +43,7 @@
 	-fx-text-fill: white;
 	-fx-background-color: transparent;
 	-fx-background-radius: 4;
-	-fx-border-color: white;
+	-fx-border-color: darkgrey;
 	-fx-border-width: 1.0;
 	-fx-border-radius: 4;
 }
@@ -52,6 +52,9 @@
 }
 .controls:pressed {
 	-fx-background-color: darkgrey;
+}
+.controls:focused{
+	-fx-border-color: white;
 }
 
 #lblDeck {

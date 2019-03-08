@@ -1,6 +1,7 @@
 package poker.version_graphics.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public enum HandType {
     HighCard, OnePair, TwoPair, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush;
@@ -71,32 +72,23 @@ public enum HandType {
     public static boolean isStraight(ArrayList<Card> cards) {
     	boolean found = false;
         
-        for(int i = 0; i < cards.size() - 1 && !found; i++) {
-            for(int j = i+1; j < cards.size() && !found; j++) {
-            	for(int y = j+1; y < cards.size() && !found; y++) {
-            		for(int v = j+1; v < cards.size() && !found; v++)
-            		if (cards.get(i).getRank().ordinal() == cards.get(j).getRank().ordinal()+1 
-            		&& cards.get(i).getRank().ordinal() == cards.get(y).getRank().ordinal()+1 
-            		&& cards.get(i).getRank().ordinal() == cards.get(v).getRank().ordinal()+1) 
-            			found = true;
-            	}
-            }
-        }
-    	
-        return false;
+        Collections.sort(cards);
+        
+        for(int i = 0; i < cards.size(); i++)
+        	if(cards.get(0).getRank().ordinal() == cards.get(i).getRank().ordinal()+1)
+        		found = true;
+        return found;
     }
     
     public static boolean isFlush(ArrayList<Card> cards) {
-    	boolean found = false;
+    	boolean found = true;
         
-        for(int i = 0; i < cards.size() - 1 && !found; i++) {
-            for(int j = i+1; j < cards.size() && !found; j++) {
-            	if (cards.get(i).getSuit() == cards.get(j).getSuit())
-                	found = true;
-            }
+    	for(int i = 0; i < cards.size(); i++) {
+            if (cards.get(0).getSuit() != cards.get(i).getSuit())
+            		found = false;
+                 
         }
-    	
-        return false;
+    	return found;
     }
     
     public static boolean isFullHouse(ArrayList<Card> cards) {
@@ -141,8 +133,7 @@ public enum HandType {
         return found;
     }
     
-    public static boolean isStraightFlush(ArrayList<Card> cards) {
-        // TODO        
-        return false;
+    public static boolean isStraightFlush(ArrayList<Card> cards) {      
+        return isFlush(cards) && isStraight(cards);
     }
 }

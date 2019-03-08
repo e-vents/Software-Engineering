@@ -5,6 +5,16 @@
   	-fx-alignment: center;
 }
 
+.menu:hover {
+	-fx-background-color: darkgrey;
+}
+.menu:pressed {
+	-fx-background-color: darkgrey;
+}
+.menu:focused {
+	-fx-background-color: darkgrey;
+}
+
 #controlArea {
     -fx-spacing: 15.0px;
     -fx-padding: 5.0px;

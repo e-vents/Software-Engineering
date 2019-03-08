@@ -25,6 +25,7 @@ public class PokerGameView {
 			PlayerPane pp = new PlayerPane();
 			pp.setPlayer(model.getPlayer(i)); // link to player object in the logic
 			players.getChildren().add(pp);
+			players.setSpacing(20);
 		}
 		
 		// Create the control area
@@ -37,10 +38,10 @@ public class PokerGameView {
 		root.setBottom(controls);
 		
 		// Disallow resizing - which is difficult to get right with images
-		stage.setResizable(false);
+		//stage.setResizable(false);
 
         // Create the scene using our layout; then display it
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 1150, 300);
         scene.getStylesheets().add(
                 getClass().getResource("poker.css").toExternalForm());
         stage.setTitle("Poker Miniproject");

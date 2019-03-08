@@ -8,26 +8,61 @@
 #controlArea {
     -fx-spacing: 15.0px;
     -fx-padding: 5.0px;
-    -fx-border-color: black;
+    -fx-border-color: darkgreen;
     -fx-border-width: 2.0px;
 }
 
 .player {
 	-fx-padding: 5.0px;
-    -fx-border-color: black;
-    -fx-border-width: 2.0px;
+}
+.labels {
+	-fx-text-fill: white;
 }
 
 .card {
-  -fx-font-size: 18px;
+  	-fx-font-size: 18px;
 	-fx-padding: 2.0px;
-    -fx-border-color: black;
-    -fx-border-width: 1.0px;
-	-fx-background-color: #ffffff;
+    -fx-border-color: white;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 6.0px;
+	-fx-background-color: white;
+	-fx-background-radius: 6.0px;
     -fx-min-width: 50;
-    -fx-pref-width: 111;
+    -fx-pref-width: 122;
     -fx-max-width: 500;
     -fx-min-height: 80;
-    -fx-pref-height: 162;
+    -fx-pref-height: 166;
     -fx-max-height: 800;
+}
+.card:hover {
+	-fx-border-color: #efefef;
+	-fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
+}
+
+.controls {
+	-fx-text-fill: white;
+	-fx-background-color: transparent;
+	-fx-background-radius: 4;
+	-fx-border-color: white;
+	-fx-border-width: 1.0;
+	-fx-border-radius: 4;
+}
+.controls:hover {
+	-fx-background-color: black;
+}
+.controls:pressed {
+	-fx-background-color: darkgrey;
+}
+
+#lblDeck {
+	-fx-text-fill: white;
+}
+
+.root {
+	-fx-background-color: #477148;
+	/*
+	 * -fx-background-image: url("../../images/poker-table2.jpg");
+	-fx-background-size: auto;
+	 */
+	
 }

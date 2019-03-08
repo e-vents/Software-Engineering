@@ -7,7 +7,7 @@ public enum HandType {
     
     /**
      * Determine the value of this hand. Note that this does not
-     * account for any tie-breaking
+     * account for any tie-breaking.
      */
     public static HandType evaluateHand(ArrayList<Card> cards) {
         HandType currentEval = HighCard;

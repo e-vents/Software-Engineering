@@ -16,9 +16,9 @@ import poker.version_graphics.model.PokerGameModel;
 public class PokerGameView {
 	private HBox players;
 	private ControlArea controls;
-	private MenuBar menu;
-	private Menu style;
-	private Menu player;
+	private MenuBar menuBar;
+	private Menu styleMenu;
+	private Menu playerMenu;
 	
 	private PokerGameModel model;
 	
@@ -28,7 +28,7 @@ public class PokerGameView {
 		// Create all of the player panes we need, and put them into an HBox
 		players = new HBox();
 		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
-			PlayerPane pp = new PlayerPane();
+			PlayerPane pp = new PlayerPane(this.model);
 			pp.setPlayer(model.getPlayer(i)); // link to player object in the logic
 			players.getChildren().add(pp);
 			players.setSpacing(20);
@@ -39,23 +39,23 @@ public class PokerGameView {
 		controls.linkDeck(model.getDeck()); // link DeckLabel to DeckOfCards in the logic
 		
 		//create the top-menu
-		menu = new MenuBar();
+		menuBar = new MenuBar();
 		
 		MenuItem b1 = new MenuItem("green");
 		MenuItem b2 = new MenuItem("red");
-		style = new Menu("Background");
-		style.getItems().addAll(b1, b2);
+		styleMenu = new Menu("Background");
+		styleMenu.getItems().addAll(b1, b2);
 		
 		MenuItem p1 = new MenuItem("2");
 		MenuItem p2 = new MenuItem("3");
 		MenuItem p3 = new MenuItem("4");
-		player = new Menu("player");
-		player.getItems().addAll(p1, p2, p3);
+		playerMenu = new Menu("player");
+		playerMenu.getItems().addAll(p1, p2, p3);
 		
-		menu.getMenus().addAll(style, player);
+		menuBar.getMenus().addAll(styleMenu, playerMenu);
 		//menu.getStyleClass().add("menu");
-		style.getStyleClass().add("menu");
-		player.getStyleClass().add("menu");
+		styleMenu.getStyleClass().add("menu");
+		playerMenu.getStyleClass().add("menu");
 		b1.getStyleClass().add("menu");
 		b2.getStyleClass().add("menu");
 		p1.getStyleClass().add("menu");
@@ -66,7 +66,7 @@ public class PokerGameView {
 		BorderPane root = new BorderPane();
 		root.setCenter(players);
 		root.setBottom(controls);
-		root.setTop(menu);
+		root.setTop(menuBar);
 		
 		// Disallow resizing - which is difficult to get right with images
 		//stage.setResizable(false);

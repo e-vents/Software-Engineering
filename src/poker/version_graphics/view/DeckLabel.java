@@ -15,7 +15,7 @@ public class DeckLabel extends Label {
 	public void setDeck(DeckOfCards deck) {
 		this.textProperty().bind(deck.getCardsRemainingProperty().asString());
 		
-		String fileName = "back.png";
+		String fileName = "deckback.png";
 		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/" + fileName));
 		ImageView imv = new ImageView(image);
 		

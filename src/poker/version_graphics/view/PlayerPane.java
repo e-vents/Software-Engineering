@@ -62,7 +62,7 @@ public class PlayerPane extends VBox {
     		
     	}
     }
-    /*
+    
     public void displayWinner() {
     	//Comparing players and evaluate winner
     	int score = this.model.getPlayer(0).compareTo(this.model.getPlayer(1));
@@ -73,5 +73,4 @@ public class PlayerPane extends VBox {
         	this.lblWins.setText("Loses");
         }
     }
-    */
 }

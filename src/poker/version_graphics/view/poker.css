@@ -1,8 +1,28 @@
+
 .label {
 	-fx-padding: 5.0px;
     -fx-min-width: 200.0;
     -fx-max-width: 2000.0;
   	-fx-alignment: center;
+}
+#deckcards {
+	-fx-padding: -1.25px;
+	-fx-background-color: white;
+	-fx-background-radius: 6.0px;
+    -fx-min-width: 50;
+    -fx-pref-width: 122;
+    -fx-max-width: 500;
+    -fx-min-height: 80;
+    -fx-pref-height: 185;
+    -fx-max-height: 800;
+}
+.deck {
+	-fx-background-radius: 6.0px;
+	-fx-border-radius: 6.0px;
+}
+
+.deck:hover {
+	-fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
 }
 
 .menu:hover {
@@ -41,7 +61,7 @@
     -fx-pref-width: 122;
     -fx-max-width: 500;
     -fx-min-height: 80;
-    -fx-pref-height: 166;
+    -fx-pref-height: 185;
     -fx-max-height: 800;
 }
 .card:hover {

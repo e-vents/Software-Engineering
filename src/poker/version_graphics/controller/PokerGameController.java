@@ -33,6 +33,7 @@ public class PokerGameController {
     		p.discardHand();
     		PlayerPane pp = view.getPlayerPane(i);
     		pp.updatePlayerDisplay();
+    		view.getPlayerPane(i).resetWinner();
     	}
 
     	model.getDeck().shuffle();

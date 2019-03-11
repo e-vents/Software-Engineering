@@ -73,4 +73,7 @@ public class PlayerPane extends VBox {
         	this.lblWins.setText("Loses");
         }
     }
+    public void resetWinner() {
+    	this.lblWins.setText("--");
+    }
 }

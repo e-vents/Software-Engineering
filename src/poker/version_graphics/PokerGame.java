@@ -11,7 +11,7 @@ public class PokerGame extends Application {
 	PokerGameModel model;
 	PokerGameView view;
 	PokerGameController controller;
-	
+	  
     public static void main(String[] args) {
         launch();
     }

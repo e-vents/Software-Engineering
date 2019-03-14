@@ -1,5 +1,7 @@
 package poker.version_graphics.view;
 
+import java.util.ArrayList;
+
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -19,11 +21,13 @@ public class PlayerPane extends VBox {
     private Player player;
     // added for testing reasons
     private PokerGameModel model;
+    private PokerGameView view;
     
-    public PlayerPane(PokerGameModel model) {
+    public PlayerPane(PokerGameModel model, PokerGameView view) {
         super(); // Always call super-constructor first !
         // added for testing reasons
         this.model = model;
+        this.view = view;
         
         this.getStyleClass().add("player"); // CSS style class
         this.lblName.getStyleClass().add("labels");
@@ -64,14 +68,31 @@ public class PlayerPane extends VBox {
     }
     
     public void displayWinner() {
+    	
     	//Comparing players and evaluate winner
-    	int score = this.model.getPlayer(0).compareTo(this.model.getPlayer(1));
-    		
-    	if(score < 0) {
-        	this.lblWins.setText("Wins");
-        } else {
-        	this.lblWins.setText("Loses");
-        }
+    	for(int i = 1; i < PokerGame.NUM_PLAYERS; i++) {
+        	if(this.model.getPlayer(i-1).compareTo(this.model.getPlayer(i)) > 0) {
+            	this.lblWins.setText("Wins");
+            	this.view.getPlayerPane(i).lblWins.setText("Loses");
+            	
+            } else {
+            	this.lblWins.setText("Loses");
+            	this.view.getPlayerPane(i).lblWins.setText("Wins ");
+            }
+        	/*
+        	//tie-break
+        	if(this.model.getPlayer(i-1).compareTo(this.model.getPlayer(i)) == 0) {
+        		// if onePair
+        		if(player.evaluateHand() == HandType.OnePair) {
+        			ArrayList<Card> clist = HandType.getWinningCards();
+        			for(Card c : clist) {
+     					
+        			}	
+        		}
+        	 
+        	}
+    	*/
+    	}
     }
     public void resetWinner() {
     	this.lblWins.setText("--");

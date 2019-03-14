@@ -56,10 +56,10 @@ public class PokerGameController {
         		p.evaluateHand();
         		PlayerPane pp = view.getPlayerPane(i);
         		pp.updatePlayerDisplay();
+        		//view.getPlayerPane(i).displayWinner();
         		
         	}
         	view.getPlayerPane(0).displayWinner();
-        	view.getPlayerPane(1).displayWinner();
         	
     	} else {
             Alert alert = new Alert(AlertType.ERROR, "Not enough cards - shuffle first");

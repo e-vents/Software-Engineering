@@ -28,7 +28,7 @@ public class PokerGameView {
 		// Create all of the player panes we need, and put them into an HBox
 		players = new HBox();
 		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
-			PlayerPane pp = new PlayerPane(this.model);
+			PlayerPane pp = new PlayerPane(this.model, this);
 			pp.setPlayer(model.getPlayer(i)); // link to player object in the logic
 			players.getChildren().add(pp);
 			players.setSpacing(20);

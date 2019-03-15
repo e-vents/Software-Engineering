@@ -13,17 +13,19 @@ public class PlayerPane extends VBox {
     private Label lblName = new Label();
     private HBox hboxCards = new HBox();
     private Label lblEvaluation = new Label("--");
-    protected Label lblWins = new Label("--");
+    private Label lblWins = new Label("--");
        
     // Link to player object
     private Player player;
     // added for testing reasons
     private PokerGameModel model;
+    private PokerGameView view;
     
-    public PlayerPane(PokerGameModel model) {
+    public PlayerPane(PokerGameModel model, PokerGameView view) {
         super(); // Always call super-constructor first !
         // added for testing reasons
         this.model = model;
+        this.view = view;
         
         this.getStyleClass().add("player"); // CSS style class
         this.lblName.getStyleClass().add("labels");
@@ -62,16 +64,62 @@ public class PlayerPane extends VBox {
     		
     	}
     }
-    /*
+    
     public void displayWinner() {
+    	
     	//Comparing players and evaluate winner
     	int score = this.model.getPlayer(0).compareTo(this.model.getPlayer(1));
     	int score2 = this.model.getPlayer(1).compareTo(this.model.getPlayer(0));
     		
     	if(score > score2)
         	this.lblWins.setText("Wins");
+    	for(int i = 1; i < PokerGame.NUM_PLAYERS; i++) {
+        	if(this.model.getPlayer(i-1).compareTo(this.model.getPlayer(i)) > 0) {
+            	this.lblWins.setText("Wins");
+            	this.view.getPlayerPane(i).lblWins.setText("Loses");
+            	
+            } else {
+            	this.lblWins.setText("Loses");
+            	this.view.getPlayerPane(i).lblWins.setText("Wins ");
+            }
+        	/*
+        	//tie-break
+        	if(this.model.getPlayer(i-1).compareTo(this.model.getPlayer(i)) == 0) {
+        		// if onePair
+        		if(player.evaluateHand() == HandType.OnePair) {
+        			ArrayList<Card> clist = HandType.getWinningCards();
+        			for(Card c : clist) {
+     					
+        			}	
+        		}
+        	 
+        	}
+    	*/
+    	}
+    	for(int i = 1; i < PokerGame.NUM_PLAYERS; i++) {
+        	if(this.model.getPlayer(i-1).compareTo(this.model.getPlayer(i)) > 0) {
+            	this.lblWins.setText("Wins");
+            	this.view.getPlayerPane(i).lblWins.setText("Loses");
+            	
+            } else {
+            	this.lblWins.setText("Loses");
+            	this.view.getPlayerPane(i).lblWins.setText("Wins ");
+            }
+        	/*
+        	//tie-break
+        	if(this.model.getPlayer(i-1).compareTo(this.model.getPlayer(i)) == 0) {
+        		// if onePair
+        		if(player.evaluateHand() == HandType.OnePair) {
+        			ArrayList<Card> clist = HandType.getWinningCards();
+        			for(Card c : clist) {
+     					
+        			}	
+        		}
+        	 
+        	}
+    	*/
+    	}
     }
-    */
     public void resetWinner() {
     	this.lblWins.setText("--");
     }

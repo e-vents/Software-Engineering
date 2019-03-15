@@ -10,6 +10,8 @@ public enum HandType {
      * Determine the value of this hand. Note that this does not
      * account for any tie-breaking.
      */
+	
+	
     public static HandType evaluateHand(ArrayList<Card> cards) {
         HandType currentEval = HighCard;
         
@@ -29,7 +31,9 @@ public enum HandType {
         boolean found = false;
         for(int i = 0; i < cards.size() - 1 && !found; i++) {
             for(int j = i+1; j < cards.size() && !found; j++) {
-                if (cards.get(i).getRank() == cards.get(j).getRank()) found = true;
+                if (cards.get(i).getRank() == cards.get(j).getRank()) {
+                	found = true;
+                }
             }
         }
         return found;
@@ -106,8 +110,8 @@ public enum HandType {
             			&& clonedCards.get(i).getRank() == clonedCards.get(y).getRank()) {
             			threeOfAKindFound = true;
                         clonedCards.remove(y);
-            			clonedCards.remove(j);  // Remove the later card
-                        clonedCards.remove(i);  // Before the earlier one
+            			clonedCards.remove(j);
+                        clonedCards.remove(i);
             		}
                 }
             }

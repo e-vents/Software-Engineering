@@ -92,32 +92,9 @@ public class PlayerPane extends VBox {
      					
         			}	
         		}
-        	 
         	}
     	*/
-    	}
-    	for(int i = 1; i < PokerGame.NUM_PLAYERS; i++) {
-        	if(this.model.getPlayer(i-1).compareTo(this.model.getPlayer(i)) > 0) {
-            	this.lblWins.setText("Wins");
-            	this.view.getPlayerPane(i).lblWins.setText("Loses");
-            	
-            } else {
-            	this.lblWins.setText("Loses");
-            	this.view.getPlayerPane(i).lblWins.setText("Wins ");
-            }
-        	/*
-        	//tie-break
-        	if(this.model.getPlayer(i-1).compareTo(this.model.getPlayer(i)) == 0) {
-        		// if onePair
-        		if(player.evaluateHand() == HandType.OnePair) {
-        			ArrayList<Card> clist = HandType.getWinningCards();
-        			for(Card c : clist) {
-     					
-        			}	
-        		}
-        	 
-        	}
-    	*/
+    	
     	}
     }
     public void resetWinner() {

@@ -58,9 +58,18 @@ public class PokerGameController {
         		pp.updatePlayerDisplay();
         		
         	}
-        	view.getPlayerPane(0).displayWinner();
-        	view.getPlayerPane(1).displayWinner();
-        	
+        	/*
+        	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+        		boolean winner = view.getPlayerPane(i).isWinner();
+        		if(winner)
+        			
+        	}
+        	*/
+        	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+        		boolean winner = this.model.getPlayer(1).isWinner();
+        		if(winner)
+        			this.view.getPlayerPane(i).
+        	}
     	} else {
             Alert alert = new Alert(AlertType.ERROR, "Not enough cards - shuffle first");
             alert.showAndWait();

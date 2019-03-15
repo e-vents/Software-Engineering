@@ -13,7 +13,7 @@ public class PlayerPane extends VBox {
     private Label lblName = new Label();
     private HBox hboxCards = new HBox();
     private Label lblEvaluation = new Label("--");
-    private Label lblWins = new Label("--");
+    protected Label lblWins = new Label("--");
        
     // Link to player object
     private Player player;
@@ -62,17 +62,16 @@ public class PlayerPane extends VBox {
     		
     	}
     }
-    
+    /*
     public void displayWinner() {
     	//Comparing players and evaluate winner
     	int score = this.model.getPlayer(0).compareTo(this.model.getPlayer(1));
+    	int score2 = this.model.getPlayer(1).compareTo(this.model.getPlayer(0));
     		
-    	if(score < 0) {
+    	if(score > score2)
         	this.lblWins.setText("Wins");
-        } else {
-        	this.lblWins.setText("Loses");
-        }
     }
+    */
     public void resetWinner() {
     	this.lblWins.setText("--");
     }

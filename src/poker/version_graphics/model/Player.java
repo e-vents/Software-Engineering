@@ -8,9 +8,11 @@ public class Player implements Comparable<Player> {
     private final String playerName; // This is the ID
     private final ArrayList<Card> cards = new ArrayList<>();
     private HandType handType;
+    private PokerGameModel model;
     
-    public Player(String playerName) {
+    public Player(String playerName, PokerGameModel model) {
         this.playerName = playerName;
+        this.model = model;
     }
 
     public String getPlayerName() {
@@ -51,5 +53,12 @@ public class Player implements Comparable<Player> {
     @Override
     public int compareTo(Player o) {
         return handType.compareTo(o.handType);
+    }
+    public boolean isWinner() {
+    	int score = this.compareTo(this.model.getPlayer(1));
+    	if(score < 0)
+    		return true;
+    	else
+    		return false;
     }
 }

@@ -60,7 +60,7 @@ public class PokerGameController {
         		
         	}
         	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
-        		boolean winner = this.model.getPlayer(1).isWinner();
+        		boolean winner = this.model.getPlayer(1).isWinner(i);
         		if(winner)
         			this.view.getPlayerPane(i);
         	}

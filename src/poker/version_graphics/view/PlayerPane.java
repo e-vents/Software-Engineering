@@ -67,33 +67,35 @@ public class PlayerPane extends VBox {
     
     public void displayWinner() {
     	
-    	//Comparing players and evaluate winner
-    	int score = this.model.getPlayer(0).compareTo(this.model.getPlayer(1));
-    	int score2 = this.model.getPlayer(1).compareTo(this.model.getPlayer(0));
+    	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+    		int score = this.model.getPlayer(0).compareTo(this.model.getPlayer(i));
     		
-    	if(score > score2)
-        	this.lblWins.setText("Wins");
-    	for(int i = 1; i < PokerGame.NUM_PLAYERS; i++) {
-        	if(this.model.getPlayer(i-1).compareTo(this.model.getPlayer(i)) > 0) {
+    		if(score > 0)
             	this.lblWins.setText("Wins");
-            	this.view.getPlayerPane(i).lblWins.setText("Loses");
-            	
-            } else {
-            	this.lblWins.setText("Loses");
-            	this.view.getPlayerPane(i).lblWins.setText("Wins ");
-            }
-        	/*
-        	//tie-break
-        	if(this.model.getPlayer(i-1).compareTo(this.model.getPlayer(i)) == 0) {
-        		// if onePair
-        		if(player.evaluateHand() == HandType.OnePair) {
-        			ArrayList<Card> clist = HandType.getWinningCards();
-        			for(Card c : clist) {
-     					
-        			}	
-        		}
-        	}
-    	*/
+        	for(int j = 1; j < PokerGame.NUM_PLAYERS; j++) {
+            	if(this.model.getPlayer(j-1).compareTo(this.model.getPlayer(i)) > 0) {
+                	this.lblWins.setText("Wins");
+                	this.view.getPlayerPane(j).lblWins.setText("Loses");
+                	
+                } else {
+                	this.lblWins.setText("Loses");
+                	this.view.getPlayerPane(j).lblWins.setText("Wins ");
+                }
+            	/*
+            	//tie-break
+            	if(this.model.getPlayer(i-1).compareTo(this.model.getPlayer(i)) == 0) {
+            		// if onePair
+            		if(player.evaluateHand() == HandType.OnePair) {
+            			ArrayList<Card> clist = HandType.getWinningCards();
+            			for(Card c : clist) {
+         					
+            			}	
+            		}
+            	}
+        	*/
+    	}
+    	
+        	
     	
     	}
     }

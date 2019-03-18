@@ -14,10 +14,13 @@ import poker.version_graphics.PokerGame;
 import poker.version_graphics.model.PokerGameModel;
 
 public class PokerGameView {
+	private BorderPane root;
 	private HBox players;
 	private ControlArea controls;
 	private MenuBar menuBar;
 	private Menu styleMenu;
+	private MenuItem greenItem;
+	private MenuItem redItem;
 	private Menu playerMenu;
 	
 	private PokerGameModel model;
@@ -41,10 +44,10 @@ public class PokerGameView {
 		//create the top-menu
 		menuBar = new MenuBar();
 		
-		MenuItem b1 = new MenuItem("green");
-		MenuItem b2 = new MenuItem("red");
+		this.greenItem = new MenuItem("green");
+		this.redItem = new MenuItem("red");
 		styleMenu = new Menu("Background");
-		styleMenu.getItems().addAll(b1, b2);
+		styleMenu.getItems().addAll(greenItem, redItem);
 		
 		MenuItem p1 = new MenuItem("2");
 		MenuItem p2 = new MenuItem("3");
@@ -56,14 +59,15 @@ public class PokerGameView {
 		//menu.getStyleClass().add("menu");
 		styleMenu.getStyleClass().add("menu");
 		playerMenu.getStyleClass().add("menu");
-		b1.getStyleClass().add("menu");
-		b2.getStyleClass().add("menu");
+		
+		greenItem.getStyleClass().add("menu");
+		redItem.getStyleClass().add("menu");
 		p1.getStyleClass().add("menu");
 		p2.getStyleClass().add("menu");
 		p3.getStyleClass().add("menu");
 		
 		// Put players and controls into a BorderPane
-		BorderPane root = new BorderPane();
+		this.root = new BorderPane();
 		root.setCenter(players);
 		root.setBottom(controls);
 		root.setTop(menuBar);
@@ -80,6 +84,10 @@ public class PokerGameView {
         stage.show();		
 	}
 	
+	public BorderPane getRoot() {
+		return root;
+	}
+
 	public PlayerPane getPlayerPane(int i) {
 		return (PlayerPane) players.getChildren().get(i);
 	}
@@ -90,5 +98,17 @@ public class PokerGameView {
 	
 	public Button getDealButton() {
 		return controls.btnDeal;
+	}
+	public MenuItem getRedItem() {
+		return this.redItem;
+	}
+	public MenuItem getGreenItem() {
+		return this.greenItem;
+	}
+	public ControlArea getControls() {
+		return controls;
+	}
+	public void setFileName(String name) {
+		this.controls.setFileName(name);
 	}
 }

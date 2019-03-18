@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public enum HandType {
-    HighCard, OnePair, TwoPair, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush;
+    HighCard, OnePair, TwoPair, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush, RoyalFlush;
     
     /**
      * Determine the value of this hand. Note that this does not
@@ -23,11 +23,12 @@ public enum HandType {
         if (isFullHouse(cards)) currentEval = FullHouse;
         if (isFourOfAKind(cards)) currentEval = FourOfAKind;
         if (isStraightFlush(cards)) currentEval = StraightFlush;
+        if (isRoyalFlush(cards)) currentEval = RoyalFlush;
         
         return currentEval;
     }
-    
-    public static boolean isOnePair(ArrayList<Card> cards) {
+
+	public static boolean isOnePair(ArrayList<Card> cards) {
         boolean found = false;
         for(int i = 0; i < cards.size() - 1 && !found; i++) {
             for(int j = i+1; j < cards.size() && !found; j++) {
@@ -88,10 +89,6 @@ public enum HandType {
                 }
                 found = false;
         	}
-        		/*
-        		if(clonedCards.get(i-1).getRank().ordinal() != 12 || clonedCards.get(0).getRank().ordinal() != 2)
-        		found = false;
-        		*/
         return found;
     }
     
@@ -141,7 +138,6 @@ public enum HandType {
             				&& cards.get(i).getRank() == cards.get(v).getRank()) 
                 			found = true;
             		}
-            		
             	}
             }
         }
@@ -151,4 +147,17 @@ public enum HandType {
     public static boolean isStraightFlush(ArrayList<Card> cards) {      
         return isFlush(cards) && isStraight(cards);
     }
+    
+    public static boolean isRoyalFlush(ArrayList<Card> cards) {
+    	
+    	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+        Collections.sort(clonedCards);
+    	
+		if(isStraightFlush(clonedCards)) {
+			if(clonedCards.get(clonedCards.size()-1).getRank().ordinal() == 12 
+				&& clonedCards.get(0).getRank().ordinal() == 8)
+				return true;
+		}
+		return false;
+	}
 }

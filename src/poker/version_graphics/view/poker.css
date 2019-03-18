@@ -1,7 +1,8 @@
 
 .label {
 	-fx-padding: 5.0px;
-    -fx-min-width: 200.0;
+    -fx-min-width: 100.0;
+    -fx-pref-width: 150.0;
     -fx-max-width: 2000.0;
   	-fx-alignment: center;
 }
@@ -25,9 +26,6 @@
 	-fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
 }
 
-#menu {
-	-fx-width: 50px;
-}
 .menu:hover {
 	-fx-background-color: darkgrey;
 }
@@ -42,6 +40,19 @@
     -fx-spacing: 15.0px;
     -fx-padding: 5.0px;
     -fx-border-color: darkgreen;
+    -fx-border-width: 2.0px;
+}
+
+#greenControlArea {
+    -fx-spacing: 15.0px;
+    -fx-padding: 5.0px;
+    -fx-border-color: darkgreen;
+    -fx-border-width: 2.0px;
+}
+#redControlArea {
+    -fx-spacing: 15.0px;
+    -fx-padding: 5.0px;
+    -fx-border-color: darkred;
     -fx-border-width: 2.0px;
 }
 
@@ -101,4 +112,11 @@
 	-fx-background-size: auto;
 	 */
 	
+}	
+
+#redRoot {
+	-fx-background-color: #9e180c;
+}
+#greenRoot {
+	-fx-background-color: #477148;
 }

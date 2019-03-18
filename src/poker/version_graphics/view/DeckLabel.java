@@ -6,6 +6,9 @@ import javafx.scene.image.ImageView;
 import poker.version_graphics.model.DeckOfCards;
 
 public class DeckLabel extends Label {
+	
+	protected String fileName;
+	
 	public DeckLabel() {
 		super();
 		this.getStyleClass().add("deck");
@@ -15,7 +18,7 @@ public class DeckLabel extends Label {
 	public void setDeck(DeckOfCards deck) {
 		this.textProperty().bind(deck.getCardsRemainingProperty().asString());
 		
-		String fileName = "deckback.png";
+		this.fileName = "deckback.png";
 		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/" + fileName));
 		ImageView imv = new ImageView(image);
 		

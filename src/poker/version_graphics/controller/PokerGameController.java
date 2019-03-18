@@ -1,5 +1,6 @@
 package poker.version_graphics.controller;
 
+import javafx.event.Event;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import poker.version_graphics.PokerGame;
@@ -20,6 +21,10 @@ public class PokerGameController {
 		
 		view.getShuffleButton().setOnAction( e -> shuffle() );
 		view.getDealButton().setOnAction( e -> deal() );
+		
+		
+		view.getGreenItem().setOnAction(this::changeColor);
+		view.getRedItem().setOnAction(this::changeColor);
 	}
 	
 
@@ -59,16 +64,29 @@ public class PokerGameController {
         		//view.getPlayerPane(i).displayWinner();
         		
         	}
+        	/*
         	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
         		boolean winner = this.model.getPlayer(1).isWinner(i);
         		if(winner)
         			this.view.getPlayerPane(i);
         	}
+        	*/
         	view.getPlayerPane(0).displayWinner();
         	
     	} else {
             Alert alert = new Alert(AlertType.ERROR, "Not enough cards - shuffle first");
             alert.showAndWait();
+    	}
+    }
+    private void changeColor(Event e) {
+    	if(e.getSource() == view.getRedItem()) {
+    		view.getRoot().setId("redRoot");
+    		view.getControls().setId("redControlArea");
+    		view.setFileName("greendeck.jpg");
+    	} else {
+    		view.getRoot().setId("greenRoot");
+    		view.getControls().setId("greenControlArea");
+    		view.setFileName("deckback.png");
     	}
     }
 }

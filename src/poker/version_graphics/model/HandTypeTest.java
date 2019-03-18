@@ -44,7 +44,7 @@ public class HandTypeTest {
 	private static String[][] straights = {
 			{ "2S", "3C", "4H", "5D", "6H" },
 			{ "TS", "AC", "QH", "JD", "KH" },
-			//{ "AS", "2C", "3H", "4D", "5H" },
+			{ "AS", "2C", "3H", "4D", "5H" },
 			{ "8S", "9C", "7H", "5D", "6H" }
 			};
 	
@@ -72,7 +72,7 @@ public class HandTypeTest {
 	private static String[][] straightFlushs = {
 			{ "2S", "3S", "4S", "5S", "6S" },
 			{ "TH", "AH", "QH", "JH", "KH" },
-			//{ "AC", "2C", "3C", "4C", "5C" },
+			{ "AC", "2C", "3C", "4C", "5C" },
 			{ "8D", "9D", "7D", "5D", "6D" }
 			};
 	

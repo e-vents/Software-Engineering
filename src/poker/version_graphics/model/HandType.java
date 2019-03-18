@@ -80,8 +80,14 @@ public enum HandType {
         Collections.sort(clonedCards);
         
         for(int i = 1; i < clonedCards.size() && found; i++)
-        	if(clonedCards.get(i-1).getRank().ordinal() != (clonedCards.get(i).getRank().ordinal()-1))
-        		found = false;
+        	if(clonedCards.get(i-1).getRank().ordinal() != (clonedCards.get(i).getRank().ordinal()-1)) {
+                if(i == clonedCards.size()-1) {
+                	if(clonedCards.get(clonedCards.size()-1).getRank().ordinal() == 12 
+                			&& clonedCards.get(0).getRank().ordinal() == 0)
+                			return true;
+                }
+                found = false;
+        	}
         		/*
         		if(clonedCards.get(i-1).getRank().ordinal() != 12 || clonedCards.get(0).getRank().ordinal() != 2)
         		found = false;

@@ -3,6 +3,8 @@ package poker.version_graphics.controller;
 import javafx.event.Event;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import poker.version_graphics.PokerGame;
 import poker.version_graphics.model.Card;
 import poker.version_graphics.model.DeckOfCards;
@@ -82,11 +84,31 @@ public class PokerGameController {
     	if(e.getSource() == view.getRedItem()) {
     		view.getRoot().setId("redRoot");
     		view.getControls().setId("redControlArea");
-    		view.setFileName("greendeck.jpg");
+    		//view.setFileName("greendeck.jpg");
+    		
+    		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/" + "greendeck.png"));
+    		ImageView imv = new ImageView(image);
+    		
+    		imv.setId("deckcards");
+    		
+    		imv.setFitHeight(185);
+    		imv.setFitWidth(122);
+    		
+    		view.getDeckLabel().setGraphic(imv);
     	} else {
     		view.getRoot().setId("greenRoot");
     		view.getControls().setId("greenControlArea");
-    		view.setFileName("deckback.png");
+    		//view.setFileName("deckback.png");
+    		
+    		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/" + "deckback.png"));
+    		ImageView imv = new ImageView(image);
+    		
+    		imv.setId("deckcards");
+    		
+    		imv.setFitHeight(185);
+    		imv.setFitWidth(122);
+    		
+    		view.getDeckLabel().setGraphic(imv);
     	}
     }
 }

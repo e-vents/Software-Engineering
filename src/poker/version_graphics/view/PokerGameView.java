@@ -111,4 +111,7 @@ public class PokerGameView {
 	public void setFileName(String name) {
 		this.controls.setFileName(name);
 	}
+	public DeckLabel getDeckLabel() {
+		return this.controls.getDeckLabel();
+	}
 }

@@ -1,4 +1,4 @@
-package Lesson_02;
+package lesson_02;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

@@ -1,4 +1,4 @@
-package Lesson_03;
+package lesson_03;
 
 import javafx.animation.*;
 import javafx.application.Application;

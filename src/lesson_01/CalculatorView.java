@@ -1,4 +1,4 @@
-package Lesson_01;
+package lesson_01;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

@@ -25,6 +25,9 @@
 	-fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
 }
 
+#menu {
+	-fx-width: 50px;
+}
 .menu:hover {
 	-fx-background-color: darkgrey;
 }

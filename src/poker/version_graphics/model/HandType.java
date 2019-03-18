@@ -76,13 +76,16 @@ public enum HandType {
     public static boolean isStraight(ArrayList<Card> cards) {
     	boolean found = true;
         
-        Collections.sort(cards);
+    	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+        Collections.sort(clonedCards);
         
-        for(int i = 1; i < cards.size() && found; i++)
-        	if(cards.get(i-1).getRank().ordinal() != cards.get(i).getRank().ordinal()+1)
-        		if(cards.get(i-1).getRank().ordinal() != 12 || cards.get(0).getRank().ordinal() != 2)
+        for(int i = 1; i < clonedCards.size() && found; i++)
+        	if(clonedCards.get(i-1).getRank().ordinal() != (clonedCards.get(i).getRank().ordinal()-1))
         		found = false;
-        
+        		/*
+        		if(clonedCards.get(i-1).getRank().ordinal() != 12 || clonedCards.get(0).getRank().ordinal() != 2)
+        		found = false;
+        		*/
         return found;
     }
     

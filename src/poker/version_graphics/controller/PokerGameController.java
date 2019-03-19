@@ -27,6 +27,7 @@ public class PokerGameController {
 		
 		view.getGreenItem().setOnAction(this::changeColor);
 		view.getRedItem().setOnAction(this::changeColor);
+		view.getGreyItem().setOnAction(this::changeColor);
 	}
 	
 
@@ -63,46 +64,40 @@ public class PokerGameController {
         		p.evaluateHand();
         		PlayerPane pp = view.getPlayerPane(i);
         		pp.updatePlayerDisplay();
-        		//view.getPlayerPane(i).displayWinner();
-        		
         	}
-        	/*
         	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
-        		boolean winner = this.model.getPlayer(1).isWinner(i);
-        		if(winner)
-        			this.view.getPlayerPane(i);
+    			this.view.getPlayerPane(i).displayWinner();
         	}
-        	*/
-        	view.getPlayerPane(0).displayWinner();
         	
     	} else {
-            Alert alert = new Alert(AlertType.ERROR, "Not enough cards - shuffle first");
+            Alert alert = new Alert(AlertType.INFORMATION, "please shuffle first");
+            alert.setTitle("not enought cards");
             alert.showAndWait();
     	}
     }
     private void changeColor(Event e) {
+    	String fileName ="";
+    	
     	if(e.getSource() == view.getRedItem()) {
     		view.getRoot().setId("redRoot");
     		view.getControls().setId("redControlArea");
-    		//view.setFileName("greendeck.jpg");
-    		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/" + "greendeck.png"));
-    		ImageView imv = new ImageView(image);
-    		//imv.setId("deckcards");
-    		imv.setFitHeight(185);
-    		imv.setFitWidth(122);
+    		fileName = "greendeck.png";
     		
-    		view.getDeckLabel().setGraphic(imv);
-    	} else {
+    	} else if(e.getSource() == view.getGreenItem()){
     		view.getRoot().setId("greenRoot");
     		view.getControls().setId("greenControlArea");
-    		//view.setFileName("deckback.png");
-    		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/" + "deckback.png"));
-    		ImageView imv = new ImageView(image);
-    		//imv.setId("deckcards");
-    		imv.setFitHeight(185);
-    		imv.setFitWidth(122);
+    		fileName = "reddeck.png";
     		
-    		view.getDeckLabel().setGraphic(imv);
+    	} else {
+    		view.getRoot().setId("greyRoot");
+    		view.getControls().setId("greyControlArea");
+    		fileName = "bluedeck.png";
+    		
     	}
+    	Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/" + fileName));
+		ImageView imv = new ImageView(image);
+		imv.setFitHeight(185);
+		imv.setFitWidth(122);
+		view.getDeckLabel().setGraphic(imv);
     }
 }

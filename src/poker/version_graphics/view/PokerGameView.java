@@ -2,9 +2,11 @@ package poker.version_graphics.view;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -21,6 +23,7 @@ public class PokerGameView {
 	private Menu styleMenu;
 	private MenuItem greenItem;
 	private MenuItem redItem;
+	private MenuItem greyItem;
 	private Menu playerMenu;
 	
 	private PokerGameModel model;
@@ -46,8 +49,9 @@ public class PokerGameView {
 		
 		this.greenItem = new MenuItem("GreenBean");
 		this.redItem = new MenuItem("RustyDusty");
+		this.greyItem = new MenuItem("MouseHouse");
 		styleMenu = new Menu("themes");
-		styleMenu.getItems().addAll(greenItem, redItem);
+		styleMenu.getItems().addAll(greenItem, redItem, greyItem);
 		
 		MenuItem p1 = new MenuItem("2");
 		MenuItem p2 = new MenuItem("3");
@@ -80,6 +84,7 @@ public class PokerGameView {
         scene.getStylesheets().add(
                 getClass().getResource("poker.css").toExternalForm());
         stage.setTitle("Poker Master 5000");
+        stage.getIcons().add(new Image("poker/images/poker-icon.png"));
         stage.setScene(scene);
         stage.show();		
 	}
@@ -105,13 +110,20 @@ public class PokerGameView {
 	public MenuItem getGreenItem() {
 		return this.greenItem;
 	}
+	public MenuItem getGreyItem() {
+		return this.greyItem;
+	}
+	
 	public ControlArea getControls() {
 		return controls;
 	}
+	/*
 	public void setFileName(String name) {
 		this.controls.setFileName(name);
 	}
+	*/
 	public DeckLabel getDeckLabel() {
 		return this.controls.getDeckLabel();
 	}
+
 }

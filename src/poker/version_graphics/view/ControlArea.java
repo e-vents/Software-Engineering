@@ -28,9 +28,11 @@ public class ControlArea extends HBox{
     public void linkDeck(DeckOfCards deck) {
     	lblDeck.setDeck(deck);
     }
+    /*
     public void setFileName(String name) {
     	this.lblDeck.fileName = name;
     }
+    */
     public DeckLabel getDeckLabel() {
     	return this.lblDeck;
     }

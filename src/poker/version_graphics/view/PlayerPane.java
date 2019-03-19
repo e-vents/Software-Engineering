@@ -68,35 +68,28 @@ public class PlayerPane extends VBox {
     public void displayWinner() {
     	
     	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
-    		int score = this.model.getPlayer(0).compareTo(this.model.getPlayer(i));
-    		
-    		if(score > 0)
-            	this.lblWins.setText("Wins");
-        	for(int j = 1; j < PokerGame.NUM_PLAYERS; j++) {
-            	if(this.model.getPlayer(j-1).compareTo(this.model.getPlayer(i)) > 0) {
-                	this.lblWins.setText("Wins");
-                	this.view.getPlayerPane(j).lblWins.setText("Loses");
-                	
+    		for(int j = 1; j < PokerGame.NUM_PLAYERS; j++) {
+               	if(this.model.getPlayer(j-1).compareTo(this.model.getPlayer(i)) > 0) {
+                   	this.lblWins.setText("Wins");
+                   	this.view.getPlayerPane(j).lblWins.setText("Loses");
+                   	
                 } else {
-                	this.lblWins.setText("Loses");
-                	this.view.getPlayerPane(j).lblWins.setText("Wins ");
+                   	this.lblWins.setText("Loses");
+                   	this.view.getPlayerPane(j).lblWins.setText("Wins ");
                 }
-            	/*
-            	//tie-break
-            	if(this.model.getPlayer(i-1).compareTo(this.model.getPlayer(i)) == 0) {
-            		// if onePair
-            		if(player.evaluateHand() == HandType.OnePair) {
-            			ArrayList<Card> clist = HandType.getWinningCards();
-            			for(Card c : clist) {
-         					
-            			}	
-            		}
-            	}
-        	*/
-    	}
-    	
-        	
-    	
+               	/*
+               	//tie-break
+               	if(this.model.getPlayer(i-1).compareTo(this.model.getPlayer(i)) == 0) {
+          			// if onePair
+                	if(player.evaluateHand() == HandType.OnePair) {
+                		ArrayList<Card> clist = HandType.getWinningCards();
+                		for(Card c : clist) {
+             				
+                		}	
+                	}
+                }
+                */
+    		}
     	}
     }
     public void resetWinner() {

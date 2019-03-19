@@ -56,6 +56,13 @@
     -fx-border-width: 2.0px;
 }
 
+#greyControlArea {
+    -fx-spacing: 15.0px;
+    -fx-padding: 5.0px;
+    -fx-border-color: #7f7f7f;
+    -fx-border-width: 2.0px;
+}
+
 .player {
 	-fx-padding: 5.0px;
 }
@@ -119,4 +126,8 @@
 }
 #greenRoot {
 	-fx-background-color: #477148;
+}
+
+#greyRoot {
+	-fx-background-color: #939393;
 }

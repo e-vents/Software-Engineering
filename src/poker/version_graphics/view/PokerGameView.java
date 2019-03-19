@@ -44,15 +44,15 @@ public class PokerGameView {
 		//create the top-menu
 		menuBar = new MenuBar();
 		
-		this.greenItem = new MenuItem("green");
-		this.redItem = new MenuItem("red");
-		styleMenu = new Menu("Background");
+		this.greenItem = new MenuItem("GreenBean");
+		this.redItem = new MenuItem("RustyDusty");
+		styleMenu = new Menu("themes");
 		styleMenu.getItems().addAll(greenItem, redItem);
 		
 		MenuItem p1 = new MenuItem("2");
 		MenuItem p2 = new MenuItem("3");
 		MenuItem p3 = new MenuItem("4");
-		playerMenu = new Menu("player");
+		playerMenu = new Menu("players");
 		playerMenu.getItems().addAll(p1, p2, p3);
 		
 		menuBar.getMenus().addAll(styleMenu, playerMenu);

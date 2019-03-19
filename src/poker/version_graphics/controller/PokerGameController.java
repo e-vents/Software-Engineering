@@ -85,12 +85,9 @@ public class PokerGameController {
     		view.getRoot().setId("redRoot");
     		view.getControls().setId("redControlArea");
     		//view.setFileName("greendeck.jpg");
-    		
     		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/" + "greendeck.png"));
     		ImageView imv = new ImageView(image);
-    		
-    		imv.setId("deckcards");
-    		
+    		//imv.setId("deckcards");
     		imv.setFitHeight(185);
     		imv.setFitWidth(122);
     		
@@ -99,12 +96,9 @@ public class PokerGameController {
     		view.getRoot().setId("greenRoot");
     		view.getControls().setId("greenControlArea");
     		//view.setFileName("deckback.png");
-    		
     		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/" + "deckback.png"));
     		ImageView imv = new ImageView(image);
-    		
-    		imv.setId("deckcards");
-    		
+    		//imv.setId("deckcards");
     		imv.setFitHeight(185);
     		imv.setFitWidth(122);
     		

@@ -65,6 +65,7 @@ public class PokerGameController {
         		PlayerPane pp = view.getPlayerPane(i);
         		pp.updatePlayerDisplay();
         	}
+        	//calling the displayWinner method
         	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
     			this.view.getPlayerPane(i).displayWinner();
         	}

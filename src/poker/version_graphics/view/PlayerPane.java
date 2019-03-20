@@ -64,7 +64,7 @@ public class PlayerPane extends VBox {
     		
     	}
     }
-    
+    //only set winner to the screen: uses the evaluateWinner method from the model
     public void displayWinner() {
     	
     	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {

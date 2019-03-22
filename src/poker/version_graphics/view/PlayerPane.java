@@ -81,7 +81,7 @@ public class PlayerPane extends VBox {
     }
     private void tieBreak(Player player, Player nextPlayer) {
     	
-    	if(player.evaluateHand() == HandType.HighCard && nextPlayer.evaluateHand() == HandType.HighCard) {
+    	if(player.evaluateHand() == HandType.HighCard) {
     		if(player.getHighestCard().compareTo(nextPlayer.getHighestCard()) > 0)
     			this.lblWins.setText("wins");
     			
@@ -111,28 +111,32 @@ public class PlayerPane extends VBox {
         			}
     			}
     		}
-    	} else if(player.evaluateHand() == HandType.OnePair && nextPlayer.evaluateHand() == HandType.OnePair) {
+    	} else if(player.evaluateHand() == HandType.OnePair) {
     		
     		
-    	} else if(player.evaluateHand() == HandType.TwoPair && nextPlayer.evaluateHand() == HandType.TwoPair) {
+    	} else if(player.evaluateHand() == HandType.TwoPair) {
     		
     		
-    	} else if(player.evaluateHand() == HandType.ThreeOfAKind && nextPlayer.evaluateHand() == HandType.ThreeOfAKind) {
+    	} else if(player.evaluateHand() == HandType.ThreeOfAKind) {
     		
     		
-    	} else if(player.evaluateHand() == HandType.Straight && nextPlayer.evaluateHand() == HandType.Straight) {
+    	} else if(player.evaluateHand() == HandType.Straight) {
     		
     		
-    	} else if(player.evaluateHand() == HandType.FullHouse && nextPlayer.evaluateHand() == HandType.FullHouse) {
+    	} else if(player.evaluateHand() == HandType.FullHouse) {
     		
     		
-    	} else if(player.evaluateHand() == HandType.Flush && nextPlayer.evaluateHand() == HandType.Flush) {
+    	} else if(player.evaluateHand() == HandType.Flush) {
     		
     		
-    	} else if(player.evaluateHand() == HandType.StraightFlush && nextPlayer.evaluateHand() == HandType.StraightFlush) {
+    	} else if(player.evaluateHand() == HandType.StraightFlush) {
     		
     		
     	}
+    	
+    }
+    //add methods; highCardsMatch, OnePairMatch, TwoPairMatch
+    private void highCardMatch() {
     	
     }
     

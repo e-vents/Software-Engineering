@@ -70,11 +70,70 @@ public class PlayerPane extends VBox {
      */
     public void displayWinner(Player nextPlayer) {
     	
-    	if(player.compareTo(nextPlayer) > 0) {
+    	if(player.compareTo(nextPlayer) > 0)
     		this.lblWins.setText("wins");
-    	} else {
+    		
+    	else if(player.compareTo(nextPlayer) < 0)
     		this.lblWins.setText("loses");
+    	
+    	else
+    		tieBreak(player, nextPlayer);
+    }
+    private void tieBreak(Player player, Player nextPlayer) {
+    	
+    	if(player.evaluateHand() == HandType.HighCard && nextPlayer.evaluateHand() == HandType.HighCard) {
+    		if(player.getHighestCard().compareTo(nextPlayer.getHighestCard()) > 0)
+    			this.lblWins.setText("wins");
+    			
+    		else if(player.getHighestCard().compareTo(nextPlayer.getHighestCard()) < 0)
+    			this.lblWins.setText("loses");
+    		else {
+    			if(player.getSecondHighestCard().compareTo(nextPlayer.getSecondHighestCard()) > 0)
+        			this.lblWins.setText("wins");
+    			else if(player.getSecondHighestCard().compareTo(nextPlayer.getSecondHighestCard()) < 0)
+    				this.lblWins.setText("loses");
+    			else {
+    				if(player.getThirdHighestCard().compareTo(nextPlayer.getThirdHighestCard()) > 0)
+            			this.lblWins.setText("wins");
+        			else if(player.getThirdHighestCard().compareTo(nextPlayer.getThirdHighestCard()) < 0)
+        				this.lblWins.setText("loses");
+        			else {
+        				if(player.getFourthHighestCard().compareTo(nextPlayer.getFourthHighestCard()) > 0)
+        					this.lblWins.setText("wins");
+        				else if(player.getFourthHighestCard().compareTo(nextPlayer.getFourthHighestCard()) < 0)
+        					this.lblWins.setText("loses");
+        				else {
+        					if(player.getLowestCard().compareTo(nextPlayer.getLowestCard()) > 0)
+        						this.lblWins.setText("wins");
+        					else if(player.getLowestCard().compareTo(nextPlayer.getLowestCard()) < 0)
+        						this.lblWins.setText("loses");
+        				}
+        			}
+    			}
+    		}
+    	} else if(player.evaluateHand() == HandType.OnePair && nextPlayer.evaluateHand() == HandType.OnePair) {
+    		
+    		
+    	} else if(player.evaluateHand() == HandType.TwoPair && nextPlayer.evaluateHand() == HandType.TwoPair) {
+    		
+    		
+    	} else if(player.evaluateHand() == HandType.ThreeOfAKind && nextPlayer.evaluateHand() == HandType.ThreeOfAKind) {
+    		
+    		
+    	} else if(player.evaluateHand() == HandType.Straight && nextPlayer.evaluateHand() == HandType.Straight) {
+    		
+    		
+    	} else if(player.evaluateHand() == HandType.FullHouse && nextPlayer.evaluateHand() == HandType.FullHouse) {
+    		
+    		
+    	} else if(player.evaluateHand() == HandType.Flush && nextPlayer.evaluateHand() == HandType.Flush) {
+    		
+    		
+    	} else if(player.evaluateHand() == HandType.StraightFlush && nextPlayer.evaluateHand() == HandType.StraightFlush) {
+    		
+    		
     	}
+    	
     }
     
     public void resetWinner() {

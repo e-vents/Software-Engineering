@@ -1,6 +1,7 @@
 package poker.version_graphics.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Player implements Comparable<Player> {
     public static final int HAND_SIZE = 5;
@@ -21,6 +22,32 @@ public class Player implements Comparable<Player> {
 
     public ArrayList<Card> getCards() {
         return cards;
+    }
+    
+    public Card getHighestCard() {
+    	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+    	Collections.sort(clonedCards);
+   	 	return clonedCards.get(clonedCards.size()-1);
+    }
+    public Card getSecondHighestCard() {
+    	 ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+    	 Collections.sort(clonedCards);
+    	 return clonedCards.get(clonedCards.size()-2);
+    }
+    public Card getThirdHighestCard() {
+   	 ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+   	 Collections.sort(clonedCards);
+   	 return clonedCards.get(clonedCards.size()-3);
+    }
+    public Card getFourthHighestCard() {
+    	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+    	Collections.sort(clonedCards);
+    	return clonedCards.get(clonedCards.size()-4); 
+    }
+    public Card getLowestCard() {
+    	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+    	Collections.sort(clonedCards);
+    	return clonedCards.get(clonedCards.size()-5); 
     }
     
     public void addCard(Card card) {

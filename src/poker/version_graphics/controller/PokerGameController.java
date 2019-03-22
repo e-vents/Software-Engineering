@@ -16,10 +16,12 @@ import poker.version_graphics.view.PokerGameView;
 public class PokerGameController {
 	private PokerGameModel model;
 	private PokerGameView view;
+	private PokerGame game;
 	
-	public PokerGameController(PokerGameModel model, PokerGameView view) {
+	public PokerGameController(PokerGameModel model, PokerGameView view, PokerGame game) {
 		this.model = model;
 		this.view = view;
+		this.game = game;
 		
 		view.getShuffleButton().setOnAction( e -> shuffle() );
 		view.getDealButton().setOnAction( e -> deal() );
@@ -28,6 +30,11 @@ public class PokerGameController {
 		view.getGreenItem().setOnAction(this::changeColor);
 		view.getRedItem().setOnAction(this::changeColor);
 		view.getGreyItem().setOnAction(this::changeColor);
+		
+		//Events-Handler for the "players" Menu
+		view.getTwoPlayer().setOnAction(this::changeNumOfPlayers);
+		view.getThreePlayer().setOnAction(this::changeNumOfPlayers);
+		view.getFourPlayer().setOnAction(this::changeNumOfPlayers);
 	}
 	
 
@@ -110,5 +117,15 @@ public class PokerGameController {
 		imv.setFitHeight(185);
 		imv.setFitWidth(122);
 		view.getDeckLabel().setGraphic(imv);
+    }
+    
+    //implementing multi-player
+    private void changeNumOfPlayers(Event d) {
+    	if(d.getSource() == view.getTwoPlayer()) 
+    		game.setNumOfPlayers(2);
+    	if(d.getSource() == view.getThreePlayer()) 
+    		game.setNumOfPlayers(3);
+    	if(d.getSource() == view.getFourPlayer()) 
+    		game.setNumOfPlayers(4);
     }
 }

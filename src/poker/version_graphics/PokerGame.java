@@ -7,7 +7,7 @@ import poker.version_graphics.model.PokerGameModel;
 import poker.version_graphics.view.PokerGameView;
 
 public class PokerGame extends Application {
-	public static final int NUM_PLAYERS = 2;
+	public static int NUM_PLAYERS = 2;
 	PokerGameModel model;
 	PokerGameView view;
 	PokerGameController controller;
@@ -21,6 +21,11 @@ public class PokerGame extends Application {
     	// Create and initialize the MVC components
     	model = new PokerGameModel();
     	view = new PokerGameView(primaryStage, model);
-    	controller = new PokerGameController(model, view);
+    	controller = new PokerGameController(model, view, this);
+    }
+    
+    //testing multiplayer
+    public static void setNumOfPlayers(int playNum) {
+    	NUM_PLAYERS = playNum;
     }
 }

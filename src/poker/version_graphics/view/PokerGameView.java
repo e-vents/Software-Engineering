@@ -25,6 +25,9 @@ public class PokerGameView {
 	private MenuItem redItem;
 	private MenuItem greyItem;
 	private Menu playerMenu;
+	private MenuItem twoPlayer;
+	private MenuItem threePlayer;
+	private MenuItem fourPlayer;
 	
 	private PokerGameModel model;
 	
@@ -46,18 +49,19 @@ public class PokerGameView {
 		
 		//create the top-menu
 		menuBar = new MenuBar();
-		
+		//theme menu
 		this.greenItem = new MenuItem("GreenBean");
 		this.redItem = new MenuItem("RustyDusty");
 		this.greyItem = new MenuItem("MouseHouse");
 		styleMenu = new Menu("themes");
 		styleMenu.getItems().addAll(greenItem, redItem, greyItem);
 		
-		MenuItem p1 = new MenuItem("2");
-		MenuItem p2 = new MenuItem("3");
-		MenuItem p3 = new MenuItem("4");
+		//players menu
+		this.twoPlayer = new MenuItem("2 player");
+		this.threePlayer = new MenuItem("3 player");
+		this.fourPlayer = new MenuItem("4 player");
 		playerMenu = new Menu("players");
-		playerMenu.getItems().addAll(p1, p2, p3);
+		playerMenu.getItems().addAll(twoPlayer, threePlayer, fourPlayer);
 		
 		menuBar.getMenus().addAll(styleMenu, playerMenu);
 		//menu.getStyleClass().add("menu");
@@ -66,9 +70,9 @@ public class PokerGameView {
 		
 		greenItem.getStyleClass().add("menu");
 		redItem.getStyleClass().add("menu");
-		p1.getStyleClass().add("menu");
-		p2.getStyleClass().add("menu");
-		p3.getStyleClass().add("menu");
+		this.twoPlayer.getStyleClass().add("menu");
+		this.threePlayer.getStyleClass().add("menu");
+		this.fourPlayer.getStyleClass().add("menu");
 		
 		// Put players and controls into a BorderPane
 		this.root = new BorderPane();
@@ -104,6 +108,7 @@ public class PokerGameView {
 	public Button getDealButton() {
 		return controls.btnDeal;
 	}
+	//Getter for themes Items
 	public MenuItem getRedItem() {
 		return this.redItem;
 	}
@@ -113,7 +118,17 @@ public class PokerGameView {
 	public MenuItem getGreyItem() {
 		return this.greyItem;
 	}
-	
+	//Getters for player Items
+	public MenuItem getTwoPlayer() {
+		return twoPlayer;
+	}
+	public MenuItem getThreePlayer() {
+		return threePlayer;
+	}
+	public MenuItem getFourPlayer() {
+		return fourPlayer;
+	}
+
 	public ControlArea getControls() {
 		return controls;
 	}

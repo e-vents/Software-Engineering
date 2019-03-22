@@ -64,11 +64,14 @@ public class PokerGameController {
         		p.evaluateHand();
         		PlayerPane pp = view.getPlayerPane(i);
         		pp.updatePlayerDisplay();
+        		//this.view.getPlayerPane(i).displayWinner();
         	}
         	//calling the displayWinner method
+        	/*
         	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
     			this.view.getPlayerPane(i).displayWinner();
         	}
+        	*/
         	
     	} else {
             Alert alert = new Alert(AlertType.INFORMATION, "please shuffle first");

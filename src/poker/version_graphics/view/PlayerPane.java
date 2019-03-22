@@ -65,6 +65,16 @@ public class PlayerPane extends VBox {
     	}
     }
     //only set winner to the screen: uses the evaluateWinner method from the model
+    public void displayWinner(PlayerPane playerPane) {
+    	
+    	playerPane.lblWins.setText("Wins");
+           	
+    	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+    		this.view.getPlayerPane(i).lblWins.setText("Loses");
+        }
+    }
+    
+    /*
     public void displayWinner() {
     	
     	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
@@ -88,10 +98,11 @@ public class PlayerPane extends VBox {
                 		}	
                 	}
                 }
-                */
+                
     		}
     	}
     }
+    */
     public void resetWinner() {
     	this.lblWins.setText("--");
     }

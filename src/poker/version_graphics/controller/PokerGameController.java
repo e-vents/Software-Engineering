@@ -24,7 +24,7 @@ public class PokerGameController {
 		view.getShuffleButton().setOnAction( e -> shuffle() );
 		view.getDealButton().setOnAction( e -> deal() );
 		
-		
+		//Event-Handler for the "themes" Menu
 		view.getGreenItem().setOnAction(this::changeColor);
 		view.getRedItem().setOnAction(this::changeColor);
 		view.getGreyItem().setOnAction(this::changeColor);
@@ -64,14 +64,10 @@ public class PokerGameController {
         		p.evaluateHand();
         		PlayerPane pp = view.getPlayerPane(i);
         		pp.updatePlayerDisplay();
-        		//this.view.getPlayerPane(i).displayWinner();
+        		
+        		if(i == PokerGame.NUM_PLAYERS-1)
+        			evaluateWinner();
         	}
-        	//calling the displayWinner method
-        	/*
-        	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
-    			this.view.getPlayerPane(i).displayWinner();
-        	}
-        	*/
         	
     	} else {
             Alert alert = new Alert(AlertType.INFORMATION, "please shuffle first");
@@ -79,6 +75,17 @@ public class PokerGameController {
             alert.showAndWait();
     	}
     }
+    //calls the displayWinner-method so that you can see who wins
+    private void evaluateWinner() {
+    	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+    		if(i < PokerGame.NUM_PLAYERS-1)
+    			view.getPlayerPane(i).displayWinner(model.getPlayer(i+1));
+    		else
+    			view.getPlayerPane(i).displayWinner(model.getPlayer(0));
+    	}
+    }
+    
+    //Method for changing themes (red, green and grey)
     private void changeColor(Event e) {
     	String fileName ="";
     	
@@ -96,8 +103,8 @@ public class PokerGameController {
     		view.getRoot().setId("greyRoot");
     		view.getControls().setId("greyControlArea");
     		fileName = "bluedeck.png";
-    		
     	}
+    	
     	Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/" + fileName));
 		ImageView imv = new ImageView(image);
 		imv.setFitHeight(185);

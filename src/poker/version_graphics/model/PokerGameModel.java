@@ -13,7 +13,6 @@ public class PokerGameModel {
 		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
 			players.add(new Player("Player " + i, this));
 		}
-		
 		deck = new DeckOfCards();
 	}
 	
@@ -23,12 +22,5 @@ public class PokerGameModel {
 	
 	public DeckOfCards getDeck() {
 		return deck;
-	}
-	//evaluateWinner
-	public void evaluateWinner() {
-		for(int i = 0; i < players.size(); i++) {
-			if(players.get(i).compareTo(players.get(i+1)) > 0);
-				
-		}
 	}
 }

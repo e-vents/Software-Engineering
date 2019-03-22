@@ -64,45 +64,19 @@ public class PlayerPane extends VBox {
     		
     	}
     }
-    //only set winner to the screen: uses the evaluateWinner method from the model
-    public void displayWinner(PlayerPane playerPane) {
-    	
-    	playerPane.lblWins.setText("Wins");
-           	
-    	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
-    		this.view.getPlayerPane(i).lblWins.setText("Loses");
-        }
-    }
-    
     /*
-    public void displayWinner() {
+     * will be called from the controller
+     * this method should call the isWinner-method from the player class
+     */
+    public void displayWinner(Player nextPlayer) {
     	
-    	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
-    		for(int j = 1; j < PokerGame.NUM_PLAYERS; j++) {
-               	if(this.model.getPlayer(j-1).compareTo(this.model.getPlayer(i)) > 0) {
-                   	this.lblWins.setText("Wins");
-                   	this.view.getPlayerPane(j).lblWins.setText("Loses");
-                   	
-                } else {
-                   	this.lblWins.setText("Loses");
-                   	this.view.getPlayerPane(j).lblWins.setText("Wins ");
-                }
-               	/*
-               	//tie-break
-               	if(this.model.getPlayer(i-1).compareTo(this.model.getPlayer(i)) == 0) {
-          			// if onePair
-                	if(player.evaluateHand() == HandType.OnePair) {
-                		ArrayList<Card> clist = HandType.getWinningCards();
-                		for(Card c : clist) {
-             				
-                		}	
-                	}
-                }
-                
-    		}
+    	if(player.compareTo(nextPlayer) > 0) {
+    		this.lblWins.setText("wins");
+    	} else {
+    		this.lblWins.setText("loses");
     	}
     }
-    */
+    
     public void resetWinner() {
     	this.lblWins.setText("--");
     }

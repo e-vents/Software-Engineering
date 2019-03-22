@@ -117,11 +117,7 @@ public class PokerGameView {
 	public ControlArea getControls() {
 		return controls;
 	}
-	/*
-	public void setFileName(String name) {
-		this.controls.setFileName(name);
-	}
-	*/
+	
 	public DeckLabel getDeckLabel() {
 		return this.controls.getDeckLabel();
 	}

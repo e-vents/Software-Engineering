@@ -1,8 +1,10 @@
 package poker.version_graphics.view;
 
+import javafx.animation.ScaleTransition;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import poker.version_graphics.PokerGame;
 import poker.version_graphics.model.Card;
 import poker.version_graphics.model.HandType;
@@ -64,14 +66,34 @@ public class PlayerPane extends VBox {
     		
     	}
     }
+
+    public void animateWinnerLabel() {
+    	ScaleTransition t1 = new ScaleTransition(Duration.millis(250));
+    	t1.setToX(2);
+    	t1.setToY(2);
+    	t1.setAutoReverse(true);
+    	t1.setCycleCount(4);
+    	 /*
+    	RotateTransition t2 = new RotateTransition(Duration.millis(800));
+    	t2.setByAngle(360);
+    	t2.setCycleCount(1);
+		*/
+    	//onClick = new ParallelTransition(t1, t2);
+    	//Event-handler
+    	t1.setNode(lblWins);
+    	t1.play();
+    }
+    
     /*
      * will be called from the controller
      * this method should call the isWinner-method from the player class
      */
     public void displayWinner(Player nextPlayer) {
     	
-    	if(player.compareTo(nextPlayer) > 0)
+    	if(player.compareTo(nextPlayer) > 0) {
     		this.lblWins.setText("wins");
+        	animateWinnerLabel();
+    	}
     		
     	else if(player.compareTo(nextPlayer) < 0)
     		this.lblWins.setText("loses");
@@ -104,7 +126,6 @@ public class PlayerPane extends VBox {
     		
     	} else if(player.evaluateHand() == HandType.StraightFlush) {
     		straightFlushMatch(nextPlayer);
-    		
     	}
     	
     }
@@ -139,42 +160,71 @@ public class PlayerPane extends VBox {
 	}
 
 	private void onePairMatch(Player nextPlayer) {
-		if(player.getPairCard().compareTo(nextPlayer.getPairCard()) > 0)
+		if(player.getPairCard().compareTo(nextPlayer.getPairCard()) > 0) {
 			this.lblWins.setText("wins");
+    		animateWinnerLabel();
+		}
 		else if(player.getPairCard().compareTo(nextPlayer.getPairCard()) < 0)
 			this.lblWins.setText("loses");
-		else
+		else {//when pairs are equal
 			if(player.getHighestCard(player.getPairCard()).compareTo(
-					nextPlayer.getHighestCard(nextPlayer.getPairCard())) > 0)
-				this.lblWins.setText("winds");
-		
-	}
+								nextPlayer.getHighestCard(nextPlayer.getPairCard())) > 0) {
+				this.lblWins.setText("wins");
+	    		animateWinnerLabel();
+			}
+			else if(player.getHighestCard(player.getPairCard()).compareTo(
+								nextPlayer.getHighestCard(nextPlayer.getPairCard())) < 0)
+				this.lblWins.setText("losesss");
+			/*
+			else {
+				if(player.getThirdHighestCard().compareTo(nextPlayer.getThirdHighestCard()) > 0)
+        			this.lblWins.setText("winsss");
+    			else if(player.getThirdHighestCard().compareTo(nextPlayer.getThirdHighestCard()) < 0)
+    				this.lblWins.setText("losesss");
+    			else {
+    				if(player.getFourthHighestCard().compareTo(nextPlayer.getFourthHighestCard()) > 0)
+    					this.lblWins.setText("winsss");
+    				//else(player.getFourthHighestCard().compareTo(nextPlayer.getFourthHighestCard()) < 0)
+    				//	this.lblWins.setText("loses");
+    			}
+			}
+			*/	
+		}
+	}	
 
-	//add methods; highCardsMatch, OnePairMatch, TwoPairMatch
     private void highCardMatch(Player nextPlayer) {
-    	if(player.getHighestCard().compareTo(nextPlayer.getHighestCard()) > 0)
-			this.lblWins.setText("wins");
-			
+    	if(player.getHighestCard().compareTo(nextPlayer.getHighestCard()) > 0) {
+    		this.lblWins.setText("wins");
+    		animateWinnerLabel();
+    	}
 		else if(player.getHighestCard().compareTo(nextPlayer.getHighestCard()) < 0)
 			this.lblWins.setText("loses");
-		else {
-			if(player.getSecondHighestCard().compareTo(nextPlayer.getSecondHighestCard()) > 0)
-    			this.lblWins.setText("wins");
+		else {//when high cards are equal
+			if(player.getSecondHighestCard().compareTo(nextPlayer.getSecondHighestCard()) > 0) {
+				this.lblWins.setText("wins");
+	    		animateWinnerLabel();
+			}
 			else if(player.getSecondHighestCard().compareTo(nextPlayer.getSecondHighestCard()) < 0)
 				this.lblWins.setText("loses");
 			else {
-				if(player.getThirdHighestCard().compareTo(nextPlayer.getThirdHighestCard()) > 0)
-        			this.lblWins.setText("wins");
+				if(player.getThirdHighestCard().compareTo(nextPlayer.getThirdHighestCard()) > 0) {
+					this.lblWins.setText("wins");
+		    		animateWinnerLabel();
+				}
     			else if(player.getThirdHighestCard().compareTo(nextPlayer.getThirdHighestCard()) < 0)
     				this.lblWins.setText("loses");
     			else {
-    				if(player.getFourthHighestCard().compareTo(nextPlayer.getFourthHighestCard()) > 0)
+    				if(player.getFourthHighestCard().compareTo(nextPlayer.getFourthHighestCard()) > 0) {
     					this.lblWins.setText("wins");
+    		    		animateWinnerLabel();
+    				}
     				else if(player.getFourthHighestCard().compareTo(nextPlayer.getFourthHighestCard()) < 0)
     					this.lblWins.setText("loses");
     				else {
-    					if(player.getLowestCard().compareTo(nextPlayer.getLowestCard()) > 0)
+    					if(player.getLowestCard().compareTo(nextPlayer.getLowestCard()) > 0) {
     						this.lblWins.setText("wins");
+    			    		animateWinnerLabel();
+    					}
     					else if(player.getLowestCard().compareTo(nextPlayer.getLowestCard()) < 0)
     						this.lblWins.setText("loses");
     				}
@@ -182,7 +232,6 @@ public class PlayerPane extends VBox {
 			}
 		}
     }
-    
     
     public void resetWinner() {
     	this.lblWins.setText("--");

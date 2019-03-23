@@ -24,15 +24,49 @@ public class Player implements Comparable<Player> {
         return cards;
     }
     
+    public void addCard(Card card) {
+        if (cards.size() < HAND_SIZE) cards.add(card);
+    }
+    
+    public void discardHand() {
+        cards.clear();
+        handType = null;
+    }
+    
+    public int getNumCards() {
+        return cards.size();
+    }
+
+    /**
+     * If the hand has not been evaluated, but does have all cards, 
+     * then evaluate it.
+     */
+    public HandType evaluateHand() {
+        if (handType == null && cards.size() == HAND_SIZE) {
+            handType = HandType.evaluateHand(cards);
+        }
+        return handType;
+    }
+    /*
+     * following method are used for tie-breaking
+     */
     public Card getHighestCard() {
     	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
     	Collections.sort(clonedCards);
    	 	return clonedCards.get(clonedCards.size()-1);
     }
-    
+    // method-overloading
     public Card getHighestCard(Card pairCard) {
+    	int pairSearch = pairCard.getRank().ordinal();
+    	
     	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
     	Collections.sort(clonedCards);
+    	clonedCards.remove(pairCard);
+    	
+    	for(Card d : clonedCards) {
+    		if(d.getRank().ordinal() == pairSearch)
+    			clonedCards.remove(d);
+    	}
    	 	return clonedCards.get(clonedCards.size()-1);
     }
     
@@ -67,31 +101,27 @@ public class Player implements Comparable<Player> {
         }
     	return pc;
     }
-    
-    public void addCard(Card card) {
-        if (cards.size() < HAND_SIZE) cards.add(card);
-    }
-    
-    public void discardHand() {
-        cards.clear();
-        handType = null;
-    }
-    
-    public int getNumCards() {
-        return cards.size();
-    }
+    /*
+    public Card getHigherPairCard() {
+        // Clone the cards, because we will be altering the list
+        ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
 
-    /**
-     * If the hand has not been evaluated, but does have all cards, 
-     * then evaluate it.
-     */
-    public HandType evaluateHand() {
-        if (handType == null && cards.size() == HAND_SIZE) {
-            handType = HandType.evaluateHand(cards);
+        // Find the first pair; if found, remove the cards from the list
+        boolean firstPairFound = false;
+        for(int i = 0; i < clonedCards.size() - 1 && !firstPairFound; i++) {
+            for(int j = i+1; j < clonedCards.size() && !firstPairFound; j++) {
+                if (clonedCards.get(i).getRank() == clonedCards.get(j).getRank()) {
+                    firstPairFound = true;
+                    clonedCards.remove(j);  // Remove the later card
+                    clonedCards.remove(i);  // Before the earlier one
+                }
+            }
         }
-        return handType;
+        // If a first pair was found, see if there is a second pair
+        return firstPairFound && isOnePair(clonedCards);
     }
-
+	*/
+    
     /**
      * Hands are compared, based on the evaluation they have.
      */

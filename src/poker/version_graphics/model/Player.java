@@ -29,6 +29,13 @@ public class Player implements Comparable<Player> {
     	Collections.sort(clonedCards);
    	 	return clonedCards.get(clonedCards.size()-1);
     }
+    
+    public Card getHighestCard(Card pairCard) {
+    	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+    	Collections.sort(clonedCards);
+   	 	return clonedCards.get(clonedCards.size()-1);
+    }
+    
     public Card getSecondHighestCard() {
     	 ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
     	 Collections.sort(clonedCards);
@@ -48,6 +55,17 @@ public class Player implements Comparable<Player> {
     	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
     	Collections.sort(clonedCards);
     	return clonedCards.get(clonedCards.size()-5); 
+    }
+    public Card getPairCard() {
+    	Card pc = null;
+    	for(int i = 0; i < cards.size() - 1; i++) {
+            for(int j = i+1; j < cards.size(); j++) {
+                if (cards.get(i).getRank() == cards.get(j).getRank()) {
+                	pc = cards.get(i);
+                }
+            }
+        }
+    	return pc;
     }
     
     public void addCard(Card card) {

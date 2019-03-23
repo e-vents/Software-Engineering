@@ -77,68 +77,112 @@ public class PlayerPane extends VBox {
     		this.lblWins.setText("loses");
     	
     	else
-    		tieBreak(player, nextPlayer);
+    		tieBreak(nextPlayer);
     }
-    private void tieBreak(Player player, Player nextPlayer) {
+    private void tieBreak(Player nextPlayer) {
     	
     	if(player.evaluateHand() == HandType.HighCard) {
-    		if(player.getHighestCard().compareTo(nextPlayer.getHighestCard()) > 0)
-    			this.lblWins.setText("wins");
-    			
-    		else if(player.getHighestCard().compareTo(nextPlayer.getHighestCard()) < 0)
-    			this.lblWins.setText("loses");
-    		else {
-    			if(player.getSecondHighestCard().compareTo(nextPlayer.getSecondHighestCard()) > 0)
-        			this.lblWins.setText("wins");
-    			else if(player.getSecondHighestCard().compareTo(nextPlayer.getSecondHighestCard()) < 0)
-    				this.lblWins.setText("loses");
-    			else {
-    				if(player.getThirdHighestCard().compareTo(nextPlayer.getThirdHighestCard()) > 0)
-            			this.lblWins.setText("wins");
-        			else if(player.getThirdHighestCard().compareTo(nextPlayer.getThirdHighestCard()) < 0)
-        				this.lblWins.setText("loses");
-        			else {
-        				if(player.getFourthHighestCard().compareTo(nextPlayer.getFourthHighestCard()) > 0)
-        					this.lblWins.setText("wins");
-        				else if(player.getFourthHighestCard().compareTo(nextPlayer.getFourthHighestCard()) < 0)
-        					this.lblWins.setText("loses");
-        				else {
-        					if(player.getLowestCard().compareTo(nextPlayer.getLowestCard()) > 0)
-        						this.lblWins.setText("wins");
-        					else if(player.getLowestCard().compareTo(nextPlayer.getLowestCard()) < 0)
-        						this.lblWins.setText("loses");
-        				}
-        			}
-    			}
-    		}
-    	} else if(player.evaluateHand() == HandType.OnePair) {
+    		highCardMatch(nextPlayer);
     		
+    	} else if(player.evaluateHand() == HandType.OnePair) {
+    		onePairMatch(nextPlayer);
     		
     	} else if(player.evaluateHand() == HandType.TwoPair) {
-    		
+    		twoPairMatch(nextPlayer);
     		
     	} else if(player.evaluateHand() == HandType.ThreeOfAKind) {
-    		
+    		threeOfAKindMatch(nextPlayer);
     		
     	} else if(player.evaluateHand() == HandType.Straight) {
-    		
+    		straightMatch(nextPlayer);
     		
     	} else if(player.evaluateHand() == HandType.FullHouse) {
-    		
+    		fullHouseMatch(nextPlayer);
     		
     	} else if(player.evaluateHand() == HandType.Flush) {
-    		
+    		flushMatch(nextPlayer);
     		
     	} else if(player.evaluateHand() == HandType.StraightFlush) {
-    		
+    		straightFlushMatch(nextPlayer);
     		
     	}
     	
     }
-    //add methods; highCardsMatch, OnePairMatch, TwoPairMatch
-    private void highCardMatch() {
-    	
+    private void straightFlushMatch(Player nextPlayer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void flushMatch(Player nextPlayer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void fullHouseMatch(Player nextPlayer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void straightMatch(Player nextPlayer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void threeOfAKindMatch(Player nextPlayer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void twoPairMatch(Player nextPlayer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void onePairMatch(Player nextPlayer) {
+		if(player.getPairCard().compareTo(nextPlayer.getPairCard()) > 0)
+			this.lblWins.setText("wins");
+		else if(player.getPairCard().compareTo(nextPlayer.getPairCard()) < 0)
+			this.lblWins.setText("loses");
+		else
+			if(player.getHighestCard(player.getPairCard()).compareTo(
+					nextPlayer.getHighestCard(nextPlayer.getPairCard())) > 0)
+				this.lblWins.setText("winds");
+		
+	}
+
+	//add methods; highCardsMatch, OnePairMatch, TwoPairMatch
+    private void highCardMatch(Player nextPlayer) {
+    	if(player.getHighestCard().compareTo(nextPlayer.getHighestCard()) > 0)
+			this.lblWins.setText("wins");
+			
+		else if(player.getHighestCard().compareTo(nextPlayer.getHighestCard()) < 0)
+			this.lblWins.setText("loses");
+		else {
+			if(player.getSecondHighestCard().compareTo(nextPlayer.getSecondHighestCard()) > 0)
+    			this.lblWins.setText("wins");
+			else if(player.getSecondHighestCard().compareTo(nextPlayer.getSecondHighestCard()) < 0)
+				this.lblWins.setText("loses");
+			else {
+				if(player.getThirdHighestCard().compareTo(nextPlayer.getThirdHighestCard()) > 0)
+        			this.lblWins.setText("wins");
+    			else if(player.getThirdHighestCard().compareTo(nextPlayer.getThirdHighestCard()) < 0)
+    				this.lblWins.setText("loses");
+    			else {
+    				if(player.getFourthHighestCard().compareTo(nextPlayer.getFourthHighestCard()) > 0)
+    					this.lblWins.setText("wins");
+    				else if(player.getFourthHighestCard().compareTo(nextPlayer.getFourthHighestCard()) < 0)
+    					this.lblWins.setText("loses");
+    				else {
+    					if(player.getLowestCard().compareTo(nextPlayer.getLowestCard()) > 0)
+    						this.lblWins.setText("wins");
+    					else if(player.getLowestCard().compareTo(nextPlayer.getLowestCard()) < 0)
+    						this.lblWins.setText("loses");
+    				}
+    			}
+			}
+		}
     }
+    
     
     public void resetWinner() {
     	this.lblWins.setText("--");

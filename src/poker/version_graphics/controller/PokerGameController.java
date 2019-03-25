@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import poker.version_graphics.PokerGame;
 import poker.version_graphics.model.Card;
 import poker.version_graphics.model.DeckOfCards;
@@ -17,8 +18,10 @@ public class PokerGameController {
 	private PokerGameModel model;
 	private PokerGameView view;
 	private PokerGame game;
+	private Stage stage;
 	
-	public PokerGameController(PokerGameModel model, PokerGameView view, PokerGame game) {
+	public PokerGameController(Stage stage, PokerGameModel model, PokerGameView view, PokerGame game) {
+		this.stage = stage;
 		this.model = model;
 		this.view = view;
 		this.game = game;
@@ -37,8 +40,6 @@ public class PokerGameController {
 		view.getFourPlayer().setOnAction(this::changeNumOfPlayers);
 	}
 	
-
-
     /**
      * Remove all cards from players hands, and shuffle the deck
      */
@@ -50,7 +51,6 @@ public class PokerGameController {
     		pp.updatePlayerDisplay();
     		view.getPlayerPane(i).resetWinner();
     	}
-
     	model.getDeck().shuffle();
     }
     
@@ -121,11 +121,16 @@ public class PokerGameController {
     
     //implementing multi-player
     private void changeNumOfPlayers(Event d) {
-    	if(d.getSource() == view.getTwoPlayer()) 
+    	if(d.getSource() == view.getTwoPlayer()) {
     		game.setNumOfPlayers(2);
-    	if(d.getSource() == view.getThreePlayer()) 
+    	}
+    	if(d.getSource() == view.getThreePlayer()) {
     		game.setNumOfPlayers(3);
-    	if(d.getSource() == view.getFourPlayer()) 
+    	}
+    	if(d.getSource() == view.getFourPlayer()) {
     		game.setNumOfPlayers(4);
+    	}
+    	model.updateModel();
+		view.updateView(stage, model);
     }
 }

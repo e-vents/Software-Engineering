@@ -3,13 +3,16 @@ package poker.version_graphics.view;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBase;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import poker.version_graphics.PokerGame;
@@ -17,7 +20,7 @@ import poker.version_graphics.model.PokerGameModel;
 
 public class PokerGameView {
 	private BorderPane root;
-	private HBox players;
+	private GridPane players;
 	private ControlArea controls;
 	private MenuBar menuBar;
 	private Menu styleMenu;
@@ -35,12 +38,17 @@ public class PokerGameView {
 		this.model = model;
 		
 		// Create all of the player panes we need, and put them into an HBox
-		players = new HBox();
+		players = new GridPane();
 		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
 			PlayerPane pp = new PlayerPane(this.model, this);
 			pp.setPlayer(model.getPlayer(i)); // link to player object in the logic
-			players.getChildren().add(pp);
-			players.setSpacing(20);
+			//Region spacer = new Label();
+			//spacer.setMaxWidth(10);
+			if(i == 0) {
+				players.add(pp, 0, 0);
+				//players.add(spacer, 1, 0);
+			} else
+				players.add(pp, 2, 0);
 		}
 		
 		// Create the control area
@@ -136,5 +144,56 @@ public class PokerGameView {
 	public DeckLabel getDeckLabel() {
 		return this.controls.getDeckLabel();
 	}
+	
+	public void updateView(Stage stage, PokerGameModel model) {
+		this.model = model;
+		Scene scene;
+		
+		// Create all of the player panes we need, and put them into an HBox
+		players = new GridPane();
+		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+			PlayerPane pp = new PlayerPane(this.model, this);
+			pp.setPlayer(model.getPlayer(i)); // link to player object in the logic
+			//Label spacer = new Label();
+			//spacer.setMaxWidth(25);
+			if(i == 0) {
+				players.add(pp, 0, 0);
+				//players.add(spacer, 1, 0);
+				
+			} else if(i == 1) {
+				players.add(pp, 2, 0);
+				
+			} else if(i == 2) {
+				players.add(pp, 0, 1);
+				//players.add(spacer, 1, 1);
+				
+			} else {
+				players.add(pp, 2, 1);
+			}
+		}
+		
+		controls.linkDeck(model.getDeck()); // link DeckLabel to DeckOfCards in the logic
+		
+		// Put players and controls into a BorderPane
+		this.root = new BorderPane();
+		root.setCenter(players);
+		root.setBottom(controls);
+		root.setTop(menuBar);
+		
+		// Disallow resizing - which is difficult to get right with images
+		//stage.setResizable(false);
 
+        // Create the scene using our layout; then display it
+		if(PokerGame.NUM_PLAYERS < 3)
+			scene = new Scene(root, 1300, 520);
+		else 
+			scene = new Scene(root, 1300, 820);
+		
+        scene.getStylesheets().add(
+                getClass().getResource("poker.css").toExternalForm());
+        stage.setTitle("Poker Master 5000");
+        stage.getIcons().add(new Image("poker/images/poker-icon.png"));
+        stage.setScene(scene);
+        stage.show();
+	}
 }

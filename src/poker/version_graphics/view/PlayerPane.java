@@ -65,7 +65,6 @@ public class PlayerPane extends VBox {
     			lblEvaluation.setText(evaluation.toString());
     		else
     			lblEvaluation.setText("--");
-    		
     	}
     }
 
@@ -104,7 +103,10 @@ public class PlayerPane extends VBox {
     }
     private void tieBreak(Player nextPlayer) {
     	
-    	if(player.evaluateHand() == HandType.HighCard) {
+    	if(player.evaluateHand() == HandType.HighCard 
+    		|| player.evaluateHand() == HandType.Straight 
+    		|| player.evaluateHand() == HandType.Flush 
+    		|| player.evaluateHand() == HandType.StraightFlush) {
     		highCardMatch(nextPlayer);
     		
     	} else if(player.evaluateHand() == HandType.OnePair) {
@@ -113,38 +115,11 @@ public class PlayerPane extends VBox {
     	} else if(player.evaluateHand() == HandType.TwoPair) {
     		twoPairMatch(nextPlayer);
     		
-    	} else if(player.evaluateHand() == HandType.ThreeOfAKind) {
-    		threeOfAKindMatch(nextPlayer);
-    		
-    	} else if(player.evaluateHand() == HandType.Straight) {
-    		straightMatch(nextPlayer);
-    		
-    	} else if(player.evaluateHand() == HandType.FullHouse) {
-    		fullHouseMatch(nextPlayer);
-    		
-    	} else if(player.evaluateHand() == HandType.Flush) {
-    		flushMatch(nextPlayer);
-    		
-    	} else if(player.evaluateHand() == HandType.StraightFlush) {
-    		straightFlushMatch(nextPlayer);
+    	} else if(player.evaluateHand() == HandType.ThreeOfAKind 
+    			|| player.evaluateHand() == HandType.FullHouse) {
+    		threeOfAKindMatch(nextPlayer);	
     	}
-    	
     }
-    private void straightFlushMatch(Player nextPlayer) {
-		highCardMatch(nextPlayer);
-	}
-
-	private void flushMatch(Player nextPlayer) {
-		highCardMatch(nextPlayer);
-	}
-
-	private void fullHouseMatch(Player nextPlayer) {
-		threeOfAKindMatch(nextPlayer);
-	}
-
-	private void straightMatch(Player nextPlayer) {
-		highCardMatch(nextPlayer);
-	}
 	
 	private void threeOfAKindMatch(Player nextPlayer) {
 		if(player.getThreeOfAKindCard().compareTo(nextPlayer.getThreeOfAKindCard()) > 0) {

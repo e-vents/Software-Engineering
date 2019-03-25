@@ -11,7 +11,7 @@ public class PokerGameModel {
 	
 	public PokerGameModel() {
 		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
-			players.add(new Player("Player " + i, this));
+			players.add(new Player("Player " + (i+1), this));
 		}
 		deck = new DeckOfCards();
 	}
@@ -22,5 +22,12 @@ public class PokerGameModel {
 	
 	public DeckOfCards getDeck() {
 		return deck;
+	}
+	
+	public void updateModel() {
+		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+			players.add(new Player("Player " + (i+1), this));
+		}
+		deck = new DeckOfCards();
 	}
 }

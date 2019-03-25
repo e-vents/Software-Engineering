@@ -182,33 +182,39 @@ public class PlayerPane extends VBox {
 		else {//when pairs are equal
 			if(player.getHighestCard(player.getPairCard()).compareTo(
 							nextPlayer.getHighestCard(nextPlayer.getPairCard())) > 0) {
-				this.lblWins.setText("winsss");
+				this.lblWins.setText("wins");
 	    		animateWinnerLabel();
 			}
 			else if(player.getHighestCard(player.getPairCard()).compareTo(
 								nextPlayer.getHighestCard(nextPlayer.getPairCard())) < 0)
-				this.lblWins.setText("losesss");
+				this.lblWins.setText("loses");
 			else {
 				if(player.getSecondHighestCard(player.getPairCard()).compareTo(
-								nextPlayer.getSecondHighestCard(player.getPairCard())) > 0)
-        			this.lblWins.setText("winsss");
+								nextPlayer.getSecondHighestCard(nextPlayer.getPairCard())) > 0) {
+					this.lblWins.setText("wins");
+					animateWinnerLabel();
+				}
     			else if(player.getSecondHighestCard(player.getPairCard()).compareTo(
-    								nextPlayer.getSecondHighestCard(player.getPairCard())) < 0)
-    				this.lblWins.setText("losesss");
+    								nextPlayer.getSecondHighestCard(nextPlayer.getPairCard())) < 0)
+    				this.lblWins.setText("loses");
     			else {
     				if(player.getThirdHighestCard(player.getPairCard()).compareTo(
-    								nextPlayer.getThirdHighestCard(player.getPairCard())) > 0)
-    					this.lblWins.setText("winsss");
+    								nextPlayer.getThirdHighestCard(nextPlayer.getPairCard())) > 0) {
+    					this.lblWins.setText("wins");
+    					animateWinnerLabel();
+    				}
     				else if(player.getThirdHighestCard(player.getPairCard()).compareTo(
-    									nextPlayer.getThirdHighestCard(player.getPairCard())) < 0)
-    					this.lblWins.setText("losesss");
+    									nextPlayer.getThirdHighestCard(nextPlayer.getPairCard())) < 0)
+    					this.lblWins.setText("loses");
     				else {
     					if(player.getFourthHighestCard(player.getPairCard()).compareTo(
-    									nextPlayer.getFourthHighestCard(player.getPairCard())) > 0)
-        					this.lblWins.setText("winsss");
+    									nextPlayer.getFourthHighestCard(nextPlayer.getPairCard())) > 0) {
+    						this.lblWins.setText("wins");
+    						animateWinnerLabel();
+    					}
         				else if(player.getFourthHighestCard(player.getPairCard()).compareTo(
-        									nextPlayer.getFourthHighestCard(player.getPairCard())) < 0)
-        					this.lblWins.setText("losesss");
+        									nextPlayer.getFourthHighestCard(nextPlayer.getPairCard())) < 0)
+        					this.lblWins.setText("loses");
     				}
     			}
 			}

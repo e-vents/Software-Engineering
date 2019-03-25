@@ -1,5 +1,7 @@
 package poker.version_graphics.view;
 
+import javafx.animation.ParallelTransition;
+import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -68,20 +70,20 @@ public class PlayerPane extends VBox {
     }
 
     public void animateWinnerLabel() {
-    	ScaleTransition t1 = new ScaleTransition(Duration.millis(250));
-    	t1.setToX(2);
-    	t1.setToY(2);
-    	t1.setAutoReverse(true);
-    	t1.setCycleCount(4);
-    	 /*
-    	RotateTransition t2 = new RotateTransition(Duration.millis(800));
-    	t2.setByAngle(360);
-    	t2.setCycleCount(1);
-		*/
-    	//onClick = new ParallelTransition(t1, t2);
+    	ScaleTransition scale = new ScaleTransition(Duration.millis(250));
+    	scale.setToX(2);
+    	scale.setToY(2);
+    	scale.setAutoReverse(true);
+    	scale.setCycleCount(4);
+    	
+    	RotateTransition turn = new RotateTransition(Duration.millis(500));
+    	turn.setByAngle(360);
+    	turn.setCycleCount(1);
+		
+    	ParallelTransition winner = new ParallelTransition(scale, turn);
     	//Event-handler
-    	t1.setNode(lblWins);
-    	t1.play();
+    	winner.setNode(lblWins);
+    	winner.play();
     }
     
     /*
@@ -94,7 +96,6 @@ public class PlayerPane extends VBox {
     		this.lblWins.setText("wins");
         	animateWinnerLabel();
     	}
-    		
     	else if(player.compareTo(nextPlayer) < 0)
     		this.lblWins.setText("loses");
     	
@@ -130,35 +131,47 @@ public class PlayerPane extends VBox {
     	
     }
     private void straightFlushMatch(Player nextPlayer) {
-		// TODO Auto-generated method stub
-		
+		highCardMatch(nextPlayer);
 	}
 
 	private void flushMatch(Player nextPlayer) {
-		// TODO Auto-generated method stub
-		
+		highCardMatch(nextPlayer);
 	}
 
 	private void fullHouseMatch(Player nextPlayer) {
-		// TODO Auto-generated method stub
-		
+		threeOfAKindMatch(nextPlayer);
 	}
 
 	private void straightMatch(Player nextPlayer) {
-		// TODO Auto-generated method stub
-		
+		highCardMatch(nextPlayer);
 	}
-
+	
 	private void threeOfAKindMatch(Player nextPlayer) {
-		// TODO Auto-generated method stub
-		
+		if(player.getThreeOfAKindCard().compareTo(nextPlayer.getThreeOfAKindCard()) > 0) {
+			this.lblWins.setText("wins");
+			animateWinnerLabel();
+		}
+		else //if(player.getThreeOfAKindCard().compareTo(nextPlayer.getThreeOfAKindCard()) > 0)
+			this.lblWins.setText("loses");
 	}
-
+	
 	private void twoPairMatch(Player nextPlayer) {
-		// TODO Auto-generated method stub
-		
+		if(player.getHigherPairCard().compareTo(nextPlayer.getHigherPairCard()) > 0) {
+			this.lblWins.setText("wins");
+    		animateWinnerLabel();
+		}
+		else if(player.getHigherPairCard().compareTo(nextPlayer.getHigherPairCard()) < 0)
+			this.lblWins.setText("loses");
+		else {
+			if(player.getLowerPairCard().compareTo(nextPlayer.getLowerPairCard()) > 0) {
+				this.lblWins.setText("wins");
+	    		animateWinnerLabel();
+			}
+			else if(player.getLowerPairCard().compareTo(nextPlayer.getLowerPairCard()) < 0)
+				this.lblWins.setText("loses");
+		}
 	}
-
+	
 	private void onePairMatch(Player nextPlayer) {
 		if(player.getPairCard().compareTo(nextPlayer.getPairCard()) > 0) {
 			this.lblWins.setText("wins");
@@ -168,30 +181,40 @@ public class PlayerPane extends VBox {
 			this.lblWins.setText("loses");
 		else {//when pairs are equal
 			if(player.getHighestCard(player.getPairCard()).compareTo(
-								nextPlayer.getHighestCard(nextPlayer.getPairCard())) > 0) {
-				this.lblWins.setText("wins");
+							nextPlayer.getHighestCard(nextPlayer.getPairCard())) > 0) {
+				this.lblWins.setText("winsss");
 	    		animateWinnerLabel();
 			}
 			else if(player.getHighestCard(player.getPairCard()).compareTo(
 								nextPlayer.getHighestCard(nextPlayer.getPairCard())) < 0)
 				this.lblWins.setText("losesss");
-			/*
 			else {
-				if(player.getThirdHighestCard().compareTo(nextPlayer.getThirdHighestCard()) > 0)
+				if(player.getSecondHighestCard(player.getPairCard()).compareTo(
+								nextPlayer.getSecondHighestCard(player.getPairCard())) > 0)
         			this.lblWins.setText("winsss");
-    			else if(player.getThirdHighestCard().compareTo(nextPlayer.getThirdHighestCard()) < 0)
+    			else if(player.getSecondHighestCard(player.getPairCard()).compareTo(
+    								nextPlayer.getSecondHighestCard(player.getPairCard())) < 0)
     				this.lblWins.setText("losesss");
     			else {
-    				if(player.getFourthHighestCard().compareTo(nextPlayer.getFourthHighestCard()) > 0)
+    				if(player.getThirdHighestCard(player.getPairCard()).compareTo(
+    								nextPlayer.getThirdHighestCard(player.getPairCard())) > 0)
     					this.lblWins.setText("winsss");
-    				//else(player.getFourthHighestCard().compareTo(nextPlayer.getFourthHighestCard()) < 0)
-    				//	this.lblWins.setText("loses");
+    				else if(player.getThirdHighestCard(player.getPairCard()).compareTo(
+    									nextPlayer.getThirdHighestCard(player.getPairCard())) < 0)
+    					this.lblWins.setText("losesss");
+    				else {
+    					if(player.getFourthHighestCard(player.getPairCard()).compareTo(
+    									nextPlayer.getFourthHighestCard(player.getPairCard())) > 0)
+        					this.lblWins.setText("winsss");
+        				else if(player.getFourthHighestCard(player.getPairCard()).compareTo(
+        									nextPlayer.getFourthHighestCard(player.getPairCard())) < 0)
+        					this.lblWins.setText("losesss");
+    				}
     			}
 			}
-			*/	
 		}
 	}	
-
+	
     private void highCardMatch(Player nextPlayer) {
     	if(player.getHighestCard().compareTo(nextPlayer.getHighestCard()) > 0) {
     		this.lblWins.setText("wins");

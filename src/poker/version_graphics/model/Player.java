@@ -63,10 +63,12 @@ public class Player implements Comparable<Player> {
     	Collections.sort(clonedCards);
     	clonedCards.remove(pairCard);
     	
+    	Card c = null;
     	for(Card d : clonedCards) {
     		if(d.getRank().ordinal() == pairSearch)
-    			clonedCards.remove(d);
+    			c = d;
     	}
+    	clonedCards.remove(c);
    	 	return clonedCards.get(clonedCards.size()-1);
     }
     
@@ -75,16 +77,67 @@ public class Player implements Comparable<Player> {
     	 Collections.sort(clonedCards);
     	 return clonedCards.get(clonedCards.size()-2);
     }
+    //method-overloading
+    public Card getSecondHighestCard(Card pairCard) {
+    	int pairSearch = pairCard.getRank().ordinal();
+    	
+    	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+    	Collections.sort(clonedCards);
+    	clonedCards.remove(pairCard);
+    	
+    	Card c = null;
+    	for(Card d : clonedCards) {
+    		if(d.getRank().ordinal() == pairSearch)
+    			c = d;
+    	}
+    	clonedCards.remove(c);
+   	 	return clonedCards.get(clonedCards.size()-2);
+    }
+    
     public Card getThirdHighestCard() {
    	 ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
    	 Collections.sort(clonedCards);
    	 return clonedCards.get(clonedCards.size()-3);
     }
+    
+    public Card getThirdHighestCard(Card pairCard) {
+    	int pairSearch = pairCard.getRank().ordinal();
+    	
+    	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+    	Collections.sort(clonedCards);
+    	clonedCards.remove(pairCard);
+    	
+    	Card c = null;
+    	for(Card d : clonedCards) {
+    		if(d.getRank().ordinal() == pairSearch)
+    			c = d;
+    	}
+    	clonedCards.remove(c);
+   	 	return clonedCards.get(clonedCards.size()-3);
+    }
+    
     public Card getFourthHighestCard() {
     	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
     	Collections.sort(clonedCards);
     	return clonedCards.get(clonedCards.size()-4); 
     }
+    
+    public Card getFourthHighestCard(Card pairCard) {
+    	int pairSearch = pairCard.getRank().ordinal();
+    	
+    	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+    	Collections.sort(clonedCards);
+    	clonedCards.remove(pairCard);
+    	
+    	Card c = null;
+    	for(Card d : clonedCards) {
+    		if(d.getRank().ordinal() == pairSearch)
+    			c = d;
+    	}
+    	clonedCards.remove(c);
+   	 	return clonedCards.get(clonedCards.size()-4);
+    }
+    
     public Card getLowestCard() {
     	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
     	Collections.sort(clonedCards);
@@ -101,26 +154,33 @@ public class Player implements Comparable<Player> {
         }
     	return pc;
     }
-    /*
-    public Card getHigherPairCard() {
-        // Clone the cards, because we will be altering the list
-        ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
 
-        // Find the first pair; if found, remove the cards from the list
-        boolean firstPairFound = false;
-        for(int i = 0; i < clonedCards.size() - 1 && !firstPairFound; i++) {
-            for(int j = i+1; j < clonedCards.size() && !firstPairFound; j++) {
-                if (clonedCards.get(i).getRank() == clonedCards.get(j).getRank()) {
-                    firstPairFound = true;
-                    clonedCards.remove(j);  // Remove the later card
-                    clonedCards.remove(i);  // Before the earlier one
-                }
-            }
-        }
-        // If a first pair was found, see if there is a second pair
-        return firstPairFound && isOnePair(clonedCards);
+    public Card getHigherPairCard() {
+        ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+        Collections.sort(clonedCards);
+
+        if(clonedCards.get(1).compareTo(clonedCards.get(3)) > 0)
+        	return clonedCards.get(1);
+        else
+        	return clonedCards.get(3);
     }
-	*/
+    
+    public Card getLowerPairCard() {
+        ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+        Collections.sort(clonedCards);
+
+        if(clonedCards.get(1).compareTo(clonedCards.get(3)) > 0)
+        	return clonedCards.get(3);
+        else
+        	return clonedCards.get(1);
+    }
+    
+    public Card getThreeOfAKindCard() {
+    	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+    	Collections.sort(clonedCards);
+    	//return the card in the middle
+    	return clonedCards.get(2);
+    }
     
     /**
      * Hands are compared, based on the evaluation they have.

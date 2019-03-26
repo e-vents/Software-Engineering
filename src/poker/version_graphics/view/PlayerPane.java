@@ -39,7 +39,7 @@ public class PlayerPane extends VBox {
         
         // Add CardLabels for the cards
         for (int i = 0; i < 5; i++) {
-            Label lblCard = new CardLabel();
+            Label lblCard = new CardLabel(); 
             hboxCards.getChildren().add(lblCard);
             hboxCards.setSpacing(5.0);
         }

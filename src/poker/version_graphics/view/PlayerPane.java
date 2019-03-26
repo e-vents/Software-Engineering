@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-import poker.version_graphics.PokerGame;
 import poker.version_graphics.model.Card;
 import poker.version_graphics.model.HandType;
 import poker.version_graphics.model.Player;
@@ -21,15 +20,13 @@ public class PlayerPane extends VBox {
        
     // Link to player object
     private Player player;
-    // added for testing reasons
-    private PokerGameModel model;
-    private PokerGameView view;
+    //private PokerGameModel model;
+    //private PokerGameView view;
     
     public PlayerPane(PokerGameModel model, PokerGameView view) {
         super(); // Always call super-constructor first !
-        // added for testing reasons
-        this.model = model;
-        this.view = view;
+        //this.model = model;
+        // this.view = view;
         
         this.getStyleClass().add("player"); // CSS style class
         this.lblName.getStyleClass().add("labels");

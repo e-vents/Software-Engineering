@@ -25,7 +25,7 @@ public class PokerGame extends Application {
     }
     
     //testing multiplayer
-    public static void setNumOfPlayers(int playNum) {
+    public void setNumOfPlayers(int playNum) {
     	NUM_PLAYERS = playNum;
     }
 }

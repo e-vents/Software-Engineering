@@ -9,11 +9,11 @@ public class Player implements Comparable<Player> {
     private final String playerName; // This is the ID
     private final ArrayList<Card> cards = new ArrayList<>();
     private HandType handType;
-    private PokerGameModel model;
+    //private PokerGameModel model;
     
     public Player(String playerName, PokerGameModel model) {
         this.playerName = playerName;
-        this.model = model;
+        //this.model = model;
     }
 
     public String getPlayerName() {

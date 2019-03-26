@@ -83,12 +83,13 @@ public class PokerGameController {
     	}
     }
     //calls the displayWinner-method so that you can see who wins
+    //refactoring needed!! save winner and then check with current winner!
     private void evaluateWinner() {
     	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
     		if(i < PokerGame.NUM_PLAYERS-1)
     			view.getPlayerPane(i).displayWinner(model.getPlayer(i+1));
     		else
-    			view.getPlayerPane(i).displayWinner(model.getPlayer(0));
+    			view.getPlayerPane(i).displayWinner(model.getPlayer(i-1));
     	}
     }
     
@@ -112,7 +113,8 @@ public class PokerGameController {
     		fileName = "bluedeck.png";
     	}
     	
-    	Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/" + fileName));
+    	Image image = new Image(this.getClass().getClassLoader().getResourceAsStream(
+    														"poker/images/" + fileName));
 		ImageView imv = new ImageView(image);
 		imv.setFitHeight(185);
 		imv.setFitWidth(122);
@@ -132,5 +134,6 @@ public class PokerGameController {
     	}
     	model.updateModel();
 		view.updateView(stage, model);
+		shuffle();
     }
 }

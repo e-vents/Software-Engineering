@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import poker.version_graphics.PokerGame;
+import poker.version_graphics.model.Player;
 import poker.version_graphics.model.PokerGameModel;
 
 public class PokerGameView {
@@ -101,6 +102,16 @@ public class PokerGameView {
 
 	public PlayerPane getPlayerPane(int i) {
 		return (PlayerPane) players.getChildren().get(i);
+	}
+	@Override
+	public PlayerPane getPlayerPane(Player p) {
+		PlayerPane pp = (PlayerPane) players.getChildren().get(0);
+		
+		for(int i = 0; i < players.getChildren().size(); i++) {
+			
+			if(pp.getPlayer().equals(p.getPlayerName()))
+				
+		}
 	}
 	
 	public Button getShuffleButton() {

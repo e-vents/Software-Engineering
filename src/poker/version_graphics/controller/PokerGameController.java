@@ -84,12 +84,31 @@ public class PokerGameController {
     }
     //calls the displayWinner-method so that you can see who wins
     //refactoring needed!! save winner and then check with current winner!
+    /*
     private void evaluateWinner() {
     	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
     		if(i < PokerGame.NUM_PLAYERS-1)
     			view.getPlayerPane(i).displayWinner(model.getPlayer(i+1));
     		else
     			view.getPlayerPane(i).displayWinner(model.getPlayer(i-1));
+    	}
+    }
+    */
+    private void evaluateWinner() {
+    	Player winner = model.getPlayer(0);
+    	for(int i = 0; i < PokerGame.NUM_PLAYERS-1; i++) {
+    		winner = view.getPlayerPane(i).displayWinner(model.getPlayer(i+1));
+    		winner = winner..displayWinner(model.getPlayer(i+1));
+    	}
+    	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+    		if(winner.getPlayerName().equals(model.getPlayer(i).getPlayerName())) {
+    			view.getPlayerPane(i).setLblWins("wins");
+    			view.getPlayerPane(i).animateWinnerLabel();
+    		}
+    		else {
+    			view.getPlayerPane(i).setLblWins("loses");
+    		}
+    			
     	}
     }
     

@@ -98,7 +98,7 @@ public class PokerGameController {
     	Player winner = model.getPlayer(0);
     	for(int i = 0; i < PokerGame.NUM_PLAYERS-1; i++) {
     		winner = view.getPlayerPane(i).displayWinner(model.getPlayer(i+1));
-    		winner = winner..displayWinner(model.getPlayer(i+1));
+    		winner = view.getPlayerPane(winner).displayWinner(model.getPlayer(i+1));
     	}
     	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
     		if(winner.getPlayerName().equals(model.getPlayer(i).getPlayerName())) {

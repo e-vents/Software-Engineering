@@ -103,15 +103,15 @@ public class PokerGameView {
 	public PlayerPane getPlayerPane(int i) {
 		return (PlayerPane) players.getChildren().get(i);
 	}
-	@Override
+	
+	@SuppressWarnings("unlikely-arg-type")
 	public PlayerPane getPlayerPane(Player p) {
-		PlayerPane pp = (PlayerPane) players.getChildren().get(0);
-		
 		for(int i = 0; i < players.getChildren().size(); i++) {
-			
+			PlayerPane pp = (PlayerPane) players.getChildren().get(i);
 			if(pp.getPlayer().equals(p.getPlayerName()))
-				
+				return pp;
 		}
+		return (PlayerPane) players.getChildren().get(0);
 	}
 	
 	public Button getShuffleButton() {

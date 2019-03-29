@@ -10,7 +10,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import poker.version_graphics.PokerGame;
-import poker.version_graphics.model.Player;
 import poker.version_graphics.model.PokerGameModel;
 
 public class PokerGameView {
@@ -102,16 +101,6 @@ public class PokerGameView {
 
 	public PlayerPane getPlayerPane(int i) {
 		return (PlayerPane) players.getChildren().get(i);
-	}
-	
-	@SuppressWarnings("unlikely-arg-type")
-	public PlayerPane getPlayerPane(Player p) {
-		for(int i = 0; i < players.getChildren().size(); i++) {
-			PlayerPane pp = (PlayerPane) players.getChildren().get(i);
-			if(pp.getPlayer().equals(p.getPlayerName()))
-				return pp;
-		}
-		return (PlayerPane) players.getChildren().get(0);
 	}
 	
 	public Button getShuffleButton() {

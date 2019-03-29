@@ -20,13 +20,9 @@ public class PlayerPane extends VBox {
        
     // Link to player object
     private Player player;
-    //private PokerGameModel model;
-    //private PokerGameView view;
     
     public PlayerPane(PokerGameModel model, PokerGameView view) {
         super(); // Always call super-constructor first !
-        //this.model = model;
-        // this.view = view;
         
         this.getStyleClass().add("player"); // CSS style class
         this.lblName.getStyleClass().add("labels");
@@ -47,6 +43,7 @@ public class PlayerPane extends VBox {
     
     public void setPlayer(Player player) {
     	this.player = player;
+    	player.setPlayerPane(this);
     	updatePlayerDisplay(); // Immediately display the player information
     }
     
@@ -90,15 +87,12 @@ public class PlayerPane extends VBox {
      * will be called from the controller
      * this method should call the isWinner-method from the player class
      */
-    public Player displayWinner(Player nextPlayer) {
+    public Player evaluateWinner(Player nextPlayer) {
     	
     	if(player.compareTo(nextPlayer) > 0) {
-    		//this.lblWins.setText("wins");
-        	//animateWinnerLabel();
     		return this.player;
     	}
     	else if(player.compareTo(nextPlayer) < 0) {
-    		//this.lblWins.setText("loses");
     		return nextPlayer;
     	}
     	else

@@ -3,13 +3,15 @@ package poker.version_graphics.model;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import poker.version_graphics.view.PlayerPane;
+
 public class Player implements Comparable<Player> {
     public static final int HAND_SIZE = 5;
     
     private final String playerName; // This is the ID
     private final ArrayList<Card> cards = new ArrayList<>();
     private HandType handType;
-    //private PokerGameModel model;
+    private PlayerPane playerPane;
     
     public Player(String playerName, PokerGameModel model) {
         this.playerName = playerName;
@@ -113,7 +115,7 @@ public class Player implements Comparable<Player> {
     			c = d;
     	}
     	clonedCards.remove(c);
-   	 	return clonedCards.get(clonedCards.size()-3);
+   	 	return clonedCards.get(clonedCards.size()-1);
     }
     
     public Card getFourthHighestCard() {
@@ -135,7 +137,7 @@ public class Player implements Comparable<Player> {
     			c = d;
     	}
     	clonedCards.remove(c);
-   	 	return clonedCards.get(clonedCards.size()-4);
+   	 	return clonedCards.get(clonedCards.size()-2);
     }
     
     public Card getLowestCard() {
@@ -180,6 +182,13 @@ public class Player implements Comparable<Player> {
     	Collections.sort(clonedCards);
     	//return the card in the middle
     	return clonedCards.get(2);
+    }
+    
+    public void setPlayerPane(PlayerPane playerPane) {
+    	this.playerPane = playerPane;
+    }
+    public PlayerPane getPlayerPane() {
+    	return this.playerPane;
     }
     
     /**

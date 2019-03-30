@@ -2,12 +2,14 @@ package poker.version_graphics.view;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import poker.version_graphics.PokerGame;
 import poker.version_graphics.model.PokerGameModel;
@@ -37,7 +39,7 @@ public class PokerGameView {
 			PlayerPane pp = new PlayerPane(this.model, this);
 			pp.setPlayer(model.getPlayer(i)); // link to player object in the logic
 			//Region spacer = new Label();
-			//spacer.setMaxWidth(10);
+			//spacer.setMinWidth(10);
 			if(i == 0) {
 				players.add(pp, 0, 0);
 				//players.add(spacer, 1, 0);
@@ -86,7 +88,7 @@ public class PokerGameView {
 		//stage.setResizable(false);
 
         // Create the scene using our layout; then display it
-        Scene scene = new Scene(root, 1300, 510);
+        Scene scene = new Scene(root, 1250, 510);
         scene.getStylesheets().add(
                 getClass().getResource("poker.css").toExternalForm());
         stage.setTitle("Poker Master 5000");

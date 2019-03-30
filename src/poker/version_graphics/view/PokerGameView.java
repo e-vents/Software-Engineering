@@ -86,7 +86,7 @@ public class PokerGameView {
 		//stage.setResizable(false);
 
         // Create the scene using our layout; then display it
-        Scene scene = new Scene(root, 1300, 810);
+        Scene scene = new Scene(root, 1300, 510);
         scene.getStylesheets().add(
                 getClass().getResource("poker.css").toExternalForm());
         stage.setTitle("Poker Master 5000");

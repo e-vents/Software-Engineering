@@ -88,13 +88,15 @@ public class PokerGameController {
     	for(int i = 1; i < PokerGame.NUM_PLAYERS; i++) {
     		winner = winner.getPlayerPane().evaluateWinner(model.getPlayer(i));
     	}
-    	winner.getPlayerPane().setLblWins("wins");
-    	winner.getPlayerPane().animateWinnerLabel();
+    
     	
     	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
     		if(!winner.getPlayerPane().equals(view.getPlayerPane(i))) {
     			view.getPlayerPane(i).setLblWins("loses");
-    		}	
+    		} else {
+    			winner.getPlayerPane().setLblWins("wins");
+    	    	winner.getPlayerPane().animateWinnerLabel();
+    		}
     	}
     }
     

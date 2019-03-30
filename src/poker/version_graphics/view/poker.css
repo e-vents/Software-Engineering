@@ -114,11 +114,6 @@
 
 .root {
 	-fx-background-color: #477148;
-	/*
-	 * -fx-background-image: url("../../images/poker-table2.jpg");
-	-fx-background-size: auto;
-	 */
-	
 }	
 
 #redRoot {

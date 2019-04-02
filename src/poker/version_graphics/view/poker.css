@@ -11,15 +11,21 @@
 	-fx-background-color: white;
 	-fx-background-radius: 6.0px;
     -fx-min-width: 50;
-    -fx-pref-width: 122;
+    -fx-pref-width: 92;
     -fx-max-width: 500;
     -fx-min-height: 80;
-    -fx-pref-height: 185;
+    -fx-pref-height: 139;
     -fx-max-height: 800;
 }
 .deck {
 	-fx-background-radius: 6.0px;
 	-fx-border-radius: 6.0px;
+	/*-fx-min-width: 50;
+    -fx-pref-width: 111;
+    -fx-max-width: 200;
+    -fx-min-height: 80;
+    -fx-pref-height: 160;
+    -fx-max-height: 500; */
 }
 
 .deck:hover {
@@ -79,10 +85,10 @@
 	-fx-background-color: white;
 	-fx-background-radius: 6.0px;
     -fx-min-width: 50;
-    -fx-pref-width: 122;
+    -fx-pref-width: 92;
     -fx-max-width: 500;
     -fx-min-height: 80;
-    -fx-pref-height: 185;
+    -fx-pref-height: 139;
     -fx-max-height: 800;
 }
 .card:hover {

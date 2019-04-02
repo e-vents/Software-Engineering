@@ -68,7 +68,7 @@ public class PokerGameController {
         			Card card = deck.dealCard();
         			p.addCard(card);
         		}
-        		p.evaluateHand();
+        		//p.evaluateHand();
         		PlayerPane pp = view.getPlayerPane(i);
         		pp.updatePlayerDisplay();
         		

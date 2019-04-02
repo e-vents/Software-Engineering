@@ -30,6 +30,8 @@ public class PokerGameView {
 	
 	private PokerGameModel model;
 	
+	private Scene scene;
+	
 	public PokerGameView(Stage stage, PokerGameModel model) {
 		this.model = model;
 		
@@ -88,7 +90,7 @@ public class PokerGameView {
 		//stage.setResizable(false);
 
         // Create the scene using our layout; then display it
-        Scene scene = new Scene(root, 1250, 520);
+        this.scene = new Scene(root, 890, 450);
         scene.getStylesheets().add(
                 getClass().getResource("poker.css").toExternalForm());
         stage.setTitle("Poker Master 5000");
@@ -162,5 +164,24 @@ public class PokerGameView {
 				players.add(pp, 2, 1);
 			}
 		}
+		this.root = new BorderPane();
+		root.setCenter(players);
+		root.setBottom(controls);
+		root.setTop(menuBar);
+		
+		if(players.getChildren().size() < 3) {
+			this.scene = new Scene(root, 890, 450);
+		} else {
+			this.scene = new Scene(root, 890, 640);
+		}
+		
+		scene.getStylesheets().add(
+                getClass().getResource("poker.css").toExternalForm());
+        stage.setTitle("Poker Master 5000");
+        stage.getIcons().add(new Image("poker/images/poker-icon.png"));
+        
+        stage.setScene(scene);
+        stage.show();
+        
 	}
 }

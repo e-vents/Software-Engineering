@@ -21,8 +21,8 @@ public class DeckLabel extends Label {
 		
 		imv.setId("deckcards");
 		
-		imv.setFitHeight(185);
-		imv.setFitWidth(122);
+		imv.setFitHeight(132);
+		imv.setFitWidth(83);
 		
 		this.setGraphic(imv);
 	}

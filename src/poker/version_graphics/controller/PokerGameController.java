@@ -123,8 +123,8 @@ public class PokerGameController {
     	Image image = new Image(this.getClass().getClassLoader().getResourceAsStream(
     														"poker/images/" + fileName));
 		ImageView imv = new ImageView(image);
-		imv.setFitHeight(185);
-		imv.setFitWidth(122);
+		imv.setFitHeight(132);
+		imv.setFitWidth(83);
 		view.getDeckLabel().setGraphic(imv);
     }
     

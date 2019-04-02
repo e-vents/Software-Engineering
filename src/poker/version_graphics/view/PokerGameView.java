@@ -2,14 +2,12 @@ package poker.version_graphics.view;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import poker.version_graphics.PokerGame;
 import poker.version_graphics.model.PokerGameModel;
@@ -40,12 +38,10 @@ public class PokerGameView {
 		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
 			PlayerPane pp = new PlayerPane(this.model, this);
 			pp.setPlayer(model.getPlayer(i)); // link to player object in the logic
-			//Region spacer = new Label();
-			//spacer.setMinWidth(10);
-			if(i == 0) {
+			
+			if(i == 0)
 				players.add(pp, 0, 0);
-				//players.add(spacer, 1, 0);
-			} else
+			else
 				players.add(pp, 2, 0);
 		}
 		
@@ -164,16 +160,12 @@ public class PokerGameView {
 				players.add(pp, 2, 1);
 			}
 		}
-		this.root = new BorderPane();
-		root.setCenter(players);
-		root.setBottom(controls);
-		root.setTop(menuBar);
+		//setting adaptive scene for more than 2 players
+		if(players.getChildren().size() < 3)
+			this.scene.getWindow().setHeight(450);
+		else
+			this.scene.getWindow().setHeight(670);
 		
-		if(players.getChildren().size() < 3) {
-			this.scene = new Scene(root, 890, 450);
-		} else {
-			this.scene = new Scene(root, 890, 640);
-		}
 		
 		scene.getStylesheets().add(
                 getClass().getResource("poker.css").toExternalForm());

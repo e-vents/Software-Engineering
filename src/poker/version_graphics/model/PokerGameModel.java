@@ -21,7 +21,9 @@ public class PokerGameModel {
 	public DeckOfCards getDeck() {
 		return deck;
 	}
-	
+	/*
+	 * call in controller for changing player number
+	 */
 	public void updateModel() {
 		players.clear();
 		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {

@@ -38,10 +38,10 @@ public class PokerGameView {
 		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
 			PlayerPane pp = new PlayerPane(this.model, this);
 			pp.setPlayer(model.getPlayer(i)); // link to player object in the logic
-			
+			// add first playerPane
 			if(i == 0)
 				players.add(pp, 0, 0);
-			else
+			else //add second playerPane
 				players.add(pp, 2, 0);
 		}
 		
@@ -138,7 +138,9 @@ public class PokerGameView {
 	public DeckLabel getDeckLabel() {
 		return this.controls.getDeckLabel();
 	}
-	
+	/*
+	 * call in controller when changing player number
+	 */
 	public void updateView(Stage stage, PokerGameModel model) {
 		this.model = model;
 		

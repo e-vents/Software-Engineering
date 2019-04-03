@@ -14,13 +14,15 @@ public class DeckLabel extends Label {
 	
 	// Bind the label to the CardsRemaining property of the deck
 	public void setDeck(DeckOfCards deck) {
+		// setting numeric label part
 		this.textProperty().bind(deck.getCardsRemainingProperty().asString());
 		
+		// setting graphic label part
 		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/reddeck.png"));
 		ImageView imv = new ImageView(image);
 		
 		imv.setId("deckback");
-		
+		//change values when changing CSS-Values!
 		imv.setFitHeight(132);
 		imv.setFitWidth(83);
 		

@@ -68,10 +68,10 @@ public class PokerGameController {
         			Card card = deck.dealCard();
         			p.addCard(card);
         		}
-        		//p.evaluateHand();
         		PlayerPane pp = view.getPlayerPane(i);
         		pp.updatePlayerDisplay();
         		
+        		// after the last player got his cards, we look for the winner
         		if(i == PokerGame.NUM_PLAYERS-1)
         			displayWinner();
         	}
@@ -82,14 +82,14 @@ public class PokerGameController {
             alert.showAndWait();
     	}
     }
-    
+    /**
+    *getting the winner and set who wins and who not
+    */
     private void displayWinner() {
     	Player winner = model.getPlayer(0);
     	for(int i = 1; i < PokerGame.NUM_PLAYERS; i++) {
     		winner = winner.getPlayerPane().evaluateWinner(model.getPlayer(i));
     	}
-    
-    	
     	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
     		if(!winner.getPlayerPane().equals(view.getPlayerPane(i))) {
     			view.getPlayerPane(i).setLblWins("loses");
@@ -99,11 +99,12 @@ public class PokerGameController {
     		}
     	}
     }
-    
-    //Method for changing themes (red, green and grey)
+    /**
+    * Eventhandling for changing themes (red, green and grey)
+    */
     private void changeColor(Event e) {
     	String fileName ="";
-    	
+    	//changing the ID's for the correct CSS Styling
     	if(e.getSource() == view.getRedItem()) {
     		view.getRoot().setId("redRoot");
     		view.getControls().setId("redControlArea");
@@ -119,16 +120,19 @@ public class PokerGameController {
     		view.getControls().setId("greyControlArea");
     		fileName = "bluedeck.png";
     	}
-    	
+    	//setting the Image with the correct deck-color
     	Image image = new Image(this.getClass().getClassLoader().getResourceAsStream(
     														"poker/images/" + fileName));
 		ImageView imv = new ImageView(image);
+		//change values when changing CSS-Values!
 		imv.setFitHeight(132);
 		imv.setFitWidth(83);
 		view.getDeckLabel().setGraphic(imv);
     }
-    
-    //implementing multi-player
+    /**
+     * Eventhandling for changing player number
+     * gets correspondent MenuItem and sets NUmOfPlayer
+     */
     private void changeNumOfPlayers(Event d) {
     	if(d.getSource() == view.getTwoPlayer()) {
     		game.setNumOfPlayers(2);
@@ -139,7 +143,9 @@ public class PokerGameController {
     	if(d.getSource() == view.getFourPlayer()) {
     		game.setNumOfPlayers(4);
     	}
+    	//reloads Model first
     	model.updateModel();
+    	//relooads view after adn shuffles cards
 		view.updateView(stage, model);
 		shuffle();
     }

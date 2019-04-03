@@ -24,7 +24,7 @@ public class PlayerPane extends VBox {
     public PlayerPane(PokerGameModel model, PokerGameView view) {
         super(); // Always call super-constructor first !
         
-        this.getStyleClass().add("player"); // CSS style class
+        this.getStyleClass().add("player"); // CSS style classes
         this.lblName.getStyleClass().add("labels");
         this.lblWins.getStyleClass().add("labels");
         this.lblEvaluation.getStyleClass().add("labels");
@@ -65,7 +65,9 @@ public class PlayerPane extends VBox {
     			lblEvaluation.setText("--");
     	}
     }
-
+    /**
+     * defines a scale and a rotate transisiton
+     */
     public void animateWinnerLabel() {
     	ScaleTransition scale = new ScaleTransition(Duration.millis(250));
     	scale.setToX(2);
@@ -83,9 +85,9 @@ public class PlayerPane extends VBox {
     	winner.play();
     }
     
-    /*
+    /**
+     * return the winner or calls tiebreak-method
      * will be called from the controller
-     * this method should call the isWinner-method from the player class
      */
     public Player evaluateWinner(Player nextPlayer) {
     	
@@ -98,6 +100,10 @@ public class PlayerPane extends VBox {
     	else
     		return tieBreak(nextPlayer);
     }
+    /**
+     * sorts Hands which can be handled together
+     * and then calls the requested ...Match-method
+     */
     private Player tieBreak(Player nextPlayer) {
     	
     	if(player.evaluateHand() == HandType.HighCard 
@@ -112,111 +118,121 @@ public class PlayerPane extends VBox {
     	} else if(player.evaluateHand() == HandType.TwoPair) {
     		return twoPairMatch(nextPlayer);
     		
-    	} else //if(player.evaluateHand() == HandType.ThreeOfAKind 
-    		//	|| player.evaluateHand() == HandType.FullHouse) {
+    	} else
     		return threeOfAKindMatch(nextPlayer);	
-    	//}
     }
-	
+	/**
+	 * the following method are used for tie-break evaluation
+     * they return the the winner
+	 */
 	private Player threeOfAKindMatch(Player nextPlayer) {
+		//check which player has the higher three of a kind
 		if(player.getThreeOfAKindCard().compareTo(nextPlayer.getThreeOfAKindCard()) > 0) {
 			return this.player;
 		}
-		else //if(player.getThreeOfAKindCard().compareTo(nextPlayer.getThreeOfAKindCard()) > 0)
+		else
 			return nextPlayer;
 	}
 	
 	private Player twoPairMatch(Player nextPlayer) {
-		if(player.getHigherPairCard().compareTo(nextPlayer.getHigherPairCard()) > 0) {
+		//check for equality on the higher pair
+		if(player.getHigherPairCard().compareTo(
+			nextPlayer.getHigherPairCard()) > 0) {
 			return this.player;
 		}
-		else if(player.getHigherPairCard().compareTo(nextPlayer.getHigherPairCard()) < 0)
+		else if(player.getHigherPairCard().compareTo(
+				nextPlayer.getHigherPairCard()) < 0)
 			return nextPlayer;
-		else {
-			if(player.getLowerPairCard().compareTo(nextPlayer.getLowerPairCard()) > 0) {
+		
+		else { //check for equality on the lower pair
+			if(player.getLowerPairCard().compareTo(
+				nextPlayer.getLowerPairCard()) > 0) {
 				return this.player;
 			}
-			else //if(player.getLowerPairCard().compareTo(nextPlayer.getLowerPairCard()) < 0)
+			else
 				return nextPlayer;
 		}
 	}
 	
 	private Player onePairMatch(Player nextPlayer) {
-		if(player.getPairCard().compareTo(nextPlayer.getPairCard()) > 0) {
+		//check for equality on the first level
+		if(player.getPairCard().compareTo(nextPlayer.getPairCard()) > 0) 
 			return this.player;
-		}
+		
 		else if(player.getPairCard().compareTo(nextPlayer.getPairCard()) < 0)
 			return nextPlayer;
-		else {//when pairs are equal
+		
+		else  //when pair is equal: compares the highest card left
 			if(player.getHighestCard(player.getPairCard()).compareTo(
-							nextPlayer.getHighestCard(nextPlayer.getPairCard())) > 0) {
+					nextPlayer.getHighestCard(nextPlayer.getPairCard())) > 0) 
 				return this.player;
-			}
+		
 			else if(player.getHighestCard(player.getPairCard()).compareTo(
-								nextPlayer.getHighestCard(nextPlayer.getPairCard())) < 0)
+					nextPlayer.getHighestCard(nextPlayer.getPairCard())) < 0)
 				return nextPlayer;
-			else {
+		
+			else  //compares the second highest card left
 				if(player.getSecondHighestCard(player.getPairCard()).compareTo(
-								nextPlayer.getSecondHighestCard(nextPlayer.getPairCard())) > 0) {
+						nextPlayer.getSecondHighestCard(nextPlayer.getPairCard())) > 0) 
 					return this.player;
-				}
+				
     			else if(player.getSecondHighestCard(player.getPairCard()).compareTo(
-    								nextPlayer.getSecondHighestCard(nextPlayer.getPairCard())) < 0)
+    					nextPlayer.getSecondHighestCard(nextPlayer.getPairCard())) < 0)
     				return nextPlayer;
-    			else {
+		
+    			else //compares the thir third highest card left
     				if(player.getThirdHighestCard(player.getPairCard()).compareTo(
-    								nextPlayer.getThirdHighestCard(nextPlayer.getPairCard())) > 0) {
+    						nextPlayer.getThirdHighestCard(nextPlayer.getPairCard())) > 0) 
     					return this.player;
-    				}
-    				else if(player.getThirdHighestCard(player.getPairCard()).compareTo(
-    									nextPlayer.getThirdHighestCard(nextPlayer.getPairCard())) < 0)
+    				
+    				else 
     					return nextPlayer;
-    				else {
-    					if(player.getFourthHighestCard(player.getPairCard()).compareTo(
-    									nextPlayer.getFourthHighestCard(nextPlayer.getPairCard())) > 0) {
-    						return this.player;
-    					}
-        				else //if(player.getFourthHighestCard(player.getPairCard()).compareTo(
-        									//nextPlayer.getFourthHighestCard(nextPlayer.getPairCard())) < 0)
-        					return nextPlayer;
-    				}
-    			}
-			}
-		}
-	}	
+	}
+		
 	
     private Player highCardMatch(Player nextPlayer) {
-    	if(player.getHighestCard().compareTo(nextPlayer.getHighestCard()) > 0) {
+    	//check for equality on the first level
+    	if(player.getHighestCard().compareTo(
+    			nextPlayer.getHighestCard()) > 0) 
     		return this.player;
-    	}
-		else if(player.getHighestCard().compareTo(nextPlayer.getHighestCard()) < 0)
+    	
+		else if(player.getHighestCard().compareTo(
+				nextPlayer.getHighestCard()) < 0)
 			return nextPlayer;
-		else {//when high cards are equal
-			if(player.getSecondHighestCard().compareTo(nextPlayer.getSecondHighestCard()) > 0) {
+    	
+		else //when high cards are equal compares the second highest card
+			if(player.getSecondHighestCard().compareTo(
+					nextPlayer.getSecondHighestCard()) > 0) 
 				return this.player;
-			}
-			else if(player.getSecondHighestCard().compareTo(nextPlayer.getSecondHighestCard()) < 0)
+			
+			else if(player.getSecondHighestCard().compareTo(
+					nextPlayer.getSecondHighestCard()) < 0)
 				return nextPlayer;
-			else {
-				if(player.getThirdHighestCard().compareTo(nextPlayer.getThirdHighestCard()) > 0) {
+    	
+			else //compares the third highest card
+				if(player.getThirdHighestCard().compareTo(
+						nextPlayer.getThirdHighestCard()) > 0) 
 					return this.player;
-				}
-    			else if(player.getThirdHighestCard().compareTo(nextPlayer.getThirdHighestCard()) < 0)
+				
+    			else if(player.getThirdHighestCard().compareTo(
+    					nextPlayer.getThirdHighestCard()) < 0)
     				return nextPlayer;
-    			else {
-    				if(player.getFourthHighestCard().compareTo(nextPlayer.getFourthHighestCard()) > 0)
+    	
+    			else //compares the fourth highest card
+    				if(player.getFourthHighestCard().compareTo(
+    						nextPlayer.getFourthHighestCard()) > 0)
     					return this.player;
-    				else if(player.getFourthHighestCard().compareTo(nextPlayer.getFourthHighestCard()) < 0)
+    	
+    				else if(player.getFourthHighestCard().compareTo(
+    						nextPlayer.getFourthHighestCard()) < 0)
     					return nextPlayer;
-    				else {
-    					if(player.getLowestCard().compareTo(nextPlayer.getLowestCard()) > 0)
+    	
+    				else //compares the lowest card
+    					if(player.getLowestCard().compareTo(
+    							nextPlayer.getLowestCard()) > 0)
     						return this.player;		
-    					else //if(player.getLowestCard().compareTo(nextPlayer.getLowestCard()) < 0)
+    					else
     						return nextPlayer;
-    				}
-    			}
-			}
-		}
     }
     
     public void resetWinner() {

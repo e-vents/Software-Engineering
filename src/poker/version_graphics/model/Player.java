@@ -15,7 +15,6 @@ public class Player implements Comparable<Player> {
     
     public Player(String playerName, PokerGameModel model) {
         this.playerName = playerName;
-        //this.model = model;
     }
 
     public String getPlayerName() {
@@ -50,14 +49,16 @@ public class Player implements Comparable<Player> {
         return handType;
     }
     /*
-     * following method are used for tie-breaking
+     * following method are used for tie-break
+     * they return the the requested card
      */
     public Card getHighestCard() {
+    	// Clone the cards, because we will be altering the list
     	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
     	Collections.sort(clonedCards);
    	 	return clonedCards.get(clonedCards.size()-1);
     }
-    // method-overloading
+    //Overload for PairCard evaluation
     public Card getHighestCard(Card pairCard) {
     	int pairSearch = pairCard.getRank().ordinal();
     	
@@ -79,7 +80,7 @@ public class Player implements Comparable<Player> {
     	 Collections.sort(clonedCards);
     	 return clonedCards.get(clonedCards.size()-2);
     }
-    //method-overloading
+    //Overload for PairCard evaluation
     public Card getSecondHighestCard(Card pairCard) {
     	int pairSearch = pairCard.getRank().ordinal();
     	
@@ -97,14 +98,13 @@ public class Player implements Comparable<Player> {
     }
     
     public Card getThirdHighestCard() {
-   	 ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
-   	 Collections.sort(clonedCards);
-   	 return clonedCards.get(clonedCards.size()-3);
+   	 	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+   	 	Collections.sort(clonedCards);
+   	 	return clonedCards.get(clonedCards.size()-3);
     }
-    
+    //Overload for PairCard evaluation
     public Card getThirdHighestCard(Card pairCard) {
     	int pairSearch = pairCard.getRank().ordinal();
-    	
     	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
     	Collections.sort(clonedCards);
     	clonedCards.remove(pairCard);
@@ -124,27 +124,12 @@ public class Player implements Comparable<Player> {
     	return clonedCards.get(clonedCards.size()-4); 
     }
     
-    public Card getFourthHighestCard(Card pairCard) {
-    	int pairSearch = pairCard.getRank().ordinal();
-    	
-    	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
-    	Collections.sort(clonedCards);
-    	clonedCards.remove(pairCard);
-    	
-    	Card c = null;
-    	for(Card d : clonedCards) {
-    		if(d.getRank().ordinal() == pairSearch)
-    			c = d;
-    	}
-    	clonedCards.remove(c);
-   	 	return clonedCards.get(clonedCards.size()-2);
-    }
-    
     public Card getLowestCard() {
     	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
     	Collections.sort(clonedCards);
     	return clonedCards.get(clonedCards.size()-5); 
     }
+    
     public Card getPairCard() {
     	Card pc = null;
     	for(int i = 0; i < cards.size() - 1; i++) {
@@ -183,10 +168,13 @@ public class Player implements Comparable<Player> {
     	//return the card in the middle
     	return clonedCards.get(2);
     }
-    
+    /**
+     * Link to the grafic for tie-break
+     */
     public void setPlayerPane(PlayerPane playerPane) {
     	this.playerPane = playerPane;
     }
+    
     public PlayerPane getPlayerPane() {
     	return this.playerPane;
     }

@@ -76,7 +76,7 @@ public enum HandType {
     
     public static boolean isStraight(ArrayList<Card> cards) {
     	boolean found = true;
-        
+    	// Clone the cards, because we will be altering the list
     	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
         Collections.sort(clonedCards);
         
@@ -144,7 +144,7 @@ public enum HandType {
         return found;
     }
     
-    public static boolean isStraightFlush(ArrayList<Card> cards) {      
+    public static boolean isStraightFlush(ArrayList<Card> cards) {    
         return isFlush(cards) && isStraight(cards);
     }
     

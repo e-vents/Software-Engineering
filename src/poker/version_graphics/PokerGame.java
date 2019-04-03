@@ -24,7 +24,7 @@ public class PokerGame extends Application {
     	controller = new PokerGameController(primaryStage, model, view, this);
     }
     
-    //testing multiplayer
+    //setter for adaptive player number
     public void setNumOfPlayers(int playNum) {
     	NUM_PLAYERS = playNum;
     }

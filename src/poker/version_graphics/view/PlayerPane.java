@@ -118,7 +118,7 @@ public class PlayerPane extends VBox {
     	} else if(player.evaluateHand() == HandType.TwoPair) {
     		return twoPairMatch(nextPlayer);
     		
-    	} else
+    	} else //covers also FullHouse and FourOfAKind
     		return threeOfAKindMatch(nextPlayer);	
     }
 	/**

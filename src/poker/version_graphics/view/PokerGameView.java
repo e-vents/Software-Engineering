@@ -83,7 +83,7 @@ public class PokerGameView {
 		root.setTop(menuBar);
 		
 		// Disallow resizing - which is difficult to get right with images
-		//stage.setResizable(false);
+		stage.setResizable(false);
 
         // Create the scene using our layout; then display it
         this.scene = new Scene(root, 890, 450);
@@ -166,14 +166,12 @@ public class PokerGameView {
 		else
 			this.scene.getWindow().setHeight(670);
 		
-		
 		scene.getStylesheets().add(
                 getClass().getResource("poker.css").toExternalForm());
+		
         stage.setTitle("Poker Master 5000");
         stage.getIcons().add(new Image("poker/images/poker-icon.png"));
-        
         stage.setScene(scene);
         stage.show();
-        
 	}
 }

@@ -6,18 +6,6 @@
     -fx-max-width: 2000.0;
   	-fx-alignment: center;
 }
-#deckcards {
-	-fx-padding: -1.25px;
-	-fx-background-color: white;
-	-fx-background-radius: 6.0px;
-    
-}
-.deck {
-	-fx-background-radius: 6.0px;
-	-fx-border-radius: 6.0px;
-    -fx-pref-width: 83;
-    -fx-pref-height: 132;
-}
 
 .deck:hover {
 	-fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);

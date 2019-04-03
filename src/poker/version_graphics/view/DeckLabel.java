@@ -19,7 +19,7 @@ public class DeckLabel extends Label {
 		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/reddeck.png"));
 		ImageView imv = new ImageView(image);
 		
-		imv.setId("deckcards");
+		imv.setId("deckback");
 		
 		imv.setFitHeight(132);
 		imv.setFitWidth(83);

@@ -81,7 +81,7 @@ public class PokerGameView {
 		this.autoShuffleEnable.getStyleClass().add("menu");
 		this.autoShuffleDisable = new MenuItem("disable");
 		this.autoShuffleDisable.getStyleClass().add("menu");
-		this.shuffleMenu = new Menu("autoShuffle");
+		this.shuffleMenu = new Menu("autoshuffle");
 		this.shuffleMenu.getItems().addAll(autoShuffleEnable, autoShuffleDisable);
 				
 		//adding all Menus to MenuBar

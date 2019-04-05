@@ -22,7 +22,7 @@ public class ControlArea extends HBox{
     	this.getChildren().addAll(lblDeck, spacer, btnShuffle, btnDeal);
 
         HBox.setHgrow(spacer, Priority.ALWAYS); // Use region to absorb resizing
-        this.setId("controlArea"); // Unique ID in the CSS
+        this.setId("greenControlArea"); // Unique ID in the CSS
     }
     
     public void linkDeck(DeckOfCards deck) {

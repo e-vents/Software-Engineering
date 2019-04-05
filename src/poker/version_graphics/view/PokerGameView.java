@@ -92,6 +92,7 @@ public class PokerGameView {
 		root.setCenter(players);
 		root.setBottom(controls);
 		root.setTop(menuBar);
+		root.setId("greenRoot");
 		
 		// Disallow resizing - which is difficult to get right with images
 		stage.setResizable(false);

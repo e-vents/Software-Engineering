@@ -7,59 +7,37 @@
   	-fx-alignment: center;
 }
 
-.deck:hover {
-	-fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
-}
-.menu {
-	-fx-pref-width: 40.0;
-}
-.menuItem {
-	-fx-padding: 2.0px;
-}
-.menu:hover {
-	-fx-background-color: darkgrey;
-}
-.menu:pressed {
-	-fx-background-color: darkgrey;
-}
-.menu:focused {
-	-fx-background-color: darkgrey;
-}
-
-#controlArea {
-    -fx-spacing: 15.0px;
-    -fx-padding: 5.0px;
-    -fx-border-color: darkgreen;
-    -fx-border-width: 2.0px;
-}
-
-#greenControlArea {
-    -fx-spacing: 15.0px;
-    -fx-padding: 5.0px;
-    -fx-border-color: darkgreen;
-    -fx-border-width: 2.0px;
-}
-#redControlArea {
-    -fx-spacing: 15.0px;
-    -fx-padding: 5.0px;
-    -fx-border-color: darkred;
-    -fx-border-width: 2.0px;
-}
-
-#greyControlArea {
-    -fx-spacing: 15.0px;
-    -fx-padding: 5.0px;
-    -fx-border-color: #7f7f7f;
-    -fx-border-width: 2.0px;
-}
-
 .player {
 	-fx-padding: 5.0px;
 }
+
 .labels {
 	-fx-text-fill: white;
 }
 
+/*styling deck label*/
+#lblDeck {
+	-fx-text-fill: white;
+}
+.deck:hover {
+	-fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
+}
+
+/*styling for menus */
+.menu {
+	-fx-pref-width: 40.0;
+}
+.menu:hover {
+	-fx-background-color: darkgrey;
+}
+.menuItem {
+	-fx-padding: 2.0px;
+}
+.menuItem:hover {
+	-fx-background-color: darkgrey;
+}
+
+/*styling card including behaviour */
 .card {
   	-fx-font-size: 18px;
 	-fx-padding: 2.0px;
@@ -80,6 +58,7 @@
 	-fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
 }
 
+/*styling controls including behaviour */
 .controls {
 	-fx-text-fill: white;
 	-fx-background-color: transparent;
@@ -94,25 +73,37 @@
 .controls:pressed {
 	-fx-background-color: darkgrey;
 }
-.controls:focused{
+.controls:focused {
 	-fx-border-color: white;
 }
 
-#lblDeck {
-	-fx-text-fill: white;
+/*styling controlArea for themes */
+#greenControlArea {
+    -fx-spacing: 15.0px;
+    -fx-padding: 5.0px;
+    -fx-border-color: darkgreen;
+    -fx-border-width: 2.0px;
+}
+#redControlArea {
+    -fx-spacing: 15.0px;
+    -fx-padding: 5.0px;
+    -fx-border-color: darkred;
+    -fx-border-width: 2.0px;
+}
+#greyControlArea {
+    -fx-spacing: 15.0px;
+    -fx-padding: 5.0px;
+    -fx-border-color: #7f7f7f;
+    -fx-border-width: 2.0px;
 }
 
-.root {
-	-fx-background-color: #477148;
-}	
-
+/*styling borderPane for themes */
 #redRoot {
 	-fx-background-color: #9e180c;
 }
 #greenRoot {
 	-fx-background-color: #477148;
 }
-
 #greyRoot {
 	-fx-background-color: #939393;
 }

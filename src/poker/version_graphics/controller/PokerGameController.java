@@ -83,6 +83,7 @@ public class PokerGameController {
         	}
         	
     	} else {
+    		//decide between altert and shuffle & deal
     		if(!autoShuffle) {
     			Alert alert = new Alert(AlertType.INFORMATION, "please shuffle first");
                 alert.setTitle("not enought cards");
@@ -93,6 +94,7 @@ public class PokerGameController {
     		}
     	}
     }
+    
     /**
     *getting the winner and set who wins and who not
     */
@@ -110,6 +112,7 @@ public class PokerGameController {
     		}
     	}
     }
+    
     /**
     * Eventhandling for changing themes (red, green and grey)
     */
@@ -140,6 +143,7 @@ public class PokerGameController {
 		imv.setFitWidth(83);
 		view.getDeckLabel().setGraphic(imv);
     }
+    
     /**
      * Eventhandling for changing player number
      * gets corresponding MenuItem and sets NUmOfPlayer
@@ -160,6 +164,7 @@ public class PokerGameController {
 		view.updateView(stage, model);
 		shuffle();
     }
+    
     /**
      * Eventhandling for the automatic shuffle
      * gets the corresponding MenuItem and sets Boolean

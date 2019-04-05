@@ -10,7 +10,12 @@
 .deck:hover {
 	-fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
 }
-
+.menu {
+	-fx-pref-width: 40.0;
+}
+.menuItem {
+	-fx-padding: 2.0px;
+}
 .menu:hover {
 	-fx-background-color: darkgrey;
 }

@@ -58,29 +58,29 @@ public class PokerGameView {
 		this.greenItem = new MenuItem("GreenBean");
 		this.redItem = new MenuItem("RustyDusty");
 		this.greyItem = new MenuItem("MouseHouse");
+		greenItem.getStyleClass().add("menuItem");
+		redItem.getStyleClass().add("menuItem");
+		greyItem.getStyleClass().add("menuItem");
 		styleMenu = new Menu("themes");
+		styleMenu.getStyleClass().add("menu");
 		styleMenu.getItems().addAll(greenItem, redItem, greyItem);
 		
 		//players menu
 		this.twoPlayer = new MenuItem("2 player");
 		this.threePlayer = new MenuItem("3 player");
 		this.fourPlayer = new MenuItem("4 player");
+		this.twoPlayer.getStyleClass().add("menuItem");
+		this.threePlayer.getStyleClass().add("menuItem");
+		this.fourPlayer.getStyleClass().add("menuItem");
 		playerMenu = new Menu("players");
 		playerMenu.getItems().addAll(twoPlayer, threePlayer, fourPlayer);
-		styleMenu.getStyleClass().add("menu");
 		playerMenu.getStyleClass().add("menu");
-		
-		greenItem.getStyleClass().add("menu");
-		redItem.getStyleClass().add("menu");
-		this.twoPlayer.getStyleClass().add("menu");
-		this.threePlayer.getStyleClass().add("menu");
-		this.fourPlayer.getStyleClass().add("menu");
 		
 		//shuffle menu
 		this.autoShuffleEnable = new MenuItem("enable");
-		this.autoShuffleEnable.getStyleClass().add("menu");
 		this.autoShuffleDisable = new MenuItem("disable");
-		this.autoShuffleDisable.getStyleClass().add("menu");
+		this.autoShuffleEnable.getStyleClass().add("menuItem");
+		this.autoShuffleDisable.getStyleClass().add("menuItem");
 		this.shuffleMenu = new Menu("autoshuffle");
 		this.shuffleMenu.getItems().addAll(autoShuffleEnable, autoShuffleDisable);
 				

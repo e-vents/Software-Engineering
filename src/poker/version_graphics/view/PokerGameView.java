@@ -25,6 +25,9 @@ public class PokerGameView {
 	private MenuItem twoPlayer;
 	private MenuItem threePlayer;
 	private MenuItem fourPlayer;
+	private Menu shuffleMenu;
+	private MenuItem autoShuffleEnable;
+	private MenuItem autoShuffleDisable;
 	
 	private PokerGameModel model;
 	
@@ -64,9 +67,6 @@ public class PokerGameView {
 		this.fourPlayer = new MenuItem("4 player");
 		playerMenu = new Menu("players");
 		playerMenu.getItems().addAll(twoPlayer, threePlayer, fourPlayer);
-		
-		menuBar.getMenus().addAll(styleMenu, playerMenu);
-		//menu.getStyleClass().add("menu");
 		styleMenu.getStyleClass().add("menu");
 		playerMenu.getStyleClass().add("menu");
 		
@@ -75,6 +75,17 @@ public class PokerGameView {
 		this.twoPlayer.getStyleClass().add("menu");
 		this.threePlayer.getStyleClass().add("menu");
 		this.fourPlayer.getStyleClass().add("menu");
+		
+		//shuffle menu
+		this.autoShuffleEnable = new MenuItem("enable");
+		this.autoShuffleEnable.getStyleClass().add("menu");
+		this.autoShuffleDisable = new MenuItem("disable");
+		this.autoShuffleDisable.getStyleClass().add("menu");
+		this.shuffleMenu = new Menu("autoShuffle");
+		this.shuffleMenu.getItems().addAll(autoShuffleEnable, autoShuffleDisable);
+				
+		//adding all Menus to MenuBar
+		menuBar.getMenus().addAll(styleMenu, playerMenu, shuffleMenu);
 		
 		// Put players and controls into a BorderPane
 		this.root = new BorderPane();
@@ -138,6 +149,14 @@ public class PokerGameView {
 	public DeckLabel getDeckLabel() {
 		return this.controls.getDeckLabel();
 	}
+	
+	public MenuItem getAutoShuffleEnable() {
+		return autoShuffleEnable;
+	}
+	public MenuItem getAutoShuffleDisable() {
+		return autoShuffleDisable;
+	}
+	
 	/*
 	 * call in controller when changing player number
 	 */

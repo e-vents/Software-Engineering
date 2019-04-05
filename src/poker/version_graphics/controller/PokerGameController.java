@@ -19,12 +19,14 @@ public class PokerGameController {
 	private PokerGameView view;
 	private PokerGame game;
 	private Stage stage;
+	private Boolean autoShuffle;
 	
 	public PokerGameController(Stage stage, PokerGameModel model, PokerGameView view, PokerGame game) {
 		this.stage = stage;
 		this.model = model;
 		this.view = view;
 		this.game = game;
+		this.autoShuffle = false;
 		
 		view.getShuffleButton().setOnAction( e -> shuffle() );
 		view.getDealButton().setOnAction( e -> deal() );
@@ -38,6 +40,10 @@ public class PokerGameController {
 		view.getTwoPlayer().setOnAction(this::changeNumOfPlayers);
 		view.getThreePlayer().setOnAction(this::changeNumOfPlayers);
 		view.getFourPlayer().setOnAction(this::changeNumOfPlayers);
+		
+		//Events-Handler for the "autoShuffle" Menu
+		view.getAutoShuffleDisable().setOnAction(this::autoShuffle);
+		view.getAutoShuffleEnable().setOnAction(this::autoShuffle);
 	}
 	
     /**
@@ -77,9 +83,14 @@ public class PokerGameController {
         	}
         	
     	} else {
-            Alert alert = new Alert(AlertType.INFORMATION, "please shuffle first");
-            alert.setTitle("not enought cards");
-            alert.showAndWait();
+    		if(!autoShuffle) {
+    			Alert alert = new Alert(AlertType.INFORMATION, "please shuffle first");
+                alert.setTitle("not enought cards");
+                alert.showAndWait();
+    		} else {
+    			shuffle();
+    			deal();
+    		}
     	}
     }
     /**
@@ -131,7 +142,7 @@ public class PokerGameController {
     }
     /**
      * Eventhandling for changing player number
-     * gets correspondent MenuItem and sets NUmOfPlayer
+     * gets corresponding MenuItem and sets NUmOfPlayer
      */
     private void changeNumOfPlayers(Event d) {
     	if(d.getSource() == view.getTwoPlayer()) {
@@ -148,5 +159,17 @@ public class PokerGameController {
     	//relooads view after adn shuffles cards
 		view.updateView(stage, model);
 		shuffle();
+    }
+    /**
+     * Eventhandling for the automatic shuffle
+     * gets the corresponding MenuItem and sets Boolean
+     */
+    private void autoShuffle(Event s) {
+    	if(s.getSource() == view.getAutoShuffleDisable()) {
+    		this.autoShuffle = false;
+    		
+    	} else if(s.getSource() == view.getAutoShuffleEnable()) {
+    		this.autoShuffle = true;
+    	}	
     }
 }

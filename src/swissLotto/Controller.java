@@ -1,5 +1,7 @@
 package swissLotto;
 
+import java.lang.reflect.Array;
+
 import javafx.event.Event;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -28,10 +30,11 @@ public class Controller {
 		
 		Tip tp = new Tip();
 		Label lbl = null;
+		int[] labels = new int[7];
 		
 		for(int i = 0; i < 7; i++) {
 			
-			lbl = (Label) view.getTipPane().getTipBoxes().getChildren().get(i);
+			lbl = (Label) view.getTipPane().getTipBoxes().getChildren().toArray(labels);
 			
 			for(Integer tip : tp) {
 				lbl.setText(Integer.toString(tip));

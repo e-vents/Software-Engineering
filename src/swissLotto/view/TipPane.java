@@ -11,16 +11,12 @@ public class TipPane extends VBox {
 	
 	protected Button plus;
 	protected Button minus;
-	protected VBox tipBoxes;
 	protected static int tipBoxCount = 1;
 
 	public TipPane() {
 		
-		this.tipBoxes = new VBox();
-		//adaptive label-adding
-		for(int i = 0; i < tipBoxCount; i++) {
-			this.tipBoxes.getChildren().add(generateTipBox());
-		}
+		//adding one initial TipBox
+		this.getChildren().add(generateTipBox());
 		
 		//+ & - Buttons in a HBox
 		this.minus = new Button("-");
@@ -30,24 +26,23 @@ public class TipPane extends VBox {
 		controls.getChildren().add(plus);
 		controls.setAlignment(Pos.BOTTOM_CENTER);
 
-		this.getChildren().add(tipBoxes);
 		this.getChildren().add(controls);
 	}
 	
 	//updates the tipPane with more or less tips
 	public void updateTipPane() {
 		
-		this.getChildren().clear();
+		HBox tempBox = (HBox) this.getChildren().get(0);
 		//adaptive tip-adding
 		for(int i = 0; i <tipBoxCount; i++) {
 			this.getChildren().add(generateTipBox());
 		}
-		HBox controls = new HBox();
-		controls.getChildren().add(minus);
-		controls.getChildren().add(plus);
-		controls.setAlignment(Pos.BOTTOM_CENTER);
+		//HBox controls = new HBox();
+		//controls.getChildren().add(minus);
+		//controls.getChildren().add(plus);
+		//controls.setAlignment(Pos.BOTTOM_CENTER);
 
-		this.getChildren().add(controls);
+		//this.getChildren().add(controls);
 	}
 	
 	//return a new TipBox
@@ -74,12 +69,7 @@ public class TipPane extends VBox {
 		TipPane.tipBoxCount = tipBoxCount;
 	}
 	
-	public static int getTipPaneCount() {
+	public static int getTipBoxCount() {
 		return TipPane.tipBoxCount;
 	}
-
-	public VBox getTipBoxes() {
-		return tipBoxes;
-	}
-	
 }

@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 
 import javafx.event.Event;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import swissLotto.model.Drawing;
 import swissLotto.model.Tip;
@@ -28,31 +29,28 @@ public class Controller {
 	
 	public void randomClicked() {
 		
-		Tip tp = new Tip();
+		Tip tip = new Tip();
+		HBox hbox = new HBox();
+		hbox = (HBox) view.getTipPane().getChildren().get(0);
 		Label lbl = null;
-		int[] labels = new int[7];
 		
 		for(int i = 0; i < 7; i++) {
-			
-			lbl = (Label) view.getTipPane().getTipBoxes().getChildren().toArray(labels);
-			
-			for(Integer tip : tp) {
-				lbl.setText(Integer.toString(tip));
-			}
+			lbl = (Label) hbox.getChildren().get(i);
+			lbl.setText(Integer.toString(tip.get(i)));
 		}
 	}
 	
 	public void tipAdding() {
-		if(view.getTipPane().getTipPaneCount() > 1)
-				view.getTipPane().setTipBoxCount(view.getTipPane().getTipPaneCount()-1);
+		if(view.getTipPane().getTipBoxCount() > 1)
+				view.getTipPane().setTipBoxCount(view.getTipPane().getTipBoxCount()-1);
 		
 		view.getTipPane().updateTipPane();
 		
 	}
 	
 	public void tipDeleting() {
-		if(view.getTipPane().getTipPaneCount()< 10)
-			view.getTipPane().setTipBoxCount(view.getTipPane().getTipPaneCount()+1);
+		if(view.getTipPane().getTipBoxCount()< 10)
+			view.getTipPane().setTipBoxCount(view.getTipPane().getTipBoxCount()+1);
 		
 		view.getTipPane().updateTipPane();
 	}

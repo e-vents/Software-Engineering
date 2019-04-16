@@ -7,27 +7,27 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import swissLotto.model.Drawing;
-import swissLotto.model.SuperNumber;
+import swissLotto.model.Model;
+import swissLotto.model.LottoNumber;
 
 public class TipPane extends VBox {
-	private Drawing drawing;
+	private Model model;
 	
 	protected Button button = new Button("Zufallszahlen");
-	protected TableView<SuperNumber> tableView;
-	protected TableColumn<SuperNumber, String> colfirst;
-	protected TableColumn<SuperNumber, String> colsecond;
-	protected TableColumn<SuperNumber, String> colthird;
-	protected TableColumn<SuperNumber, String> colfourth;
-	protected TableColumn<SuperNumber, String> colfifth;
-	protected TableColumn<SuperNumber, String> colsixth;
-	protected TableColumn<SuperNumber, String> colluckyNr;
+	protected TableView<LottoNumber> tableView;
+	protected TableColumn<LottoNumber, String> colfirst;
+	protected TableColumn<LottoNumber, String> colsecond;
+	protected TableColumn<LottoNumber, String> colthird;
+	protected TableColumn<LottoNumber, String> colfourth;
+	protected TableColumn<LottoNumber, String> colfifth;
+	protected TableColumn<LottoNumber, String> colsixth;
+	protected TableColumn<LottoNumber, String> colluckyNr;
 	
 
-	public TipPane(Drawing drawing) {
-		this.drawing = drawing;
+	public TipPane(Model model) {
+		this.model = model;
 		// Initialize TableView
-		TableView<SuperNumber> tableView = createTableView();
+		TableView<LottoNumber> tableView = createTableView();
 
 		// Layout root pane
 		
@@ -40,7 +40,7 @@ public class TipPane extends VBox {
 		button.setMaxWidth(Double.MAX_VALUE); // button can grow horizontally
 	}
 	
-	private TableView<SuperNumber> createTableView() {
+	private TableView<LottoNumber> createTableView() {
 		tableView = new TableView<>();
 		tableView.setEditable(true);
 
@@ -48,41 +48,41 @@ public class TipPane extends VBox {
 		// For editable columns, each column needs to contain a TextField.
 		this.colfirst = new TableColumn<>("1.");
 		this.colfirst.setCellFactory(TextFieldTableCell.forTableColumn());
-		//this.colfirst.setCellValueFactory(c -> c.getValue().asBinaryProperty());
+		this.colfirst.setCellValueFactory(c -> c.getValue().getNumberProperty());
 		tableView.getColumns().add(colfirst);
 
 		this.colsecond = new TableColumn<>("2.");
 		this.colsecond.setCellFactory(TextFieldTableCell.forTableColumn());
-		//this.colfirst.setCellValueFactory(c -> c.getValue().asBinaryProperty());
+		this.colsecond.setCellValueFactory(c -> c.getValue().getNumberProperty());
 		tableView.getColumns().add(colsecond);
 		
 		this.colthird = new TableColumn<>("3.");
 		this.colthird.setCellFactory(TextFieldTableCell.forTableColumn());
-		//this.colfirst.setCellValueFactory(c -> c.getValue().asBinaryProperty());
+		this.colthird.setCellValueFactory(c -> c.getValue().getNumberProperty());
 		tableView.getColumns().add(colthird);
 		
 		this.colfourth = new TableColumn<>("4.");
 		this.colfourth.setCellFactory(TextFieldTableCell.forTableColumn());
-		//this.colfirst.setCellValueFactory(c -> c.getValue().asBinaryProperty());
+		this.colfourth.setCellValueFactory(c -> c.getValue().getNumberProperty());
 		tableView.getColumns().add(colfourth);
 		
 		this.colfifth = new TableColumn<>("5.");
 		this.colfifth.setCellFactory(TextFieldTableCell.forTableColumn());
-		//this.colfirst.setCellValueFactory(c -> c.getValue().asBinaryProperty());
+		this.colfifth.setCellValueFactory(c -> c.getValue().getNumberProperty());
 		tableView.getColumns().add(colfifth);
 		
 		this.colsixth = new TableColumn<>("6.");
 		this.colsixth.setCellFactory(TextFieldTableCell.forTableColumn());
-		//this.colfirst.setCellValueFactory(c -> c.getValue().asBinaryProperty());
+		this.colsixth.setCellValueFactory(c -> c.getValue().getNumberProperty());
 		tableView.getColumns().add(colsixth);
 		
 		this.colluckyNr = new TableColumn<>("Glückszahl");
 		this.colluckyNr.setCellFactory(TextFieldTableCell.forTableColumn());
-		//this.colfirst.setCellValueFactory(c -> c.getValue().asBinaryProperty());
+		this.colluckyNr.setCellValueFactory(c -> c.getValue().getNumberProperty());
 		tableView.getColumns().add(colluckyNr);
 
 		// Finally, attach the tableView to the ObservableList of data
-		tableView.setItems(drawing.getElements());
+		tableView.setItems(model.getElements());
 
 		return tableView;
 	}
@@ -91,35 +91,35 @@ public class TipPane extends VBox {
 		return button;
 	}
 
-	public TableView<SuperNumber> getTableView() {
+	public TableView<LottoNumber> getTableView() {
 		return tableView;
 	}
 
-	public TableColumn<SuperNumber, String> getColfirst() {
+	public TableColumn<LottoNumber, String> getColfirst() {
 		return colsecond;
 	}
 	
-	public TableColumn<SuperNumber, String> getColsecond() {
+	public TableColumn<LottoNumber, String> getColsecond() {
 		return colsecond;
 	}
 
-	public TableColumn<SuperNumber, String> getColthird() {
+	public TableColumn<LottoNumber, String> getColthird() {
 		return colthird;
 	}
 
-	public TableColumn<SuperNumber, String> getColfourth() {
+	public TableColumn<LottoNumber, String> getColfourth() {
 		return colfourth;
 	}
 
-	public TableColumn<SuperNumber, String> getColfifth() {
+	public TableColumn<LottoNumber, String> getColfifth() {
 		return colfifth;
 	}
 
-	public TableColumn<SuperNumber, String> getColsixth() {
+	public TableColumn<LottoNumber, String> getColsixth() {
 		return colsixth;
 	}
 
-	public TableColumn<SuperNumber, String> getColluckyNr() {
+	public TableColumn<LottoNumber, String> getColluckyNr() {
 		return colluckyNr;
 	}
 }

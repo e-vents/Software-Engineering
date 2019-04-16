@@ -7,12 +7,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import swissLotto.Controller;
-import swissLotto.model.Drawing;
+import swissLotto.model.Model;
 
 
 public class View {
 	
-	final private Drawing drawing;
+	final private Model model;
 	final private Stage stage;
 	private BorderPane borderPane;
 	
@@ -20,14 +20,14 @@ public class View {
 	private TipPane tipPane;
 	private DrawPane drawPane;
 	
-	public View(Stage stage, Drawing drawing) {
-		this.drawing = drawing;
+	public View(Stage stage, Model model) {
+		this.model = model;
 		this.stage = stage;
 		this.borderPane = new BorderPane();
 		
 		//this.choicePane = new ChoicePane();
 		this.drawPane = new DrawPane();
-		this.tipPane = new TipPane(drawing);
+		this.tipPane = new TipPane(model);
 		
 		//this.borderPane.setLeft(this.choicePane);
 		this.borderPane.setCenter(this.tipPane);

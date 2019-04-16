@@ -8,13 +8,13 @@ import swissLotto.Controller;
 
 public class ChoicePane extends VBox {
 	
-	private NumbersPane numbersPane;
+	//private NumbersPane numbersPane;
 	private Button randomBtn;
 	private HBox luckyBallBox;
 
 	public ChoicePane() {
 		
-		this.getChildren().add(this.numbersPane = new NumbersPane());
+		//this.getChildren().add(this.numbersPane = new NumbersPane());
 		this.getChildren().add(new Label("Glückszahlen"));
 		
 		this.luckyBallBox = new HBox();

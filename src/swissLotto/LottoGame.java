@@ -2,12 +2,12 @@ package swissLotto;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import swissLotto.model.Drawing;
+import swissLotto.model.Model;
 import swissLotto.view.View;
 
 public class LottoGame extends Application {
 	public static int MAX_BALLS = 7;
-	Drawing drawing;
+	Model model;
 	View view;
 	Controller controller;
 	  
@@ -18,9 +18,9 @@ public class LottoGame extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
     	// Create and initialize the MVC components
-    	drawing = new Drawing();
-    	view = new View(primaryStage, drawing);
-    	controller = new Controller(drawing, view);
+    	model = new Model();
+    	view = new View(primaryStage, model);
+    	controller = new Controller(model, view);
     	
     }
 }

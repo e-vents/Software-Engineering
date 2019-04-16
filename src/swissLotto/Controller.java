@@ -1,30 +1,75 @@
 package swissLotto;
 
 import javafx.collections.ListChangeListener;
-import javafx.event.Event;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellEditEvent;
-import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-import swissLotto.model.Drawing;
-import swissLotto.model.SuperNumber;
+import swissLotto.model.Model;
+import swissLotto.model.LottoNumber;
 import swissLotto.view.View;
 
 public class Controller {
-	final private Drawing drawing;
+	final private Model model;
 	final private View view;
 	
-	public Controller(Drawing drawing, View view) {
+	public Controller(Model model, View view) {
 		this.view = view;
-		this.drawing = drawing;
+		this.model = model;
 		
-		view.getTipPane().getButton().setOnAction(e -> drawing.addNewElement());
+		view.getTipPane().getButton().setOnAction(e -> model.addNewNumber());
 		
 		// Event handlers for the table columns: validate user input
 		view.getTipPane().getColfirst().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
 				if (isNumberValid(newValue))
-					getSuperNumberFromEvent(editEvent).setNumber(newValue);
+					getLottoNumberFromEvent(editEvent).setNumber(newValue);
+				else // Erase invalid edited value by refreshing
+					editEvent.getTableView().refresh();
+		});
+		
+		view.getTipPane().getColsecond().setOnEditCommit(editEvent -> {
+			String newValue = editEvent.getNewValue();
+				if (isNumberValid(newValue))
+					getLottoNumberFromEvent(editEvent).setNumber(newValue);
+				else // Erase invalid edited value by refreshing
+					editEvent.getTableView().refresh();
+		});
+		
+		view.getTipPane().getColthird().setOnEditCommit(editEvent -> {
+			String newValue = editEvent.getNewValue();
+				if (isNumberValid(newValue))
+					getLottoNumberFromEvent(editEvent).setNumber(newValue);
+				else // Erase invalid edited value by refreshing
+					editEvent.getTableView().refresh();
+		});
+		
+		view.getTipPane().getColfourth().setOnEditCommit(editEvent -> {
+			String newValue = editEvent.getNewValue();
+				if (isNumberValid(newValue))
+					getLottoNumberFromEvent(editEvent).setNumber(newValue);
+				else // Erase invalid edited value by refreshing
+					editEvent.getTableView().refresh();
+		});
+		
+		view.getTipPane().getColfifth().setOnEditCommit(editEvent -> {
+			String newValue = editEvent.getNewValue();
+				if (isNumberValid(newValue))
+					getLottoNumberFromEvent(editEvent).setNumber(newValue);
+				else // Erase invalid edited value by refreshing
+					editEvent.getTableView().refresh();
+		});
+		
+		view.getTipPane().getColsixth().setOnEditCommit(editEvent -> {
+			String newValue = editEvent.getNewValue();
+				if (isNumberValid(newValue))
+					getLottoNumberFromEvent(editEvent).setNumber(newValue);
+				else // Erase invalid edited value by refreshing
+					editEvent.getTableView().refresh();
+		});
+		
+		view.getTipPane().getColluckyNr().setOnEditCommit(editEvent -> {
+			String newValue = editEvent.getNewValue();
+				if (isNumberValid(newValue))
+					getLottoNumberFromEvent(editEvent).setNumber(newValue);
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
@@ -36,7 +81,7 @@ public class Controller {
 		// ListChangeListener provides a list of events, so we must provide
 		// a loop in case multiple changes are pending. We only want to scroll
 		// to the position of the last change made.
-		drawing.getElements().addListener((ListChangeListener<SuperNumber>) c -> {
+		model.getElements().addListener((ListChangeListener<LottoNumber>) c -> {
 			while (c.next()) {
 				view.getTipPane().getTableView().scrollTo(c.getFrom());
 			}
@@ -54,8 +99,8 @@ public class Controller {
 		return valid;
 	}
 
-	private SuperNumber getSuperNumberFromEvent(CellEditEvent<SuperNumber, String> editEvent) {
-		TableView<SuperNumber> tv = editEvent.getTableView();
+	private LottoNumber getLottoNumberFromEvent(CellEditEvent<LottoNumber, String> editEvent) {
+		TableView<LottoNumber> tv = editEvent.getTableView();
 		int rowNumber = editEvent.getTablePosition().getRow();
 		return tv.getItems().get(rowNumber);
 	}

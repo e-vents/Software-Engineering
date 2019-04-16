@@ -1,9 +1,6 @@
 package swissLotto.model;
 
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.logging.Logger;
-
 import javafx.beans.property.SimpleStringProperty;
 
 public class SuperNumber {
@@ -13,23 +10,23 @@ public class SuperNumber {
 	public SuperNumber(int value) {
 		if(value > 0 && value < 43)
 			this.value = value;
-		//updateRepresentations();
+		updateRepresentations();
 	}
 	
 	private void updateRepresentations() {
 		number.set(value.toString());
 		Logger.getLogger("").info("Representations updated: " + number.get());
 	}
-	/*
+	
 	//--- Getters and Setters ---
 	
 	// Note: The naming is CRITICAL, because the TableView will derive method
 	// names from the property names that it is given.
-	/*
-	public SimpleStringProperty asDecimalProperty() {
-		return asDecimal;
-	}
 
+	public SimpleStringProperty asDecimalProperty() {
+		return number;
+	}
+	/*
 	public String getAsDecimal() {
 		return asDecimal.get();
 	}

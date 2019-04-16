@@ -90,7 +90,6 @@ public class TipPane extends VBox {
 	public Button getButton() {
 		return button;
 	}
-	
 
 	public TableView<SuperNumber> getTableView() {
 		return tableView;
@@ -123,5 +122,4 @@ public class TipPane extends VBox {
 	public TableColumn<SuperNumber, String> getColluckyNr() {
 		return colluckyNr;
 	}
-	
 }

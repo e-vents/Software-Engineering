@@ -16,7 +16,7 @@ public class View {
 	final private Stage stage;
 	private BorderPane borderPane;
 	
-	private ChoicePane choicePane;
+	//private ChoicePane choicePane;
 	private TipPane tipPane;
 	private DrawPane drawPane;
 	
@@ -25,11 +25,11 @@ public class View {
 		this.stage = stage;
 		this.borderPane = new BorderPane();
 		
-		this.choicePane = new ChoicePane();
+		//this.choicePane = new ChoicePane();
 		this.drawPane = new DrawPane();
-		this.tipPane = new TipPane();
+		this.tipPane = new TipPane(drawing);
 		
-		this.borderPane.setLeft(this.choicePane);
+		//this.borderPane.setLeft(this.choicePane);
 		this.borderPane.setCenter(this.tipPane);
 		this.borderPane.setRight(this.drawPane);
 		
@@ -47,30 +47,15 @@ public class View {
 	}
 	
 	//getters and setters from TipPane
+	/*
 	public ChoicePane getChoicePane() {
 		return choicePane;
 	}
+	*/
 	public TipPane getTipPane() {
 		return tipPane;
 	}
 	public DrawPane getDrawPane() {
 		return drawPane;
 	}
-	/*
-	public Button getPlus() {
-		return this.tipPane.plus;
-	}
-
-	public Button getMinus() {
-		return this.tipPane.minus;
-	}
-
-	
-	public static void setTipBoxCount(int tipBoxCount) {
-		TipPane.tipBoxCount = tipBoxCount;
-	}
-	public static int getTipPaneCount() {
-		return TipPane.tipBoxCount;
-	}
-	*/
 }

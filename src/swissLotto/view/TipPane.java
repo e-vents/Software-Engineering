@@ -1,75 +1,127 @@
 package swissLotto.view;
 
-import javafx.geometry.Pos;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import swissLotto.Controller;
+import swissLotto.model.Drawing;
+import swissLotto.model.SuperNumber;
 
 public class TipPane extends VBox {
+	private Drawing drawing;
 	
-	protected Button plus;
-	protected Button minus;
-	protected static int tipBoxCount = 1;
+	protected Button button = new Button("Zufallszahlen");
+	protected TableView<SuperNumber> tableView;
+	protected TableColumn<SuperNumber, String> colfirst;
+	protected TableColumn<SuperNumber, String> colsecond;
+	protected TableColumn<SuperNumber, String> colthird;
+	protected TableColumn<SuperNumber, String> colfourth;
+	protected TableColumn<SuperNumber, String> colfifth;
+	protected TableColumn<SuperNumber, String> colsixth;
+	protected TableColumn<SuperNumber, String> colluckyNr;
+	
 
-	public TipPane() {
-		
-		//adding one initial TipBox
-		this.getChildren().add(generateTipBox());
-		
-		//+ & - Buttons in a HBox
-		this.minus = new Button("-");
-		this.plus = new Button("+");
-		HBox controls = new HBox();
-		controls.getChildren().add(minus);
-		controls.getChildren().add(plus);
-		controls.setAlignment(Pos.BOTTOM_CENTER);
+	public TipPane(Drawing drawing) {
+		this.drawing = drawing;
+		// Initialize TableView
+		TableView<SuperNumber> tableView = createTableView();
 
-		this.getChildren().add(controls);
-	}
-	
-	//updates the tipPane with more or less tips
-	public void updateTipPane() {
+		// Layout root pane
 		
-		HBox tempBox = (HBox) this.getChildren().get(0);
-		//adaptive tip-adding
-		for(int i = 0; i <tipBoxCount; i++) {
-			this.getChildren().add(generateTipBox());
-		}
-		//HBox controls = new HBox();
-		//controls.getChildren().add(minus);
-		//controls.getChildren().add(plus);
-		//controls.setAlignment(Pos.BOTTOM_CENTER);
+		this.setPadding(new Insets(10)); // around edge of VBox
+		this.setSpacing(10); // between elements
+		VBox.setVgrow(tableView, Priority.ALWAYS); // Vertical resize goes to the table
+		this.getChildren().addAll(tableView, button);
 
-		//this.getChildren().add(controls);
+		// Size constraints
+		button.setMaxWidth(Double.MAX_VALUE); // button can grow horizontally
 	}
 	
-	//return a new TipBox
-	private HBox generateTipBox() {
-		HBox tempBox = new HBox();
+	private TableView<SuperNumber> createTableView() {
+		tableView = new TableView<>();
+		tableView.setEditable(true);
+
+		// Each column needs a title, and a source of data.
+		// For editable columns, each column needs to contain a TextField.
+		this.colfirst = new TableColumn<>("1.");
+		this.colfirst.setCellFactory(TextFieldTableCell.forTableColumn());
+		//this.colfirst.setCellValueFactory(c -> c.getValue().asBinaryProperty());
+		tableView.getColumns().add(colfirst);
+
+		this.colsecond = new TableColumn<>("2.");
+		this.colsecond.setCellFactory(TextFieldTableCell.forTableColumn());
+		//this.colfirst.setCellValueFactory(c -> c.getValue().asBinaryProperty());
+		tableView.getColumns().add(colsecond);
 		
-		for(int i = 0; i <7; i++) {
-			tempBox.getChildren().add(new Label("--"));
-		}
+		this.colthird = new TableColumn<>("3.");
+		this.colthird.setCellFactory(TextFieldTableCell.forTableColumn());
+		//this.colfirst.setCellValueFactory(c -> c.getValue().asBinaryProperty());
+		tableView.getColumns().add(colthird);
 		
-		tempBox.setSpacing(20);
-		return tempBox;
-	}
-	
-	public Button getPlus() {
-		return this.plus;
+		this.colfourth = new TableColumn<>("4.");
+		this.colfourth.setCellFactory(TextFieldTableCell.forTableColumn());
+		//this.colfirst.setCellValueFactory(c -> c.getValue().asBinaryProperty());
+		tableView.getColumns().add(colfourth);
+		
+		this.colfifth = new TableColumn<>("5.");
+		this.colfifth.setCellFactory(TextFieldTableCell.forTableColumn());
+		//this.colfirst.setCellValueFactory(c -> c.getValue().asBinaryProperty());
+		tableView.getColumns().add(colfifth);
+		
+		this.colsixth = new TableColumn<>("6.");
+		this.colsixth.setCellFactory(TextFieldTableCell.forTableColumn());
+		//this.colfirst.setCellValueFactory(c -> c.getValue().asBinaryProperty());
+		tableView.getColumns().add(colsixth);
+		
+		this.colluckyNr = new TableColumn<>("Glückszahl");
+		this.colluckyNr.setCellFactory(TextFieldTableCell.forTableColumn());
+		//this.colfirst.setCellValueFactory(c -> c.getValue().asBinaryProperty());
+		tableView.getColumns().add(colluckyNr);
+
+		// Finally, attach the tableView to the ObservableList of data
+		tableView.setItems(drawing.getElements());
+
+		return tableView;
 	}
 
-	public Button getMinus() {
-		return this.minus;
+	public Button getButton() {
+		return button;
 	}
 	
-	public static void setTipBoxCount(int tipBoxCount) {
-		TipPane.tipBoxCount = tipBoxCount;
+
+	public TableView<SuperNumber> getTableView() {
+		return tableView;
+	}
+
+	public TableColumn<SuperNumber, String> getColfirst() {
+		return colsecond;
 	}
 	
-	public static int getTipBoxCount() {
-		return TipPane.tipBoxCount;
+	public TableColumn<SuperNumber, String> getColsecond() {
+		return colsecond;
 	}
+
+	public TableColumn<SuperNumber, String> getColthird() {
+		return colthird;
+	}
+
+	public TableColumn<SuperNumber, String> getColfourth() {
+		return colfourth;
+	}
+
+	public TableColumn<SuperNumber, String> getColfifth() {
+		return colfifth;
+	}
+
+	public TableColumn<SuperNumber, String> getColsixth() {
+		return colsixth;
+	}
+
+	public TableColumn<SuperNumber, String> getColluckyNr() {
+		return colluckyNr;
+	}
+	
 }

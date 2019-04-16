@@ -1,19 +1,25 @@
 package swissLotto.model;
 
-import java.util.ArrayList;
+import java.util.Random;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Drawing {
 	
-	private ArrayList<Tip> tips;
-	private Tip lotteryDraw;
+	private static Random rand = new Random();
 	
-	public Drawing() {
-		this.lotteryDraw = new Tip();
-		this.tips = new ArrayList<Tip>();
-		
+	private final ObservableList<SuperNumber> elements = FXCollections.observableArrayList();
+
+	public void addNewElement() {
+		elements.add(new SuperNumber(generateRandNum()));
 	}
-	
-	public WinnerType isWinner() {
-		return WinnerType.FivePlusOneRight;
+
+	// getters and setters
+	public ObservableList<SuperNumber> getElements() {
+		return elements;
+	}
+	private int generateRandNum() {
+		return rand.nextInt(41+1);
 	}
 }

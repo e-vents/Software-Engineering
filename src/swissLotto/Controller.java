@@ -1,13 +1,13 @@
 package swissLotto;
 
-import java.lang.reflect.Array;
-
+import javafx.collections.ListChangeListener;
 import javafx.event.Event;
-import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import swissLotto.model.Drawing;
-import swissLotto.model.Tip;
+import swissLotto.model.SuperNumber;
 import swissLotto.view.View;
 
 public class Controller {
@@ -18,40 +18,45 @@ public class Controller {
 		this.view = view;
 		this.drawing = drawing;
 		
-		view.getChoicePane().getRandomBtn().setOnAction(e -> randomClicked() );
-		view.getTipPane().getMinus().setOnAction(e -> tipAdding() );
-		view.getTipPane().getPlus().setOnAction(e -> tipDeleting() );
+		view.getTipPane().getButton().setOnAction(e -> drawing.addNewElement());
+		
+		// Event handlers for the table columns: validate user input
+		view.getTipPane().getColfirst().setOnEditCommit(editEvent -> {
+			String newValue = editEvent.getNewValue();
+				if (isNumberValid(newValue))
+					getSuperNumberFromEvent(editEvent).setNumber(newValue);
+				else // Erase invalid edited value by refreshing
+					editEvent.getTableView().refresh();
+		});
+
+		// Event handler for the model's ObservableList requires a
+		// ListChangeListener, which is generic, so we have to cast our lambda
+		// to fill in the type.
+		//
+		// ListChangeListener provides a list of events, so we must provide
+		// a loop in case multiple changes are pending. We only want to scroll
+		// to the position of the last change made.
+		drawing.getElements().addListener((ListChangeListener<SuperNumber>) c -> {
+			while (c.next()) {
+				view.getTipPane().getTableView().scrollTo(c.getFrom());
+			}
+		});
 	}
-	
-	public void numberClicked(Event e) {
-		
-	}
-	
-	public void randomClicked() {
-		
-		Tip tip = new Tip();
-		HBox hbox = new HBox();
-		hbox = (HBox) view.getTipPane().getChildren().get(0);
-		Label lbl = null;
-		
-		for(int i = 0; i < 7; i++) {
-			lbl = (Label) hbox.getChildren().get(i);
-			lbl.setText(Integer.toString(tip.get(i)));
+
+	private boolean isNumberValid(String number) {
+		boolean valid;
+		try {
+			Integer.parseInt(number);
+			valid = true;
+		} catch (NumberFormatException e) {
+			valid = false;
 		}
+		return valid;
 	}
-	
-	public void tipAdding() {
-		if(view.getTipPane().getTipBoxCount() > 1)
-				view.getTipPane().setTipBoxCount(view.getTipPane().getTipBoxCount()-1);
-		
-		view.getTipPane().updateTipPane();
-		
-	}
-	
-	public void tipDeleting() {
-		if(view.getTipPane().getTipBoxCount()< 10)
-			view.getTipPane().setTipBoxCount(view.getTipPane().getTipBoxCount()+1);
-		
-		view.getTipPane().updateTipPane();
+
+	private SuperNumber getSuperNumberFromEvent(CellEditEvent<SuperNumber, String> editEvent) {
+		TableView<SuperNumber> tv = editEvent.getTableView();
+		int rowNumber = editEvent.getTablePosition().getRow();
+		return tv.getItems().get(rowNumber);
 	}
 }

@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 public class LottoNumber {
 	
 	private static Random rand = new Random();
+	private static final int MAX_VALUE = 42;
 	
 	//private Integer value = 0;
 	private final SimpleStringProperty number = new SimpleStringProperty();
@@ -39,7 +40,7 @@ public class LottoNumber {
 		//Logger.getLogger("").info("Representations updated: " + number.get());
 	}
 	private int generateRandNum() {
-		return rand.nextInt(41+1);
+		return rand.nextInt(MAX_VALUE)+1;
 	}
 	
 	//--- Getters and Setters ---

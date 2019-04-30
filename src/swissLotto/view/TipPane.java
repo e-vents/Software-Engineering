@@ -53,32 +53,32 @@ public class TipPane extends VBox {
 
 		this.colsecond = new TableColumn<>("2.");
 		this.colsecond.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.colsecond.setCellValueFactory(c -> c.getValue().getNumberProperty());
+		this.colsecond.setCellValueFactory(c -> c.getValue().getNumber2());
 		tableView.getColumns().add(colsecond);
 		
 		this.colthird = new TableColumn<>("3.");
 		this.colthird.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.colthird.setCellValueFactory(c -> c.getValue().getNumberProperty());
+		this.colthird.setCellValueFactory(c -> c.getValue().getNumber3());
 		tableView.getColumns().add(colthird);
 		
 		this.colfourth = new TableColumn<>("4.");
 		this.colfourth.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.colfourth.setCellValueFactory(c -> c.getValue().getNumberProperty());
+		this.colfourth.setCellValueFactory(c -> c.getValue().getNumber4());
 		tableView.getColumns().add(colfourth);
 		
 		this.colfifth = new TableColumn<>("5.");
 		this.colfifth.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.colfifth.setCellValueFactory(c -> c.getValue().getNumberProperty());
+		this.colfifth.setCellValueFactory(c -> c.getValue().getNumber5());
 		tableView.getColumns().add(colfifth);
 		
 		this.colsixth = new TableColumn<>("6.");
 		this.colsixth.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.colsixth.setCellValueFactory(c -> c.getValue().getNumberProperty());
+		this.colsixth.setCellValueFactory(c -> c.getValue().getNumber6());
 		tableView.getColumns().add(colsixth);
 		
 		this.colluckyNr = new TableColumn<>("Glückszahl");
 		this.colluckyNr.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.colluckyNr.setCellValueFactory(c -> c.getValue().getNumberProperty());
+		this.colluckyNr.setCellValueFactory(c -> c.getValue().getNumber7());
 		tableView.getColumns().add(colluckyNr);
 
 		// Finally, attach the tableView to the ObservableList of data

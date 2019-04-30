@@ -52,6 +52,31 @@ public class LottoNumber {
 		return number;
 	}
 	
+	
+	public SimpleStringProperty getNumber2() {
+		return number2;
+	}
+
+	public SimpleStringProperty getNumber3() {
+		return number3;
+	}
+
+	public SimpleStringProperty getNumber4() {
+		return number4;
+	}
+
+	public SimpleStringProperty getNumber5() {
+		return number5;
+	}
+
+	public SimpleStringProperty getNumber6() {
+		return number6;
+	}
+
+	public SimpleStringProperty getNumber7() {
+		return number7;
+	}
+
 	public String getNumberAsString() {
 		return number.get();
 	}

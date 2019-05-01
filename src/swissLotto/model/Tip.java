@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 
-public class LottoNumber {
+public class Tip {
 	private ArrayList<Integer> lottoNumbers;
 	private ArrayList<Integer> luckyNumbers;
 	
@@ -18,7 +18,10 @@ public class LottoNumber {
 	private final SimpleStringProperty number6 = new SimpleStringProperty();
 	private final SimpleStringProperty luckyNumber = new SimpleStringProperty();
 	
-	public LottoNumber(int size) {
+	//constructor for draw of the lottery
+	public Tip() {}
+	
+	public Tip(int size) {
 		this.lottoNumbers = new ArrayList<>();
 		for (int i=1; i<43; i++) {
             lottoNumbers.add(i);

@@ -4,7 +4,7 @@ import javafx.scene.control.TableView;
 
 import javafx.scene.control.TableColumn.CellEditEvent;
 import swissLotto.model.Model;
-import swissLotto.model.LottoNumber;
+import swissLotto.model.Tip;
 import swissLotto.view.View;
 
 public class Controller {
@@ -15,14 +15,14 @@ public class Controller {
 		this.view = view;
 		this.model = model;
 		
-		view.getTipPane().getAddBtn().setOnAction(e -> model.addNewNumber());
-		view.getTipPane().getDeleteBtn().setOnAction(e -> model.deleteNumber());
+		view.getTipPane().getAddBtn().setOnAction(e -> model.addTip());
+		view.getTipPane().getDeleteBtn().setOnAction(e -> model.deleteTip());
 		
 		// Event handlers for the table columns: validate user input
 		view.getTipPane().getFirstCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
 				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
-					getLottoNumberFromEvent(editEvent).setNumber(newValue);
+					getTipFromEvent(editEvent).setNumber(newValue);
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
@@ -30,7 +30,7 @@ public class Controller {
 		view.getTipPane().getSecondCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
 				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
-					getLottoNumberFromEvent(editEvent).setNumber2(newValue);
+					getTipFromEvent(editEvent).setNumber2(newValue);
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
@@ -38,7 +38,7 @@ public class Controller {
 		view.getTipPane().getThirdCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
 				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
-					getLottoNumberFromEvent(editEvent).setNumber3(newValue);
+					getTipFromEvent(editEvent).setNumber3(newValue);
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
@@ -46,7 +46,7 @@ public class Controller {
 		view.getTipPane().getFourthCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
 				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
-					getLottoNumberFromEvent(editEvent).setNumber4(newValue);
+					getTipFromEvent(editEvent).setNumber4(newValue);
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
@@ -54,7 +54,7 @@ public class Controller {
 		view.getTipPane().getFifthCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
 				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
-					getLottoNumberFromEvent(editEvent).setNumber5(newValue);
+					getTipFromEvent(editEvent).setNumber5(newValue);
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
@@ -62,7 +62,7 @@ public class Controller {
 		view.getTipPane().getSixthCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
 				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
-					getLottoNumberFromEvent(editEvent).setNumber6(newValue);
+					getTipFromEvent(editEvent).setNumber6(newValue);
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
@@ -70,7 +70,7 @@ public class Controller {
 		view.getTipPane().getLuckyNumCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
 				if (isNumber(newValue) && isLuckyNumber(newValue))
-					getLottoNumberFromEvent(editEvent).setLuckyNumber(newValue);
+					getTipFromEvent(editEvent).setLuckyNumber(newValue);
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
@@ -100,25 +100,25 @@ public class Controller {
 		else
 			return false;
 	}
-	
-	private boolean numberIsFree(String number, CellEditEvent<LottoNumber, String> editEvent) {
+	//check if input isn't allready used
+	private boolean numberIsFree(String number, CellEditEvent<Tip, String> editEvent) {
 		boolean free = true;
 		int newNumber = Integer.parseInt(number);
-		LottoNumber ln = getLottoNumberFromEvent(editEvent);
+		Tip tip = getTipFromEvent(editEvent);
 		
-		if(ln.getInt() == newNumber 
-				|| ln.getInt2() == newNumber 
-				|| ln.getInt3() == newNumber 
-				|| ln.getInt4() == newNumber 
-				|| ln.getInt5() == newNumber 
-				|| ln.getInt6() == newNumber)
+		if(tip.getInt() == newNumber 
+				|| tip.getInt2() == newNumber 
+				|| tip.getInt3() == newNumber 
+				|| tip.getInt4() == newNumber 
+				|| tip.getInt5() == newNumber 
+				|| tip.getInt6() == newNumber)
 			free = false;
 		return free;
 	}
 	
 
-	private LottoNumber getLottoNumberFromEvent(CellEditEvent<LottoNumber, String> editEvent) {
-		TableView<LottoNumber> tv = editEvent.getTableView();
+	private Tip getTipFromEvent(CellEditEvent<Tip, String> editEvent) {
+		TableView<Tip> tv = editEvent.getTableView();
 		int rowNumber = editEvent.getTablePosition().getRow();
 		return tv.getItems().get(rowNumber);
 	}

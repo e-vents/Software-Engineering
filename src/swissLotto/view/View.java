@@ -23,7 +23,7 @@ public class View {
 		this.borderPane = new BorderPane();
 		
 		//this.choicePane = new ChoicePane();
-		this.drawPane = new DrawPane();
+		this.drawPane = new DrawPane(model);
 		this.tipPane = new TipPane(model);
 		
 		//this.borderPane.setLeft(this.choicePane);

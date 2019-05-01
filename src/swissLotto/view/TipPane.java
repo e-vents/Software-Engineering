@@ -8,28 +8,28 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import swissLotto.model.Model;
-import swissLotto.model.LottoNumber;
+import swissLotto.model.Tip;
 
 public class TipPane extends VBox {
 	private Model model;
 	
 	protected Button addBtn = new Button("Tip hinzufügen");
 	protected Button deleteBtn = new Button("Tip löschen");
-	protected TableView<LottoNumber> tableView;
-	protected TableColumn<LottoNumber, String> tip;
-	protected TableColumn<LottoNumber, String> firstCol;
-	protected TableColumn<LottoNumber, String> secondCol;
-	protected TableColumn<LottoNumber, String> thirdCol;
-	protected TableColumn<LottoNumber, String> fourthCol;
-	protected TableColumn<LottoNumber, String> fifthCol;
-	protected TableColumn<LottoNumber, String> sixthCol;
-	protected TableColumn<LottoNumber, String> luckyNumCol;
+	protected TableView<Tip> tableView;
+	protected TableColumn<Tip, String> tip;
+	protected TableColumn<Tip, String> firstCol;
+	protected TableColumn<Tip, String> secondCol;
+	protected TableColumn<Tip, String> thirdCol;
+	protected TableColumn<Tip, String> fourthCol;
+	protected TableColumn<Tip, String> fifthCol;
+	protected TableColumn<Tip, String> sixthCol;
+	protected TableColumn<Tip, String> luckyNumCol;
 	
 
 	public TipPane(Model model) {
 		this.model = model;
 		// Initialize TableView
-		TableView<LottoNumber> tableView = createTableView();
+		TableView<Tip> tableView = createTableView();
 
 		// Layout root pane
 		
@@ -43,7 +43,7 @@ public class TipPane extends VBox {
 		deleteBtn.setMaxWidth(597);
 	}
 	
-	private TableView<LottoNumber> createTableView() {
+	private TableView<Tip> createTableView() {
 		tableView = new TableView<>();
 		tableView.setEditable(true);
 
@@ -91,7 +91,7 @@ public class TipPane extends VBox {
 		tableView.getColumns().add(luckyNumCol);
 
 		// Finally, attach the tableView to the ObservableList of data
-		tableView.setItems(model.getElements());
+		tableView.setItems(model.getTips());
 		tableView.setMaxWidth(597);
 
 		return tableView;
@@ -104,35 +104,35 @@ public class TipPane extends VBox {
 		return this.deleteBtn;
 	}
 
-	public TableView<LottoNumber> getTableView() {
+	public TableView<Tip> getTableView() {
 		return tableView;
 	}
 
-	public TableColumn<LottoNumber, String> getFirstCol() {
+	public TableColumn<Tip, String> getFirstCol() {
 		return firstCol;
 	}
 	
-	public TableColumn<LottoNumber, String> getSecondCol() {
+	public TableColumn<Tip, String> getSecondCol() {
 		return secondCol;
 	}
 
-	public TableColumn<LottoNumber, String> getThirdCol() {
+	public TableColumn<Tip, String> getThirdCol() {
 		return thirdCol;
 	}
 
-	public TableColumn<LottoNumber, String> getFourthCol() {
+	public TableColumn<Tip, String> getFourthCol() {
 		return fourthCol;
 	}
 
-	public TableColumn<LottoNumber, String> getFifthCol() {
+	public TableColumn<Tip, String> getFifthCol() {
 		return fifthCol;
 	}
 
-	public TableColumn<LottoNumber, String> getSixthCol() {
+	public TableColumn<Tip, String> getSixthCol() {
 		return sixthCol;
 	}
 
-	public TableColumn<LottoNumber, String> getLuckyNumCol() {
+	public TableColumn<Tip, String> getLuckyNumCol() {
 		return luckyNumCol;
 	}
 }

@@ -13,15 +13,17 @@ import swissLotto.model.LottoNumber;
 public class TipPane extends VBox {
 	private Model model;
 	
-	protected Button button = new Button("Zufallszahlen");
+	protected Button addBtn = new Button("Tip hinzufügen");
+	protected Button deleteBtn = new Button("Tip löschen");
 	protected TableView<LottoNumber> tableView;
-	protected TableColumn<LottoNumber, String> colfirst;
-	protected TableColumn<LottoNumber, String> colsecond;
-	protected TableColumn<LottoNumber, String> colthird;
-	protected TableColumn<LottoNumber, String> colfourth;
-	protected TableColumn<LottoNumber, String> colfifth;
-	protected TableColumn<LottoNumber, String> colsixth;
-	protected TableColumn<LottoNumber, String> colluckyNr;
+	protected TableColumn<LottoNumber, String> tip;
+	protected TableColumn<LottoNumber, String> firstCol;
+	protected TableColumn<LottoNumber, String> secondCol;
+	protected TableColumn<LottoNumber, String> thirdCol;
+	protected TableColumn<LottoNumber, String> fourthCol;
+	protected TableColumn<LottoNumber, String> fifthCol;
+	protected TableColumn<LottoNumber, String> sixthCol;
+	protected TableColumn<LottoNumber, String> luckyNumCol;
 	
 
 	public TipPane(Model model) {
@@ -34,10 +36,11 @@ public class TipPane extends VBox {
 		this.setPadding(new Insets(10)); // around edge of VBox
 		this.setSpacing(10); // between elements
 		VBox.setVgrow(tableView, Priority.ALWAYS); // Vertical resize goes to the table
-		this.getChildren().addAll(tableView, button);
+		this.getChildren().addAll(tableView, addBtn, deleteBtn);
 
 		// Size constraints
-		button.setMaxWidth(Double.MAX_VALUE); // button can grow horizontally
+		addBtn.setMaxWidth(597); // button can grow horizontally
+		deleteBtn.setMaxWidth(597);
 	}
 	
 	private TableView<LottoNumber> createTableView() {
@@ -46,80 +49,90 @@ public class TipPane extends VBox {
 
 		// Each column needs a title, and a source of data.
 		// For editable columns, each column needs to contain a TextField.
-		this.colfirst = new TableColumn<>("1.");
-		this.colfirst.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.colfirst.setCellValueFactory(c -> c.getValue().getNumberProperty());
-		tableView.getColumns().add(colfirst);
+		this.tip = new TableColumn<>("Tip");
+		this.tip.setCellFactory(TextFieldTableCell.forTableColumn());
+		this.tip.setCellValueFactory(c -> c.getValue().getTipProperty());
+		this.tip.setMaxWidth(35);
+		tableView.getColumns().add(tip);
+		
+		this.firstCol = new TableColumn<>("1.");
+		this.firstCol.setCellFactory(TextFieldTableCell.forTableColumn());
+		this.firstCol.setCellValueFactory(c -> c.getValue().getNumber());
+		tableView.getColumns().add(firstCol);
 
-		this.colsecond = new TableColumn<>("2.");
-		this.colsecond.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.colsecond.setCellValueFactory(c -> c.getValue().getNumber2());
-		tableView.getColumns().add(colsecond);
+		this.secondCol = new TableColumn<>("2.");
+		this.secondCol.setCellFactory(TextFieldTableCell.forTableColumn());
+		this.secondCol.setCellValueFactory(c -> c.getValue().getNumber2());
+		tableView.getColumns().add(secondCol);
 		
-		this.colthird = new TableColumn<>("3.");
-		this.colthird.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.colthird.setCellValueFactory(c -> c.getValue().getNumber3());
-		tableView.getColumns().add(colthird);
+		this.thirdCol = new TableColumn<>("3.");
+		this.thirdCol.setCellFactory(TextFieldTableCell.forTableColumn());
+		this.thirdCol.setCellValueFactory(c -> c.getValue().getNumber3());
+		tableView.getColumns().add(thirdCol);
 		
-		this.colfourth = new TableColumn<>("4.");
-		this.colfourth.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.colfourth.setCellValueFactory(c -> c.getValue().getNumber4());
-		tableView.getColumns().add(colfourth);
+		this.fourthCol = new TableColumn<>("4.");
+		this.fourthCol.setCellFactory(TextFieldTableCell.forTableColumn());
+		this.fourthCol.setCellValueFactory(c -> c.getValue().getNumber4());
+		tableView.getColumns().add(fourthCol);
 		
-		this.colfifth = new TableColumn<>("5.");
-		this.colfifth.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.colfifth.setCellValueFactory(c -> c.getValue().getNumber5());
-		tableView.getColumns().add(colfifth);
+		this.fifthCol = new TableColumn<>("5.");
+		this.fifthCol.setCellFactory(TextFieldTableCell.forTableColumn());
+		this.fifthCol.setCellValueFactory(c -> c.getValue().getNumber5());
+		tableView.getColumns().add(fifthCol);
 		
-		this.colsixth = new TableColumn<>("6.");
-		this.colsixth.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.colsixth.setCellValueFactory(c -> c.getValue().getNumber6());
-		tableView.getColumns().add(colsixth);
+		this.sixthCol = new TableColumn<>("6.");
+		this.sixthCol.setCellFactory(TextFieldTableCell.forTableColumn());
+		this.sixthCol.setCellValueFactory(c -> c.getValue().getNumber6());
+		tableView.getColumns().add(sixthCol);
 		
-		this.colluckyNr = new TableColumn<>("Glückszahl");
-		this.colluckyNr.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.colluckyNr.setCellValueFactory(c -> c.getValue().getNumber7());
-		tableView.getColumns().add(colluckyNr);
+		this.luckyNumCol = new TableColumn<>("Glückszahl");
+		this.luckyNumCol.setCellFactory(TextFieldTableCell.forTableColumn());
+		this.luckyNumCol.setCellValueFactory(c -> c.getValue().getLuckyNumber());
+		tableView.getColumns().add(luckyNumCol);
 
 		// Finally, attach the tableView to the ObservableList of data
 		tableView.setItems(model.getElements());
+		tableView.setMaxWidth(597);
 
 		return tableView;
 	}
 
-	public Button getButton() {
-		return button;
+	public Button getAddBtn() {
+		return this.addBtn;
+	}
+	public Button getDeleteBtn() {
+		return this.deleteBtn;
 	}
 
 	public TableView<LottoNumber> getTableView() {
 		return tableView;
 	}
 
-	public TableColumn<LottoNumber, String> getColfirst() {
-		return colsecond;
+	public TableColumn<LottoNumber, String> getFirstCol() {
+		return firstCol;
 	}
 	
-	public TableColumn<LottoNumber, String> getColsecond() {
-		return colsecond;
+	public TableColumn<LottoNumber, String> getSecondCol() {
+		return secondCol;
 	}
 
-	public TableColumn<LottoNumber, String> getColthird() {
-		return colthird;
+	public TableColumn<LottoNumber, String> getThirdCol() {
+		return thirdCol;
 	}
 
-	public TableColumn<LottoNumber, String> getColfourth() {
-		return colfourth;
+	public TableColumn<LottoNumber, String> getFourthCol() {
+		return fourthCol;
 	}
 
-	public TableColumn<LottoNumber, String> getColfifth() {
-		return colfifth;
+	public TableColumn<LottoNumber, String> getFifthCol() {
+		return fifthCol;
 	}
 
-	public TableColumn<LottoNumber, String> getColsixth() {
-		return colsixth;
+	public TableColumn<LottoNumber, String> getSixthCol() {
+		return sixthCol;
 	}
 
-	public TableColumn<LottoNumber, String> getColluckyNr() {
-		return colluckyNr;
+	public TableColumn<LottoNumber, String> getLuckyNumCol() {
+		return luckyNumCol;
 	}
 }

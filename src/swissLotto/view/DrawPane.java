@@ -3,8 +3,6 @@ package swissLotto.view;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-//import javafx.scene.shape.Sphere;
-import swissLotto.Controller;
 
 public class DrawPane extends GridPane {
 	
@@ -22,7 +20,7 @@ public class DrawPane extends GridPane {
 		
 		this.add(sphere, 0, 0);
 		*/
-		this.add(evaluate, 0, 0);
-		this.setAlignment(Pos.BASELINE_CENTER);
+		this.add(evaluate, 0, 1);
+		//this.setAlignment(Pos.BASELINE_CENTER);
 	}
 }

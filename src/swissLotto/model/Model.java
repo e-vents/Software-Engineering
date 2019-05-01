@@ -1,20 +1,26 @@
 package swissLotto.model;
 
-import java.util.Random;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Model {
-	
-	private static Random rand = new Random();
-	
-	private final ObservableList<LottoNumber> numbers = FXCollections.observableArrayList();
 
+	private final ObservableList<LottoNumber> numbers = FXCollections.observableArrayList();
+	
 	public void addNewNumber() {
-		numbers.add(new LottoNumber());
+		if(numbers.size() < 14)
+			numbers.add(new LottoNumber(numbers.size()));
 	}
 
+	public void deleteNumber() {
+		if(!numbers.isEmpty())
+			numbers.remove(numbers.size()-1);
+	}
+	
+	public int getNumberSize() {
+		return numbers.size();
+	}
+	
 	// getters and setters
 	public ObservableList<LottoNumber> getElements() {
 		return numbers;

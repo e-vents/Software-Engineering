@@ -1,7 +1,7 @@
 package swissLotto;
 
-import javafx.collections.ListChangeListener;
 import javafx.scene.control.TableView;
+
 import javafx.scene.control.TableColumn.CellEditEvent;
 import swissLotto.model.Model;
 import swissLotto.model.LottoNumber;
@@ -15,80 +15,68 @@ public class Controller {
 		this.view = view;
 		this.model = model;
 		
-		view.getTipPane().getButton().setOnAction(e -> model.addNewNumber());
+		view.getTipPane().getAddBtn().setOnAction(e -> model.addNewNumber());
+		view.getTipPane().getDeleteBtn().setOnAction(e -> model.deleteNumber());
 		
 		// Event handlers for the table columns: validate user input
-		view.getTipPane().getColfirst().setOnEditCommit(editEvent -> {
+		view.getTipPane().getFirstCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
-				if (isNumberValid(newValue))
+				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
 					getLottoNumberFromEvent(editEvent).setNumber(newValue);
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
 		
-		view.getTipPane().getColsecond().setOnEditCommit(editEvent -> {
+		view.getTipPane().getSecondCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
-				if (isNumberValid(newValue))
-					getLottoNumberFromEvent(editEvent).setNumber(newValue);
+				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
+					getLottoNumberFromEvent(editEvent).setNumber2(newValue);
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
 		
-		view.getTipPane().getColthird().setOnEditCommit(editEvent -> {
+		view.getTipPane().getThirdCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
-				if (isNumberValid(newValue))
-					getLottoNumberFromEvent(editEvent).setNumber(newValue);
+				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
+					getLottoNumberFromEvent(editEvent).setNumber3(newValue);
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
 		
-		view.getTipPane().getColfourth().setOnEditCommit(editEvent -> {
+		view.getTipPane().getFourthCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
-				if (isNumberValid(newValue))
-					getLottoNumberFromEvent(editEvent).setNumber(newValue);
+				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
+					getLottoNumberFromEvent(editEvent).setNumber4(newValue);
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
 		
-		view.getTipPane().getColfifth().setOnEditCommit(editEvent -> {
+		view.getTipPane().getFifthCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
-				if (isNumberValid(newValue))
-					getLottoNumberFromEvent(editEvent).setNumber(newValue);
+				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
+					getLottoNumberFromEvent(editEvent).setNumber5(newValue);
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
 		
-		view.getTipPane().getColsixth().setOnEditCommit(editEvent -> {
+		view.getTipPane().getSixthCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
-				if (isNumberValid(newValue))
-					getLottoNumberFromEvent(editEvent).setNumber(newValue);
+				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
+					getLottoNumberFromEvent(editEvent).setNumber6(newValue);
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
 		
-		view.getTipPane().getColluckyNr().setOnEditCommit(editEvent -> {
+		view.getTipPane().getLuckyNumCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
-				if (isNumberValid(newValue))
-					getLottoNumberFromEvent(editEvent).setNumber(newValue);
+				if (isNumber(newValue) && isLuckyNumber(newValue))
+					getLottoNumberFromEvent(editEvent).setLuckyNumber(newValue);
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
-		});
-
-		// Event handler for the model's ObservableList requires a
-		// ListChangeListener, which is generic, so we have to cast our lambda
-		// to fill in the type.
-		//
-		// ListChangeListener provides a list of events, so we must provide
-		// a loop in case multiple changes are pending. We only want to scroll
-		// to the position of the last change made.
-		model.getElements().addListener((ListChangeListener<LottoNumber>) c -> {
-			while (c.next()) {
-				view.getTipPane().getTableView().scrollTo(c.getFrom());
-			}
 		});
 	}
-
-	private boolean isNumberValid(String number) {
+	//check if input is a number
+	private boolean isNumber(String number) {
 		boolean valid;
 		try {
 			Integer.parseInt(number);
@@ -98,6 +86,36 @@ public class Controller {
 		}
 		return valid;
 	}
+	//check if input is a real lotto number
+	private boolean isLottoNumber(String number) {
+		if(Integer.parseInt(number) <= 42 && Integer.parseInt(number) >= 1)
+			return true;
+		else
+			return false;
+	}
+	//check if input is a lucky lotto number
+	private boolean isLuckyNumber(String number) {
+		if(Integer.parseInt(number) <= 6 && Integer.parseInt(number) >= 1)
+			return true;
+		else
+			return false;
+	}
+	
+	private boolean numberIsFree(String number, CellEditEvent<LottoNumber, String> editEvent) {
+		boolean free = true;
+		int newNumber = Integer.parseInt(number);
+		LottoNumber ln = getLottoNumberFromEvent(editEvent);
+		
+		if(ln.getInt() == newNumber 
+				|| ln.getInt2() == newNumber 
+				|| ln.getInt3() == newNumber 
+				|| ln.getInt4() == newNumber 
+				|| ln.getInt5() == newNumber 
+				|| ln.getInt6() == newNumber)
+			free = false;
+		return free;
+	}
+	
 
 	private LottoNumber getLottoNumberFromEvent(CellEditEvent<LottoNumber, String> editEvent) {
 		TableView<LottoNumber> tv = editEvent.getTableView();

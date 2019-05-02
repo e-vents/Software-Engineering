@@ -13,7 +13,7 @@ public class View {
 	final private Stage stage;
 	private BorderPane borderPane;
 	
-	//private ChoicePane choicePane;
+	private InfoPane infoPane;
 	private TipPane tipPane;
 	private DrawPane drawPane;
 	
@@ -22,15 +22,15 @@ public class View {
 		this.stage = stage;
 		this.borderPane = new BorderPane();
 		
-		//this.choicePane = new ChoicePane();
+		this.infoPane = new InfoPane(model);
 		this.drawPane = new DrawPane(model);
 		this.tipPane = new TipPane(model);
 		
-		//this.borderPane.setLeft(this.choicePane);
+		this.borderPane.setBottom(this.infoPane);
 		this.borderPane.setCenter(this.tipPane);
 		this.borderPane.setRight(this.drawPane);
 		
-		Scene scene = new Scene(this.borderPane, 1200, 456);
+		Scene scene = new Scene(this.borderPane, 1200, 473);
 		stage.setScene(scene);
 		stage.setTitle("Swiss Lotto");
 		stage.show();
@@ -54,5 +54,8 @@ public class View {
 	}
 	public DrawPane getDrawPane() {
 		return drawPane;
+	}
+	public InfoPane getInfoPane() {
+		return infoPane;
 	}
 }

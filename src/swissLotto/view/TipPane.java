@@ -36,7 +36,7 @@ public class TipPane extends VBox {
 		this.setPadding(new Insets(10)); // around edge of VBox
 		this.setSpacing(10); // between elements
 		VBox.setVgrow(tableView, Priority.ALWAYS); // Vertical resize goes to the table
-		this.getChildren().addAll(tableView, addBtn, deleteBtn);
+		this.getChildren().addAll(tableView, deleteBtn, addBtn);
 
 		// Size constraints
 		addBtn.setMaxWidth(597); // button can grow horizontally

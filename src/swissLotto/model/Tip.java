@@ -19,8 +19,22 @@ public class Tip {
 	private final SimpleStringProperty luckyNumber = new SimpleStringProperty();
 	
 	//constructor for draw of the lottery
-	public Tip() {}
-	
+	public Tip() {
+		this.lottoNumbers = new ArrayList<>();
+		for (int i=1; i<43; i++) {
+            lottoNumbers.add(i);
+        }
+		Collections.shuffle(lottoNumbers);
+		
+		this.luckyNumbers = new ArrayList<>();
+		for (int i=1; i<7; i++) {
+            luckyNumbers.add(i);
+        }
+		Collections.shuffle(luckyNumbers);
+		
+		updateRepresentations();
+	}
+	//constructor for tips
 	public Tip(int size) {
 		this.lottoNumbers = new ArrayList<>();
 		for (int i=1; i<43; i++) {
@@ -36,9 +50,20 @@ public class Tip {
 		
 		updateRepresentations(size);
 	}
-	
+	//update-method for tips
 	private void updateRepresentations(int size) {
 		tip.set(Integer.toString(size+1)+".");
+		number.set(Integer.toString(this.lottoNumbers.remove(0)));
+		number2.set(Integer.toString(this.lottoNumbers.remove(0)));
+		number3.set(Integer.toString(this.lottoNumbers.remove(0)));
+		number4.set(Integer.toString(this.lottoNumbers.remove(0)));
+		number5.set(Integer.toString(this.lottoNumbers.remove(0)));
+		number6.set(Integer.toString(this.lottoNumbers.remove(0)));
+		luckyNumber.set(Integer.toString(this.luckyNumbers.remove(0)));
+		//Logger.getLogger("").info("Representations updated: " + number.get());
+	}
+	// update-Method for the lottery draw
+	private void updateRepresentations() {
 		number.set(Integer.toString(this.lottoNumbers.remove(0)));
 		number2.set(Integer.toString(this.lottoNumbers.remove(0)));
 		number3.set(Integer.toString(this.lottoNumbers.remove(0)));
@@ -113,6 +138,19 @@ public class Tip {
 		return Integer.parseInt(luckyNumber.get());
 	}
 	
+	public ArrayList<Integer> LottoNumsAsList() {
+		
+		ArrayList<Integer> lottoNumsList = new ArrayList<>();
+		lottoNumsList.add(getInt());
+		lottoNumsList.add(getInt2());
+		lottoNumsList.add(getInt3());
+		lottoNumsList.add(getInt4());
+		lottoNumsList.add(getInt5());
+		lottoNumsList.add(getInt6());
+		
+		return lottoNumsList; 
+	}
+	
 	public void setTip(String newValue) {
 		this.tip.setValue(newValue);
 	}
@@ -143,6 +181,17 @@ public class Tip {
 	
 	public void setLuckyNumber(String newValue) {
 		this.luckyNumber.setValue(newValue);
+	}
+	
+	@Override
+	public String toString() {
+		return number.toString()+", "+
+				number2.toString()+", "+
+				number3.toString()+", "+
+				number4.toString()+", "+
+				number5.toString()+", "+
+				number6.toString()+"& luckyNum: "+
+				luckyNumber.toString();
 	}
 }
 

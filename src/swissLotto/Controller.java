@@ -1,5 +1,6 @@
 package swissLotto;
 
+import javafx.collections.ListChangeListener;
 import javafx.scene.control.TableView;
 
 import javafx.scene.control.TableColumn.CellEditEvent;
@@ -15,8 +16,15 @@ public class Controller {
 		this.view = view;
 		this.model = model;
 		
-		view.getTipPane().getAddBtn().setOnAction(e -> model.addTip());
-		view.getTipPane().getDeleteBtn().setOnAction(e -> model.deleteTip());
+		view.getTipPane().getAddBtn().setOnAction(e ->{
+			model.addTip();
+			view.getInfoPane().addTipSpend();
+		});
+		
+		view.getTipPane().getDeleteBtn().setOnAction(e -> {
+			model.deleteTip();
+			view.getInfoPane().deleteTipSpend();
+		});
 		
 		// Event handlers for the table columns: validate user input
 		view.getTipPane().getFirstCol().setOnEditCommit(editEvent -> {
@@ -74,7 +82,14 @@ public class Controller {
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
+		
+		model.getTips().addListener((ListChangeListener<Tip>) c -> {
+			while (c.next()) {
+				view.getTipPane().getTableView().scrollTo(c.getFrom());
+			}
+		});
 	}
+	
 	//check if input is a number
 	private boolean isNumber(String number) {
 		boolean valid;

@@ -1,5 +1,6 @@
 package swissLotto.view;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import swissLotto.model.Model;
@@ -19,14 +20,14 @@ public class InfoPane extends HBox {
 		this.wallet = new Label("Guthaben: ");
 		this.spending = new Label("eingesetztes Geld: ");
 		
-		this.jackpotText = new Label("100'000");
-		this.walletText = new Label("200.0");
+		this.jackpotText = new Label("10'000'000");
+		this.walletText = new Label("2000.0");
 		this.spendingText = new Label("0.00");
 		
 		this.getChildren().addAll(this.jackpot, this.jackpotText, 
 				this.wallet, this.walletText, 
 				this.spending, this.spendingText);
-		
+		this.setAlignment(Pos.CENTER);
 		this.setSpacing(55);
 	}
 

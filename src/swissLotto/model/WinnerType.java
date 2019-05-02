@@ -6,10 +6,16 @@ import poker.version_graphics.model.Card;
 import poker.version_graphics.model.HandType;
 
 public enum WinnerType {
-	ThreeRight, ThreePlusOneRight,
-	FourRight, FourPlusOneRight,
-	FiveRight, FivePlusOneRight,
-	SixRight, SixPlusOneRight;
+	ThreeRight(10), ThreePlusOneRight(25),
+	FourRight(75), FourPlusOneRight(150),
+	FiveRight(1000), FivePlusOneRight(10000),
+	SixRight(1000000), SixPlusOneRight(10000000);
+	
+	private int winSum;
+	
+	private WinnerType(int winSum) {
+		this.winSum = winSum;
+	}
 	
 	
     public static WinnerType evaluateDraw(ArrayList<Integer> tip, ArrayList<Integer> draw, boolean luckyNum) {

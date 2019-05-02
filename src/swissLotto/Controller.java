@@ -26,6 +26,8 @@ public class Controller {
 			view.getInfoPane().deleteTipSpend();
 		});
 		
+		view.getDrawPane().getEvaluate().setOnAction(e -> view.getDrawPane().displayWinner());
+		
 		// Event handlers for the table columns: validate user input
 		view.getTipPane().getFirstCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();

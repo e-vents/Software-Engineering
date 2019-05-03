@@ -6,15 +6,17 @@ import poker.version_graphics.model.Card;
 import poker.version_graphics.model.HandType;
 
 public enum WinnerType {
-	ThreeRight(10), ThreePlusOneRight(25),
-	FourRight(75), FourPlusOneRight(150),
-	FiveRight(1000), FivePlusOneRight(10000),
-	SixRight(1000000), SixPlusOneRight(10000000);
+	Three(10, "drei richtige"), ThreePlusOne(25, "drei +1 richrige"),
+	Four(75, "vier richtige"), FourPlusOne(150, "vier +1 richtige"),
+	Five(1000, "fünf richtige"), FivePlusOne(10000, "fünf +1 richtige"),
+	Six(1000000, "sechs richtige"), SixPlusOne(10000000, "sches +1 richtige");
 	
 	private int winSum;
+	private String name;
 	
-	private WinnerType(int winSum) {
+	private WinnerType(int winSum, String name) {
 		this.winSum = winSum;
+		this.name = name;
 	}
 	
 	public int getWinSum() {
@@ -25,15 +27,19 @@ public enum WinnerType {
     	WinnerType currentEval = null;
         
         tip.retainAll(draw);
-        if (tip.size() == 3) currentEval = ThreeRight;
-        if (tip.size() == 3 && luckyNum) currentEval = ThreePlusOneRight;
-        if (tip.size() == 4) currentEval = FourRight;
-        if (tip.size() == 4 && luckyNum) currentEval = FourPlusOneRight;
-        if (tip.size() == 5) currentEval = FiveRight;
-        if (tip.size() == 5 && luckyNum) currentEval = FivePlusOneRight;
-        if (tip.size() == 6) currentEval = SixRight;
-        if (tip.size() == 6 && luckyNum) currentEval = SixPlusOneRight;
+        if (tip.size() == 3) currentEval = Three;
+        if (tip.size() == 3 && luckyNum) currentEval = ThreePlusOne;
+        if (tip.size() == 4) currentEval = Four;
+        if (tip.size() == 4 && luckyNum) currentEval = FourPlusOne;
+        if (tip.size() == 5) currentEval = Five;
+        if (tip.size() == 5 && luckyNum) currentEval = FivePlusOne;
+        if (tip.size() == 6) currentEval = Six;
+        if (tip.size() == 6 && luckyNum) currentEval = SixPlusOne;
         
         return currentEval;
+    }
+    @Override
+    public String toString() {
+    	return this.name+"! +"+this.winSum+" CHF";
     }
 }

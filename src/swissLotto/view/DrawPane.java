@@ -81,51 +81,36 @@ public class DrawPane extends VBox {
 			
 			if(winnerTypes.get(i) != null) {
 				
-				if(winnerTypes.get(i).equals(WinnerType.ThreeRight))
-					this.status.setText("you have three correct ones with your "+(i+1)+". tip. +"+
-							WinnerType.ThreeRight.getWinSum()+" CHF");
+				if(winnerTypes.get(i).equals(WinnerType.Three))
+					status.setText(status.getText()+WinnerType.Three.toString()+" mit Tip "+(i+1)+"\n");
 					
-				if(winnerTypes.get(i).equals(WinnerType.ThreePlusOneRight))
-					this.status.setText(status.getText()+
-							"\nyou have three +1 correct ones with your "+(i+1)+". tip. +"+
-							WinnerType.ThreePlusOneRight.getWinSum()+" CHF");
+				if(winnerTypes.get(i).equals(WinnerType.ThreePlusOne))
+					status.setText(status.getText()+WinnerType.ThreePlusOne.toString()+" mit Tip "+(i+1)+"\n");
 					
 				
-				if(winnerTypes.get(i).equals(WinnerType.FourRight))
-					this.status.setText(status.getText()+
-							"\nyou have four correct ones with your "+(i+1)+". tip. +"+
-							WinnerType.FourRight.getWinSum()+" CHF");
+				if(winnerTypes.get(i).equals(WinnerType.Four))
+					status.setText(status.getText()+WinnerType.Four.toString()+" mit Tip "+(i+1)+"\n");
 					
-				if(winnerTypes.get(i).equals(WinnerType.FourPlusOneRight))
-					this.status.setText(status.getText()+
-							"\nyou have four +1 correct ones with your "+(i+1)+". tip. +"+
-							WinnerType.FourPlusOneRight.getWinSum()+" CHF");
+				if(winnerTypes.get(i).equals(WinnerType.FourPlusOne))
+					status.setText(status.getText()+WinnerType.FourPlusOne.toString()+" mit Tip "+(i+1)+"\n");
 					
 				
-				if(winnerTypes.get(i).equals(WinnerType.FiveRight))
-					this.status.setText(status.getText()+
-							"\nyou have five correct ones! with your "+(i+1)+". tip. +"+
-							WinnerType.FiveRight.getWinSum()+" CHF");
+				if(winnerTypes.get(i).equals(WinnerType.Five))
+					status.setText(status.getText()+WinnerType.Five.toString()+" mit Tip "+(i+1)+"\n");
 					
-				if(winnerTypes.get(i).equals(WinnerType.FivePlusOneRight))
-					this.status.setText(status.getText()+
-							"\nyou have five +1 correct ones with your "+(i+1)+". tip. +"+
-							WinnerType.FivePlusOneRight.getWinSum()+" CHF");
+				if(winnerTypes.get(i).equals(WinnerType.FivePlusOne))
+					status.setText(WinnerType.FivePlusOne.toString()+" mit Tip "+(i+1)+"\n");
 					
 				
-				if(winnerTypes.get(i).equals(WinnerType.SixRight))
-					this.status.setText(status.getText()+
-							"\nyou have six correct ones! with your "+(i+1)+". tip. +"+
-							WinnerType.SixRight.getWinSum()+" CHF");
+				if(winnerTypes.get(i).equals(WinnerType.Six))
+					status.setText(status.getText()+WinnerType.Six.toString()+" mit Tip "+(i+1)+"\n");
 					
-				if(winnerTypes.get(i).equals(WinnerType.SixPlusOneRight))
-					this.status.setText(status.getText()+
-							"\nyou have six +1 correct ones with your "+(i+1)+". tip. +"+
-							WinnerType.SixPlusOneRight.getWinSum()+" CHF");	
+				if(winnerTypes.get(i).equals(WinnerType.SixPlusOne))
+					status.setText(status.getText()+WinnerType.SixPlusOne.toString()+" mit Tip "+(i+1)+"\n");
 			}
 		}
 		if(this.status.getText().equals(""))
-			this.status.setText("you lost");
+			this.status.setText("leider kein Gewinn");
 	}
 	
 	//get and display the draw numbers 

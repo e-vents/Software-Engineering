@@ -53,25 +53,34 @@ public class Tip {
 	//update-method for tips
 	private void updateRepresentations(int size) {
 		tip.set(Integer.toString(size+1)+".");
-		number.set(Integer.toString(this.lottoNumbers.remove(0)));
-		number2.set(Integer.toString(this.lottoNumbers.remove(0)));
-		number3.set(Integer.toString(this.lottoNumbers.remove(0)));
-		number4.set(Integer.toString(this.lottoNumbers.remove(0)));
-		number5.set(Integer.toString(this.lottoNumbers.remove(0)));
-		number6.set(Integer.toString(this.lottoNumbers.remove(0)));
+		number.set(Integer.toString(getLottoNum(0)));
+		number2.set(Integer.toString(getLottoNum(1)));
+		number3.set(Integer.toString(getLottoNum(2)));
+		number4.set(Integer.toString(getLottoNum(3)));
+		number5.set(Integer.toString(getLottoNum(4)));
+		number6.set(Integer.toString(getLottoNum(5)));
 		luckyNumber.set(Integer.toString(this.luckyNumbers.remove(0)));
 		//Logger.getLogger("").info("Representations updated: " + number.get());
 	}
 	// update-Method for the lottery draw
 	private void updateRepresentations() {
-		number.set(Integer.toString(this.lottoNumbers.remove(0)));
-		number2.set(Integer.toString(this.lottoNumbers.remove(0)));
-		number3.set(Integer.toString(this.lottoNumbers.remove(0)));
-		number4.set(Integer.toString(this.lottoNumbers.remove(0)));
-		number5.set(Integer.toString(this.lottoNumbers.remove(0)));
-		number6.set(Integer.toString(this.lottoNumbers.remove(0)));
+		number.set(Integer.toString(getLottoNum(0)));
+		number2.set(Integer.toString(getLottoNum(1)));
+		number3.set(Integer.toString(getLottoNum(2)));
+		number4.set(Integer.toString(getLottoNum(3)));
+		number5.set(Integer.toString(getLottoNum(4)));
+		number6.set(Integer.toString(getLottoNum(5)));
 		luckyNumber.set(Integer.toString(this.luckyNumbers.remove(0)));
 		//Logger.getLogger("").info("Representations updated: " + number.get());
+	}
+	//make shure the Lotto number are sorted
+	private int getLottoNum(int index) {
+		ArrayList<Integer> tempNums = new ArrayList<Integer>();
+		for(int i = 0; i < 6; i++) {
+			tempNums.add(this.lottoNumbers.get(i));
+		}
+		Collections.sort(tempNums);
+		return tempNums.get(index);
 	}
 	//--- Getters and Setters ---
 	
@@ -185,13 +194,13 @@ public class Tip {
 	
 	@Override
 	public String toString() {
-		return number.toString()+", "+
-				number2.toString()+", "+
-				number3.toString()+", "+
-				number4.toString()+", "+
-				number5.toString()+", "+
-				number6.toString()+"& luckyNum: "+
-				luckyNumber.toString();
+		return getInt()+", "+
+				getInt2()+", "+
+				getInt3()+", "+
+				getInt4()+", "+
+				getInt5()+", "+
+				getInt6()+"& luckyNum: "+
+				getLuckyInt();
 	}
 }
 

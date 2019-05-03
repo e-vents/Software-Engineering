@@ -17,6 +17,9 @@ public enum WinnerType {
 		this.winSum = winSum;
 	}
 	
+	public int getWinSum() {
+		return this.winSum;
+	}
 	
     public static WinnerType evaluateDraw(ArrayList<Integer> tip, ArrayList<Integer> draw, boolean luckyNum) {
     	WinnerType currentEval = null;

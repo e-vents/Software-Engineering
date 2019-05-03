@@ -10,7 +10,7 @@ import poker.version_graphics.model.HandType;
 public class Model {
 	//List with all tips inside
 	private final ObservableList<Tip> numbers = FXCollections.observableArrayList();
-	private static final int MAX_TIPS = 14;
+	private static final int MAX_TIPS = 45;
 	private Tip draw = null; 
 	
 	public void addTip() {
@@ -32,7 +32,7 @@ public class Model {
 		return numbers;
 	}
 	
-	public Tip getDraw() {
+	public Tip getDraw() {		
 		return draw;
 	}
 	

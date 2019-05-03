@@ -21,16 +21,19 @@ public class View {
 		//this.model = model;
 		this.stage = stage;
 		this.borderPane = new BorderPane();
+		this.borderPane.setId("borderPane");
 		
 		this.infoPane = new InfoPane(model);
 		this.drawPane = new DrawPane(model);
 		this.tipPane = new TipPane(model);
 		
 		this.borderPane.setBottom(this.infoPane);
-		this.borderPane.setCenter(this.tipPane);
-		this.borderPane.setRight(this.drawPane);
+		this.borderPane.setLeft(this.tipPane);
+		this.borderPane.setCenter(this.drawPane);
 		
 		Scene scene = new Scene(this.borderPane, 1200, 473);
+		 scene.getStylesheets().add(
+	                getClass().getResource("style.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setTitle("Swiss Lotto");
 		stage.show();

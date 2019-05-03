@@ -2,14 +2,11 @@ package swissLotto.model;
 
 import java.util.ArrayList;
 
-import poker.version_graphics.model.Card;
-import poker.version_graphics.model.HandType;
-
 public enum WinnerType {
-	Three(10, "drei richtige"), ThreePlusOne(25, "drei +1 richrige"),
-	Four(75, "vier richtige"), FourPlusOne(150, "vier +1 richtige"),
-	Five(1000, "fünf richtige"), FivePlusOne(10000, "fünf +1 richtige"),
-	Six(1000000, "sechs richtige"), SixPlusOne(10000000, "sches +1 richtige");
+	Three(10, "3 Richtige"), ThreePlusOne(25, "3+1 Richtige"),
+	Four(75, "4 Richtige"), FourPlusOne(150, "4+1 Richtige"),
+	Five(1000, "5 Richtige"), FivePlusOne(10000, "5+1 Richtige"),
+	Six(1000000, "6 Richtige"), SixPlusOne(10000000, "6+1 Richtige");
 	
 	private int winSum;
 	private String name;
@@ -40,6 +37,6 @@ public enum WinnerType {
     }
     @Override
     public String toString() {
-    	return this.name+"! +"+this.winSum+" CHF";
+    	return this.name+"! "+this.winSum+".- Gewinn";
     }
 }

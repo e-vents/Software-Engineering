@@ -24,11 +24,11 @@ public class InfoPane extends HBox {
 		this.walletText = new Label("2000.0");
 		this.spendingText = new Label("0.00");
 		
-		this.getChildren().addAll(this.jackpot, this.jackpotText, 
-				this.wallet, this.walletText, 
-				this.spending, this.spendingText);
+		this.getChildren().addAll(this.wallet, this.walletText, 
+				this.spending, this.spendingText, 
+				this.jackpot, this.jackpotText);
 		this.setAlignment(Pos.CENTER);
-		this.setSpacing(55);
+		this.setSpacing(20);
 	}
 
 	public Label getJackpotText() {

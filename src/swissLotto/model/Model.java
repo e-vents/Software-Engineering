@@ -1,11 +1,8 @@
 package swissLotto.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import poker.version_graphics.model.HandType;
 
 public class Model {
 	//List with all tips inside
@@ -39,7 +36,6 @@ public class Model {
 	//return list with the WinnerType of all Tips including null
 	public ArrayList<WinnerType> evaluateDraw() {
 		this.draw = new Tip();
-		//System.out.println(draw.toString());
 
 		ArrayList<Integer> draw = this.draw.LottoNumsAsList();
 		ArrayList<WinnerType> winnerTypes = new ArrayList<>();

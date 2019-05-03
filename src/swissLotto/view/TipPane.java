@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import swissLotto.model.Model;
@@ -13,8 +14,10 @@ import swissLotto.model.Tip;
 public class TipPane extends VBox {
 	private Model model;
 	
+	protected HBox buttons;
 	protected Button addBtn = new Button("Tip hinzufügen");
 	protected Button deleteBtn = new Button("Tip löschen");
+	protected Button playBtn = new Button("Spielen");
 	protected TableView<Tip> tableView;
 	protected TableColumn<Tip, String> tip;
 	protected TableColumn<Tip, String> firstCol;
@@ -30,17 +33,21 @@ public class TipPane extends VBox {
 		this.model = model;
 		// Initialize TableView
 		TableView<Tip> tableView = createTableView();
-
+		buttons = new HBox();
+		addBtn.setPrefWidth(260);
+		addBtn.getStyleClass().add("controls");
+		deleteBtn.setPrefWidth(260);
+		deleteBtn.getStyleClass().add("controls");
+		playBtn.setPrefWidth(75);
+		playBtn.getStyleClass().add("controls");
+		buttons.setSpacing(9);
+		buttons.getChildren().addAll(deleteBtn, addBtn, playBtn);
 		// Layout root pane
 		
 		this.setPadding(new Insets(10)); // around edge of VBox
 		this.setSpacing(10); // between elements
 		VBox.setVgrow(tableView, Priority.ALWAYS); // Vertical resize goes to the table
-		this.getChildren().addAll(tableView, deleteBtn, addBtn);
-
-		// Size constraints
-		addBtn.setMaxWidth(597); // button can grow horizontally
-		deleteBtn.setMaxWidth(597);
+		this.getChildren().addAll(tableView, buttons);
 	}
 	
 	private TableView<Tip> createTableView() {
@@ -92,7 +99,7 @@ public class TipPane extends VBox {
 
 		// Finally, attach the tableView to the ObservableList of data
 		tableView.setItems(model.getTips());
-		tableView.setMaxWidth(597);
+		tableView.setMaxWidth(611);
 
 		return tableView;
 	}
@@ -102,6 +109,10 @@ public class TipPane extends VBox {
 	}
 	public Button getDeleteBtn() {
 		return this.deleteBtn;
+	}
+
+	public Button getPlayBtn() {
+		return playBtn;
 	}
 
 	public TableView<Tip> getTableView() {

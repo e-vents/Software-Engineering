@@ -39,6 +39,30 @@
 	-fx-effect: dropshadow(three-pass-box, #968c48, 10, 0, 1, 1);
 }
 
+.controls {
+	-fx-text-fill: #777777;
+	-fx-background-color: transparent;
+	-fx-background-radius: 2;
+	-fx-border-color: #777777;
+	-fx-border-width: 1.0;
+	-fx-border-radius: 2;
+}
+.controls:hover {
+	-fx-background-color: #fceed1;
+}
+.controls:pressed {
+	-fx-background-color: #fceed1;
+}
+.controls:focused {
+	-fx-border-color: white;
+}
+
 #borderPane {
 	-fx-background-color: #fceed1;
+}
+
+#status {
+	-fx-font-size: 14px;
+	-fx-font-weight: bold;
+	-fx-text-fill: #777777;
 }

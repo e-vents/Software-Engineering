@@ -47,11 +47,7 @@ public class View {
 	}
 	
 	//getters and setters from TipPane
-	/*
-	public ChoicePane getChoicePane() {
-		return choicePane;
-	}
-	*/
+	
 	public TipPane getTipPane() {
 		return tipPane;
 	}

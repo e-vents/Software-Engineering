@@ -9,8 +9,8 @@ import swissLotto.model.Tip;
 import swissLotto.view.View;
 
 public class Controller {
-	final private Model model;
-	final private View view;
+	private final Model model;
+	private final View view;
 	
 	public Controller(Model model, View view) {
 		this.view = view;
@@ -26,7 +26,7 @@ public class Controller {
 			view.getInfoPane().deleteTipSpend();
 		});
 		
-		view.getDrawPane().getEvaluate().setOnAction(e -> view.getDrawPane().displayWinner());
+		view.getTipPane().getPlayBtn().setOnAction(e -> view.getDrawPane().displayWinner());
 		
 		// Event handlers for the table columns: validate user input
 		view.getTipPane().getFirstCol().setOnEditCommit(editEvent -> {
@@ -132,8 +132,7 @@ public class Controller {
 			free = false;
 		return free;
 	}
-	
-
+	//return Tip on active Row
 	private Tip getTipFromEvent(CellEditEvent<Tip, String> editEvent) {
 		TableView<Tip> tv = editEvent.getTableView();
 		int rowNumber = editEvent.getTablePosition().getRow();

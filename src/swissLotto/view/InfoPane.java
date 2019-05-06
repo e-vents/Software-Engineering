@@ -69,6 +69,7 @@ public class InfoPane extends HBox {
 		if(money < 112.5)
 		this.spendingText.setText(String.valueOf(money+2.50));
 	}
+	
 	public void deleteTipSpend() {
 		double money = Double.parseDouble(this.spendingText.getText());
 		if(money > 0)

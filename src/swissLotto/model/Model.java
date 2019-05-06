@@ -32,7 +32,6 @@ public class Model {
 	public Tip getDraw() {		
 		return draw;
 	}
-	
 	//return list with the WinnerType of all Tips including null
 	public ArrayList<WinnerType> evaluateDraw() {
 		this.draw = new Tip();
@@ -51,7 +50,7 @@ public class Model {
 		}
 		return winnerTypes;
 	}
-	
+	//evaluate if lucky number equals draw lucky number
 	public boolean isCorrectLuckyNumber(int i) {
 		int luckyDrawNum = this.draw.getLuckyInt();
 		int luckyTipNum;

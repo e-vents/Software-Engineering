@@ -102,7 +102,7 @@ public class TipPane extends VBox {
 		// Finally, attach the tableView to the ObservableList of data
 		tableView.setItems(model.getTips());
 		tableView.setMaxWidth(596);
-		tableView.setMaxHeight(412);
+		tableView.setMaxHeight(1000);
 
 		return tableView;
 	}

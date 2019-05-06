@@ -31,10 +31,12 @@ public class View {
 		this.borderPane.setLeft(this.tipPane);
 		this.borderPane.setCenter(this.drawPane);
 		
-		Scene scene = new Scene(this.borderPane, 1200, 560);
+		Scene scene = new Scene(this.borderPane, 1310, 560);
 		 scene.getStylesheets().add(
 	                getClass().getResource("style.css").toExternalForm());
 		stage.setScene(scene);
+		stage.setMinHeight(350);
+		stage.setMinWidth(1200);
 		stage.setTitle("Swiss Lotto");
 		stage.show();
 	}
@@ -47,7 +49,6 @@ public class View {
 	}
 	
 	//getters and setters from TipPane
-	
 	public TipPane getTipPane() {
 		return tipPane;
 	}

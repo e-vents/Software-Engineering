@@ -3,6 +3,7 @@ package swissLotto.view;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import swissLotto.model.Model;
 
 public class InfoPane extends HBox {
@@ -27,7 +28,7 @@ public class InfoPane extends HBox {
 		this.getChildren().addAll(this.wallet, this.walletText, 
 				this.spending, this.spendingText, 
 				this.jackpot, this.jackpotText);
-		this.setAlignment(Pos.CENTER);
+		this.setAlignment(Pos.BOTTOM_RIGHT);
 		this.setSpacing(20);
 	}
 

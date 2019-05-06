@@ -7,6 +7,7 @@ import javafx.animation.ParallelTransition;
 import javafx.animation.PathTransition;
 import javafx.animation.RotateTransition;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -60,6 +61,7 @@ public class DrawPane extends VBox {
 		this.getChildren().addAll(lottoBalls, status);
 		this.setSpacing(50);
 		this.setAlignment(Pos.CENTER);
+		this.setId("drawPane");
 	}
 	
 	public void displayWinner() {
@@ -116,24 +118,24 @@ public class DrawPane extends VBox {
 
 	private void animateBalls() {
 		
-		PathElement pe1 = new MoveTo(195, -200); // Start position
-		PathElement pe11 = new LineTo(40, 80);  //0, 25
+		PathElement pe1 = new MoveTo(195, -300); // Start position
+		//PathElement pe11 = new LineTo(40, 80);  //0, 25
 		PathElement pe111 = new LineTo(23, 25);
-		PathElement pe2 = new MoveTo(129, -200); // Start position
+		PathElement pe2 = new MoveTo(129, -300); // Start position
 		PathElement pe22 = new LineTo(24, 25);
-		PathElement pe3 = new MoveTo(65, -200); // Start position
+		PathElement pe3 = new MoveTo(65, -300); // Start position
 		PathElement pe33 = new LineTo(25, 25);
-		PathElement pe4 = new MoveTo(0, -200); // Start position
+		PathElement pe4 = new MoveTo(0, -300); // Start position
 		PathElement pe44 = new LineTo(26, 25);
-		PathElement pe5 = new MoveTo(-65, -200); // Start position
+		PathElement pe5 = new MoveTo(-65, -300); // Start position
 		PathElement pe55 = new LineTo(27, 25);
-		PathElement pe6 = new MoveTo(-129, -200); // Start position
+		PathElement pe6 = new MoveTo(-129, -300); // Start position
 		PathElement pe66 = new LineTo(28, 25);
-		PathElement pe7 = new MoveTo(300, -200); // Start position
+		PathElement pe7 = new MoveTo(300, -300); // Start position
 		PathElement pe77 = new LineTo(29, 25);
 
 		Path path = new Path();
-		path.getElements().addAll(pe1, pe11, pe111);
+		path.getElements().addAll(pe1, pe111); //pe11, pe111);
 		Path path2 = new Path();
 		path2.getElements().addAll(pe2,pe22);
 		Path path3 = new Path();

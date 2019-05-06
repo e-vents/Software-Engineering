@@ -34,12 +34,13 @@ public class TipPane extends VBox {
 		// Initialize TableView
 		TableView<Tip> tableView = createTableView();
 		buttons = new HBox();
-		addBtn.setPrefWidth(260);
+		addBtn.setPrefWidth(250);
 		addBtn.getStyleClass().add("controls");
-		deleteBtn.setPrefWidth(260);
+		deleteBtn.setPrefWidth(250);
 		deleteBtn.getStyleClass().add("controls");
-		playBtn.setPrefWidth(75);
+		playBtn.setPrefWidth(78);
 		playBtn.getStyleClass().add("controls");
+		playBtn.setId("play");
 		buttons.setSpacing(9);
 		buttons.getChildren().addAll(deleteBtn, addBtn, playBtn);
 		// Layout root pane
@@ -48,6 +49,7 @@ public class TipPane extends VBox {
 		this.setSpacing(10); // between elements
 		VBox.setVgrow(tableView, Priority.ALWAYS); // Vertical resize goes to the table
 		this.getChildren().addAll(tableView, buttons);
+		this.setId("tipPane");
 	}
 	
 	private TableView<Tip> createTableView() {
@@ -99,7 +101,8 @@ public class TipPane extends VBox {
 
 		// Finally, attach the tableView to the ObservableList of data
 		tableView.setItems(model.getTips());
-		tableView.setMaxWidth(611);
+		tableView.setMaxWidth(596);
+		tableView.setMaxHeight(412);
 
 		return tableView;
 	}

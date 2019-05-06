@@ -18,18 +18,26 @@ public class InfoPane extends HBox {
 	public InfoPane(Model model) {
 		
 		this.jackpot = new Label("Jackpot: ");
+		this.jackpot.getStyleClass().add("jackpot");
 		this.wallet = new Label("Guthaben: ");
+		this.wallet.getStyleClass().add("wallet");
 		this.spending = new Label("eingesetztes Geld: ");
+		this.spending.getStyleClass().add("spending");
 		
 		this.jackpotText = new Label("10'000'000");
+		this.jackpotText.getStyleClass().add("jackpot");
 		this.walletText = new Label("2000.0");
+		this.walletText.getStyleClass().add("wallet");
 		this.spendingText = new Label("0.00");
+		this.spendingText.getStyleClass().add("spending");
+		
 		
 		this.getChildren().addAll(this.wallet, this.walletText, 
 				this.spending, this.spendingText, 
 				this.jackpot, this.jackpotText);
 		this.setAlignment(Pos.BOTTOM_RIGHT);
-		this.setSpacing(20);
+		//this.setSpacing(10);
+		this.setId("infoPane");
 	}
 
 	public Label getJackpotText() {

@@ -2,6 +2,7 @@ package swissLotto.view;
 
 import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import swissLotto.model.Model;
@@ -37,7 +38,8 @@ public class View {
 		stage.setScene(scene);
 		stage.setMinHeight(350);
 		stage.setMinWidth(1200);
-		stage.setTitle("Swiss Lotto");
+		stage.setTitle("SwissLotto");
+		stage.getIcons().add(new Image("swissLotto/images/jackpot_header_swisslotto_logo.png"));
 		stage.show();
 	}
 	public void start() {

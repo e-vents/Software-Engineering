@@ -24,11 +24,10 @@ public class Model {
 		return numbers.size();
 	}
 	
-	// getters and setters
 	public ObservableList<Tip> getTips() {
 		return numbers;
 	}
-	/*
+	/*TODO using stream to get LottoNums as List
 	private ArrayList<Integer> tipAsList(int i) {
 		return (ArrayList<Integer>) numbers.stream().map(e -> e.getInt(i))
 						.collect(Collectors.toList());
@@ -39,24 +38,23 @@ public class Model {
 	}
 	//return list with the WinnerType of all Tips including null
 	public ArrayList<WinnerType> evaluateDraw() {
-		this.draw = new Tip();
+		draw = new Tip(-1); //lottery draws first
 
-		ArrayList<Integer> draw = this.draw.LottoNumsAsList();
+		ArrayList<Integer> drawNums = draw.LottoNumsAsList();
 		ArrayList<WinnerType> winnerTypes = new ArrayList<>();
-		ArrayList<Integer> tempTip;
+		ArrayList<Integer> nextTip;
 		
 		//temporary list without lucky Number
 		for(int i = 0; i < numbers.size(); i++) {
 			
-			tempTip = numbers.get(i).LottoNumsAsList();
-			
-			// for each tip check for WinnerType
-			winnerTypes.add(WinnerType.evaluateDraw(tempTip, draw, isCorrectLuckyNumber(i)));
+			nextTip = numbers.get(i).LottoNumsAsList();
+			// for each tip --> evaluate wins
+			winnerTypes.add(WinnerType.evaluateDraw(nextTip, drawNums, isCorrectLuckyNumber(i)));
 		}
 		return winnerTypes;
 	}
 	//evaluate if lucky number equals draw lucky number
-	public boolean isCorrectLuckyNumber(int i) {
+	private boolean isCorrectLuckyNumber(int i) {
 		int luckyDrawNum = this.draw.getLuckyInt();
 		int luckyTipNum;
 		

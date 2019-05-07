@@ -10,7 +10,6 @@ import swissLotto.model.Model;
 
 public class View {
 	
-	//final private Model model;
 	final private Stage stage;
 	private BorderPane borderPane;
 	
@@ -49,8 +48,7 @@ public class View {
 		stage.hide();
 		Platform.exit();
 	}
-	
-	//getters and setters from TipPane
+	//getters for all inner panes
 	public TipPane getTipPane() {
 		return tipPane;
 	}

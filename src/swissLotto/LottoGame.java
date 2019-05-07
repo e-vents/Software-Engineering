@@ -21,6 +21,5 @@ public class LottoGame extends Application {
     	model = new Model();
     	view = new View(primaryStage, model);
     	controller = new Controller(model, view);
-    	
     }
 }

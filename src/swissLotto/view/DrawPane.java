@@ -6,7 +6,6 @@ import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.PathTransition;
 import javafx.animation.RotateTransition;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -30,7 +29,7 @@ public class DrawPane extends VBox {
 		status = new Label("");
 		status.setId("status");
 		lottoBalls = new HBox();
-		
+		//instanciate all Draw-Labels
 		lottoNums = new Label[7];
 		for(int i = 0; i < lottoNums.length; i++) {
 			lottoNums[i] = new Label();
@@ -49,17 +48,17 @@ public class DrawPane extends VBox {
 		this.setAlignment(Pos.CENTER);
 		this.setId("drawPane");
 	}
-	
-	public void displayWinner() {
-		this.winnerTypes = model.evaluateDraw();
+	//displays wins or losses
+	public void displayDrawArea() {
+		winnerTypes = model.evaluateDraw();
 		lottoBalls.setVisible(true);
 		displayDraw();
 		animateBalls();
-		this.status.setText("");
+		status.setText("");
 		for(int i = 0; i < winnerTypes.size(); i++) {
-			
+			//if there are any tips winning
 			if(winnerTypes.get(i) != null) {
-				
+				//evaluate wins
 				if(winnerTypes.get(i).equals(WinnerType.Three))
 					status.setText(status.getText()+WinnerType.Three.toString()+" mit Nr. "+(i+1)+"\n");		
 				if(winnerTypes.get(i).equals(WinnerType.ThreePlusOne))
@@ -80,9 +79,9 @@ public class DrawPane extends VBox {
 				if(winnerTypes.get(i).equals(WinnerType.SixPlusOne))
 					status.setText(status.getText()+WinnerType.SixPlusOne.toString()+" mit Nr. "+(i+1)+"\n");
 			}
-		}
-		if(this.status.getText().equals(""))
-			this.status.setText("Leider kein Gewinn");
+		}//if no tip is winning
+		if(status.getText().equals(""))
+			status.setText("Leider kein Gewinn");
 	}
 	
 	//get and display the draw numbers 
@@ -101,6 +100,7 @@ public class DrawPane extends VBox {
 				l.setText(" "+Integer.toString(luckyNum));
 		}
 	}
+	
 	//all animations for the lottoBalls
 	private void animateBalls() {
 		//list with all starting points
@@ -142,7 +142,7 @@ public class DrawPane extends VBox {
 		statusFade.setFromValue(0.0);
 	    statusFade.setToValue(1.0);
 	    statusFade.delayProperty().set(Duration.millis(800));
-		
+		//make animations parallel and play them
 	    ParallelTransition[] parallels = new ParallelTransition[7];
 		for(int i = 0; i < parallels.length; i++) {
 			//TODO conditional instead of if else

@@ -12,8 +12,8 @@ import swissLotto.model.Model;
 import swissLotto.model.Tip;
 
 public class TipPane extends VBox {
-	private Model model;
 	
+	private Model model;
 	protected HBox buttons;
 	protected Button addBtn = new Button("Tip hinzufügen");
 	protected Button deleteBtn = new Button("Tip löschen");
@@ -27,7 +27,6 @@ public class TipPane extends VBox {
 	protected TableColumn<Tip, String> fifthCol;
 	protected TableColumn<Tip, String> sixthCol;
 	protected TableColumn<Tip, String> luckyNumCol;
-	
 
 	public TipPane(Model model) {
 		this.model = model;
@@ -105,46 +104,39 @@ public class TipPane extends VBox {
 
 		return tableView;
 	}
-
+	
+	//getters for the Buttons
 	public Button getAddBtn() {
 		return this.addBtn;
 	}
 	public Button getDeleteBtn() {
 		return this.deleteBtn;
 	}
-
 	public Button getPlayBtn() {
 		return playBtn;
 	}
-
+	//getters for the table & columns
 	public TableView<Tip> getTableView() {
 		return tableView;
 	}
-
 	public TableColumn<Tip, String> getFirstCol() {
 		return firstCol;
 	}
-	
 	public TableColumn<Tip, String> getSecondCol() {
 		return secondCol;
 	}
-
 	public TableColumn<Tip, String> getThirdCol() {
 		return thirdCol;
 	}
-
 	public TableColumn<Tip, String> getFourthCol() {
 		return fourthCol;
 	}
-
 	public TableColumn<Tip, String> getFifthCol() {
 		return fifthCol;
 	}
-
 	public TableColumn<Tip, String> getSixthCol() {
 		return sixthCol;
 	}
-
 	public TableColumn<Tip, String> getLuckyNumCol() {
 		return luckyNumCol;
 	}

@@ -15,25 +15,24 @@ public enum WinnerType {
 		this.winSum = winSum;
 		this.name = name;
 	}
-	
+	//getter
 	public int getWinSum() {
 		return this.winSum;
 	}
-	
+	//evaluate a single tip with the draw
     public static WinnerType evaluateDraw(ArrayList<Integer> tip, ArrayList<Integer> draw, boolean luckyNum) {
-    	WinnerType currentEval = null;
+    	WinnerType winType = null;
         
         tip.retainAll(draw);
-        if (tip.size() == 3) currentEval = Three;
-        if (tip.size() == 3 && luckyNum) currentEval = ThreePlusOne;
-        if (tip.size() == 4) currentEval = Four;
-        if (tip.size() == 4 && luckyNum) currentEval = FourPlusOne;
-        if (tip.size() == 5) currentEval = Five;
-        if (tip.size() == 5 && luckyNum) currentEval = FivePlusOne;
-        if (tip.size() == 6) currentEval = Six;
-        if (tip.size() == 6 && luckyNum) currentEval = SixPlusOne;
-        
-        return currentEval;
+        if (tip.size() == 3) winType = Three;
+        if (tip.size() == 3 && luckyNum) winType = ThreePlusOne;
+        if (tip.size() == 4) winType = Four;
+        if (tip.size() == 4 && luckyNum) winType = FourPlusOne;
+        if (tip.size() == 5) winType = Five;
+        if (tip.size() == 5 && luckyNum) winType = FivePlusOne;
+        if (tip.size() == 6) winType = Six;
+        if (tip.size() == 6 && luckyNum) winType = SixPlusOne;
+        return winType;
     }
     @Override
     public String toString() {

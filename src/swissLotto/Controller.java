@@ -16,17 +16,16 @@ public class Controller {
 		this.view = view;
 		this.model = model;
 		
+		//button-Events-Handlers
 		view.getTipPane().getAddBtn().setOnAction(e ->{
 			model.addTip();
 			view.getInfoPane().addTipSpend();
 		});
-		
 		view.getTipPane().getDeleteBtn().setOnAction(e -> {
 			model.deleteTip();
 			view.getInfoPane().deleteTipSpend();
 		});
-		
-		view.getTipPane().getPlayBtn().setOnAction(e -> view.getDrawPane().displayWinner());
+		view.getTipPane().getPlayBtn().setOnAction(e -> view.getDrawPane().displayDrawArea());
 		
 		// Event handlers for the table columns: validate user input
 		view.getTipPane().getFirstCol().setOnEditCommit(editEvent -> {
@@ -36,7 +35,6 @@ public class Controller {
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
-		
 		view.getTipPane().getSecondCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
 				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
@@ -44,7 +42,6 @@ public class Controller {
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
-		
 		view.getTipPane().getThirdCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
 				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
@@ -52,7 +49,6 @@ public class Controller {
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
-		
 		view.getTipPane().getFourthCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
 				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
@@ -60,7 +56,6 @@ public class Controller {
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
-		
 		view.getTipPane().getFifthCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
 				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
@@ -68,7 +63,6 @@ public class Controller {
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
-		
 		view.getTipPane().getSixthCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
 				if (isNumber(newValue) && isLottoNumber(newValue) && numberIsFree(newValue, editEvent))
@@ -76,7 +70,6 @@ public class Controller {
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
-		
 		view.getTipPane().getLuckyNumCol().setOnEditCommit(editEvent -> {
 			String newValue = editEvent.getNewValue();
 				if (isNumber(newValue) && isLuckyNumber(newValue))
@@ -84,7 +77,7 @@ public class Controller {
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
-		
+		//make shure the last added element is allways visible
 		model.getTips().addListener((ListChangeListener<Tip>) c -> {
 			while (c.next()) {
 				view.getTipPane().getTableView().scrollTo(c.getFrom());
@@ -129,6 +122,7 @@ public class Controller {
 		}
 		return true;
 	}
+	
 	//return Tip on active Row
 	private Tip getTipFromEvent(CellEditEvent<Tip, String> editEvent) {
 		TableView<Tip> tv = editEvent.getTableView();

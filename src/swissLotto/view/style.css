@@ -1,14 +1,16 @@
+/*
+ * styling of TipPane and inside Elements
+ */
 #tipPane {
 	-fx-background-color: #fff4f4;
 	-fx-padding: 30px;
 	-fx-border-color: #fccccc;
 	-fx-border-width: 2px;
 }
-
+/*styling all LottoBalls */
 .lottoBalls {
 	-fx-pref-width: 50px;
 	-fx-pref-height: 50px;
-	
 	-fx-background-color: radial-gradient(focus-angle 254deg, 
 		focus-distance 50% , center 50% 50% , radius 55% , #f7f7f7,  #d3d3d3);
 	-fx-font-size: 18px;
@@ -21,11 +23,9 @@
 	-fx-border-width: 1px;
 	-fx-border-radius: 25px;
 }
-
 .lottoBalls:hover {
 	-fx-effect: dropshadow(three-pass-box, darkgrey, 10, 0, 1, 1);
 }
-
 .luckyBall {
 	-fx-pref-width: 50px;
 	-fx-pref-height: 50px;
@@ -41,11 +41,11 @@
 	-fx-border-size: 2px;
 	-fx-border-radius: 25px;
 }
-
 .luckyBall:hover {
 	-fx-effect: dropshadow(three-pass-box, #968c48, 10, 0, 1, 1);
 }
 
+/*styling all Buttons */
 .controls {
 	-fx-text-fill: white;
 	-fx-font-weight: bold;
@@ -66,6 +66,7 @@
 .controls:focused {
 	-fx-border-color: #404040;
 }
+
 #play {
 	-fx-background-color: #d30518;
 	-fx-text-fill: white;
@@ -77,57 +78,46 @@
 	-fx-border-radius: 2;
 	-fx-pref-height: 40px;
 }
-
 #play:pressed {
 	-fx-border-color: #a10310;
-
 }
 #play:hover {
 	-fx-background-color: #a21822;
 }
 
-/* Spaltenköpfe
-    Struktur column-header-background -> column-header */
+/* styling of the TableView */
 .table-view {
 	-fx-background-color: #fee9e9;
 }
-
 .table-view .column-header-background{
     -fx-background-color:linear-gradient(#0070dc 0%, #00509d 100%);
 }
-
 .table-view .column-header-background .label{
     -fx-background-color: transparent;
     -fx-text-fill: white;
 }
-
 .table-view .column-header {
     -fx-background-color: transparent;
 }
-
 .table-view .table-cell{
     -fx-text-fill: #ad7b7b;
     -fx-font-weight: bold;
 }
-
 .table-row-cell{
     -fx-background-color: -fx-table-cell-border-color, #fff4f4;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em; /* 0 */
 }
-
 .table-row-cell:odd{
     -fx-background-color: -fx-table-cell-border-color, #fee9e9;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em; /* 0 */  
 }
-
 .table-row-cell:selected {
     -fx-background-color: #ffc9c9;
     -fx-background-insets: 0;
     -fx-background-radius: 1;
 }
-
 .table-view > .virtual-flow > .scroll-bar:vertical,
 .table-view > .virtual-flow > .scroll-bar:vertical > .track,
 .table-view > .virtual-flow > .scroll-bar:vertical > .track-background, 
@@ -136,49 +126,45 @@
 .table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
     -fx-background-color: transparent;
 }
-
-
-
 .table-view > .virtual-flow > .scroll-bar > .increment-button, 
 .table-view > .virtual-flow > .scroll-bar > .decrement-button {
     -fx-opacity: 0;
 }
-
+/*
+ * styling of DrawPane and inside Elements
+ */
 #drawPane {
 	-fx-background-color: #fffdf2;
 	-fx-padding: 30px;
 	-fx-border-color: #fceed1;
 	-fx-border-width: 2px;
-
 }
-
 #status {
 	-fx-font-size: 14px;
 	-fx-font-weight: bold;
 	-fx-text-fill: #777777;
 }
-
+/*
+ * styling of InfoPane and inside Elements
+ */
 #infoPane {
 	-fx-background-color: #f1f1f1;
 	-fx-border-color: #dddddd;
 	-fx-border-width: 2px;
 	-fx-padding: 5px;
 }
-
 .jackpot {
 	-fx-padding: 10px;
 	-fx-font-size: 12px;
 	-fx-font-weight: bold;
 	-fx-text-fill: #777777;
 }
-
 .wallet {
 	-fx-padding: 10px;
 	-fx-font-size: 12px;
 	-fx-font-weight: bold;
 	-fx-text-fill: #777777;
 }
-
 .spending {
 	-fx-padding: 10px;
 	-fx-font-size: 12px;

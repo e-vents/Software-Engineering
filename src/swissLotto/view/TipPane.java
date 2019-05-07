@@ -2,6 +2,7 @@ package swissLotto.view;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -99,9 +100,10 @@ public class TipPane extends VBox {
 
 		// Finally, attach the tableView to the ObservableList of data
 		tableView.setItems(model.getTips());
-		tableView.setMaxWidth(596);
+		tableView.setMaxWidth(597);
 		tableView.setMaxHeight(1000);
-
+		tableView.setPlaceholder(new Label("\t\tWillkommen beim SwissLotto Master 5000."
+				+ "\n Klicken Sie auf \"Tip hinzufügen\" um mit dem Spiel zu beginnen."));
 		return tableView;
 	}
 	

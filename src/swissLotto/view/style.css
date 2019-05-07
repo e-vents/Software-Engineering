@@ -87,7 +87,7 @@
 
 /* styling of the TableView */
 .table-view {
-	-fx-background-color: #fee9e9;
+	-fx-background-color: #fff4f4;
 }
 .table-view .column-header-background{
     -fx-background-color:linear-gradient(#0070dc 0%, #00509d 100%);

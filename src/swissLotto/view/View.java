@@ -31,7 +31,7 @@ public class View {
 		this.borderPane.setLeft(this.tipPane);
 		this.borderPane.setCenter(this.drawPane);
 		
-		Scene scene = new Scene(this.borderPane, 1310, 560);
+		Scene scene = new Scene(this.borderPane, 1310, 578);
 		 scene.getStylesheets().add(
 	                getClass().getResource("style.css").toExternalForm());
 		stage.setScene(scene);

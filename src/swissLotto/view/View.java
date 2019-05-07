@@ -39,7 +39,7 @@ public class View {
 		stage.setMinHeight(350);
 		stage.setMinWidth(1200);
 		stage.setTitle("SwissLotto");
-		//stage.getIcons().add(new Image("swissLotto/images/jackpot_header_swisslotto_logo.png"));
+		stage.getIcons().add(new Image("swissLotto/images/swissLotto_logo.png"));
 		stage.show();
 	}
 	public void start() {

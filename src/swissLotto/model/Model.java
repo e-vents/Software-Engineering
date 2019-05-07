@@ -10,32 +10,16 @@ public class Model {
 	private static final int MAX_TIPS = 45;
 	private Tip draw = null; 
 	
+	//deleting and adding Tips
 	public void addTip() {
 		if(numbers.size() < MAX_TIPS)
 			numbers.add(new Tip(numbers.size()));
 	}
-
 	public void deleteTip() {
 		if(!numbers.isEmpty())
 			numbers.remove(numbers.size()-1);
 	}
 	
-	public int getNumberOfTips() {
-		return numbers.size();
-	}
-	
-	public ObservableList<Tip> getTips() {
-		return numbers;
-	}
-	/*TODO using stream to get LottoNums as List
-	private ArrayList<Integer> tipAsList(int i) {
-		return (ArrayList<Integer>) numbers.stream().map(e -> e.getInt(i))
-						.collect(Collectors.toList());
-	}
-	*/
-	public Tip getDraw() {		
-		return draw;
-	}
 	//return list with the WinnerType of all Tips including null
 	public ArrayList<WinnerType> evaluateDraw() {
 		draw = new Tip(-1); //lottery draws first
@@ -64,4 +48,21 @@ public class Model {
 		}
 		return false;
 	}
+	
+	//getters
+	public int getNumberOfTips() {
+		return numbers.size();
+	}
+	public ObservableList<Tip> getTips() {
+		return numbers;
+	}
+	public Tip getDraw() {		
+		return draw;
+	}
+	/*TODO using stream to get LottoNums as List
+	private ArrayList<Integer> tipAsList(int i) {
+		return (ArrayList<Integer>) numbers.stream().map(e -> e.getInt(i))
+						.collect(Collectors.toList());
+	}
+	*/
 }

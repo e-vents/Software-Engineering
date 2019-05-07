@@ -19,13 +19,13 @@ public class Tip {
 		for(int i = 0; i < lottoNums.length; i++) {
 			lottoNums[i] = new SimpleStringProperty();
 		}
-		
+		//get a list with all posible lottoNumbers
 		this.lottoIntegers = new ArrayList<>();
 		for (int i=1; i<43; i++) {
             lottoIntegers.add(i);
         }
 		Collections.shuffle(lottoIntegers);
-		
+		//get a list with all posible luckyNumbers
 		this.luckyNumbers = new ArrayList<>();
 		for (int i=1; i<7; i++) {
             luckyNumbers.add(i);
@@ -36,7 +36,7 @@ public class Tip {
 	
 	//updates the properties with the recent numbers
 	private void updateRepresentations(int size) {
-		tip.set(Integer.toString(size+1)+".");
+		tip.set(Integer.toString(size+1)+"."); //display tipNumber
 		for(int i = 0; i < lottoNums.length; i++) {
 			lottoNums[i].set(Integer.toString(getLottoNum(i)));
 		}
@@ -51,7 +51,7 @@ public class Tip {
 		Collections.sort(tempNums);
 		return tempNums.get(index);
 	}
-	//makes a Int-list out of the Properties 
+	//makes a Integer-list out of the Properties 
 	public ArrayList<Integer> LottoNumsAsList() {
 		//TODO make as stream!
 		ArrayList<Integer> intList = new ArrayList<>();

@@ -6,11 +6,10 @@ import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.PathTransition;
 import javafx.animation.RotateTransition;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.*;
 import javafx.util.Duration;
@@ -22,43 +21,28 @@ public class DrawPane extends VBox {
 	private Model model;
 	private ArrayList<WinnerType> winnerTypes;
 	private HBox lottoBalls;
-	
 	private Label status;
-	private Label num1;
-	private Label num2;
-	private Label num3;
-	private Label num4;
-	private Label num5;
-	private Label num6;
-	private Label luckyNum;
-	
+	private Label[] lottoNums;
+
 	public DrawPane(Model model) {
 		this.model = model;
 		
 		status = new Label("");
 		status.setId("status");
-		
-		num1 = new Label();
-		num1.getStyleClass().add("lottoBalls");
-		num2 = new Label();
-		num2.getStyleClass().add("lottoBalls");
-		num3 = new Label();
-		num3.getStyleClass().add("lottoBalls");
-		num4 = new Label();
-		num4.getStyleClass().add("lottoBalls");
-		num5 = new Label();
-		num5.getStyleClass().add("lottoBalls");
-		num6 = new Label();
-		num6.getStyleClass().add("lottoBalls");
-		luckyNum = new Label();
-		luckyNum.getStyleClass().add("luckyBall");
-		
 		lottoBalls = new HBox();
-		lottoBalls.getChildren().addAll(num1, num2, num3, num4, num5, num6, luckyNum);
+		
+		lottoNums = new Label[7];
+		for(int i = 0; i < lottoNums.length; i++) {
+			lottoNums[i] = new Label();
+			lottoBalls.getChildren().add(lottoNums[i]);
+			if(i != 6)
+				lottoNums[i].getStyleClass().add("lottoBalls");
+			else
+				lottoNums[i].getStyleClass().add("luckyBall");
+		}
 		lottoBalls.setSpacing(15);
 		lottoBalls.setAlignment(Pos.CENTER);
 		lottoBalls.setVisible(false);
-		
 		
 		this.getChildren().addAll(lottoBalls, status);
 		this.setSpacing(50);
@@ -117,88 +101,59 @@ public class DrawPane extends VBox {
 				l.setText(" "+Integer.toString(luckyNum));
 		}
 	}
-
+	//all animations for the lottoBalls
 	private void animateBalls() {
-		
-		PathElement pe1 = new MoveTo(195, -300); //start position
-		PathElement pe111 = new LineTo(23, 25);
-		PathElement pe2 = new MoveTo(129, -300); //start position
-		PathElement pe22 = new LineTo(24, 25);
-		PathElement pe3 = new MoveTo(65, -300); //start position
-		PathElement pe33 = new LineTo(25, 25);
-		PathElement pe4 = new MoveTo(0, -300); //start position
-		PathElement pe44 = new LineTo(26, 25);
-		PathElement pe5 = new MoveTo(-65, -300); //start position
-		PathElement pe55 = new LineTo(27, 25);
-		PathElement pe6 = new MoveTo(-129, -300); //start position
-		PathElement pe66 = new LineTo(28, 25);
-		PathElement pe7 = new MoveTo(300, -300); //start position
-		PathElement pe77 = new LineTo(29, 25);
-
-		Path path = new Path();
-		path.getElements().addAll(pe1, pe111);
-		Path path2 = new Path();
-		path2.getElements().addAll(pe2,pe22);
-		Path path3 = new Path();
-		path3.getElements().addAll(pe3, pe33);
-		Path path4 = new Path();
-		path4.getElements().addAll(pe4, pe44);
-		Path path5 = new Path();
-		path5.getElements().addAll(pe5, pe55);
-		Path path6 = new Path();
-		path6.getElements().addAll(pe6, pe66);
-		Path path7 = new Path();
-		path7.getElements().addAll(pe7, pe77);
-		
-		PathTransition move = new PathTransition(Duration.millis(800), path, num1);
-		PathTransition move2 = new PathTransition(Duration.millis(800), path2, num2);
-		PathTransition move3 = new PathTransition(Duration.millis(800), path3, num3);
-		PathTransition move4 = new PathTransition(Duration.millis(800), path4, num4);
-		PathTransition move5 = new PathTransition(Duration.millis(800), path5, num5);
-		PathTransition move6 = new PathTransition(Duration.millis(800), path6, num6);
-		PathTransition move7 = new PathTransition(Duration.millis(800), path7, luckyNum);
-		
+		//list with all starting points
+		PathElement[] starts = new PathElement[7];
+		for(int i = 0; i < starts.length; i++) {
+			if(i != 6)
+				starts[i] = new MoveTo(130-(i*65), -300);
+			else
+				starts[i] = new MoveTo(300, -300);
+		}
+		//list with all lineto-points
+		PathElement[] lines = new PathElement[7];
+		for(int i = 0; i < lines.length; i++) {
+			if(i != 6)
+				lines[i] = new LineTo(23+i, 25);
+			else
+				lines[i] = new LineTo(29, 25);
+		}
+		//adding all elements to the paths
+		Path[] paths = new Path[7];
+		for(int i = 0; i < paths.length; i++) {
+			paths[i] = new Path();
+			paths[i].getElements().addAll(starts[i], lines[i]);
+		}
+		//creating Transitions including lottoNum-labels
+		PathTransition[] transitions = new PathTransition[7];
+		for(int i = 0; i < transitions.length; i++) {
+			transitions[i] = new PathTransition(Duration.millis(800), paths[i], lottoNums[i]);
+		}
+		//creating rotation including lottoNum-Labels
+		RotateTransition[] turns = new RotateTransition[7];
+		for(int i = 0; i < turns.length; i++) {
+			turns[i] = new RotateTransition(Duration.millis(300), lottoNums[i]);
+			turns[i].setByAngle(360);
+			turns[i].setCycleCount(3);
+		}
+		//delay for displaying the evaluation
 		FadeTransition statusFade = new FadeTransition(Duration.millis(500), status);
 		statusFade.setFromValue(0.0);
 	    statusFade.setToValue(1.0);
 	    statusFade.delayProperty().set(Duration.millis(800));
-	    
-		RotateTransition t = new RotateTransition(Duration.millis(300), num1);
-		t.setByAngle(360);
-		t.setCycleCount(3);
-		RotateTransition t2 = new RotateTransition(Duration.millis(300), num2);
-		t2.setByAngle(360);
-		t2.setCycleCount(3);
-		RotateTransition t3 = new RotateTransition(Duration.millis(300), num3);
-		t3.setByAngle(360);
-		t3.setCycleCount(3);
-		RotateTransition t4 = new RotateTransition(Duration.millis(300), num4);
-		t4.setByAngle(360);
-		t4.setCycleCount(3);
-		RotateTransition t5 = new RotateTransition(Duration.millis(300), num5);
-		t5.setByAngle(360);
-		t5.setCycleCount(3);
-		RotateTransition t6 = new RotateTransition(Duration.millis(300), num6);
-		t6.setByAngle(360);
-		t6.setCycleCount(3);
-		RotateTransition t7 = new RotateTransition(Duration.millis(300), luckyNum);
-		t7.setByAngle(360);
-		t7.setCycleCount(3);
 		
-		ParallelTransition para = new ParallelTransition(move, t);
-		ParallelTransition para2 = new ParallelTransition(move2, t2);
-		ParallelTransition para3 = new ParallelTransition(move3, t3);
-		ParallelTransition para4 = new ParallelTransition(move4, t4);
-		ParallelTransition para5 = new ParallelTransition(move5, t5);
-		ParallelTransition para6 = new ParallelTransition(move6, t6);
-		ParallelTransition para7 = new ParallelTransition(move7, t7, statusFade);
-
-		para.play();
-		para2.play();
-		para3.play();
-		para4.play();
-		para5.play();
-		para6.play();
-		para7.play();
+	    ParallelTransition[] parallels = new ParallelTransition[7];
+		for(int i = 0; i < parallels.length; i++) {
+			//TODO conditional instead of if else
+			if(i != 6) {
+				parallels[i] = new ParallelTransition(transitions[i], turns[i]);
+				parallels[i].play();
+			}	
+			else {
+				parallels[i] = new ParallelTransition(transitions[i], turns[i], statusFade);
+				parallels[i].play();
+			}
+		}
 	}
 }

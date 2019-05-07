@@ -28,7 +28,12 @@ public class Model {
 	public ObservableList<Tip> getTips() {
 		return numbers;
 	}
-	
+	/*
+	private ArrayList<Integer> tipAsList(int i) {
+		return (ArrayList<Integer>) numbers.stream().map(e -> e.getInt(i))
+						.collect(Collectors.toList());
+	}
+	*/
 	public Tip getDraw() {		
 		return draw;
 	}

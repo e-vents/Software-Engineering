@@ -43,7 +43,6 @@ public class TipPane extends VBox {
 		playBtn.setId("play");
 		buttons.setSpacing(9);
 		buttons.getChildren().addAll(deleteBtn, addBtn, playBtn);
-		// Layout root pane
 		
 		this.setPadding(new Insets(10)); // around edge of VBox
 		this.setSpacing(10); // between elements
@@ -66,37 +65,37 @@ public class TipPane extends VBox {
 		
 		this.firstCol = new TableColumn<>("1.");
 		this.firstCol.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.firstCol.setCellValueFactory(c -> c.getValue().getNumber());
+		this.firstCol.setCellValueFactory(c -> c.getValue().getNumberProperty(0));
 		tableView.getColumns().add(firstCol);
 
 		this.secondCol = new TableColumn<>("2.");
 		this.secondCol.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.secondCol.setCellValueFactory(c -> c.getValue().getNumber2());
+		this.secondCol.setCellValueFactory(c -> c.getValue().getNumberProperty(1));
 		tableView.getColumns().add(secondCol);
 		
 		this.thirdCol = new TableColumn<>("3.");
 		this.thirdCol.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.thirdCol.setCellValueFactory(c -> c.getValue().getNumber3());
+		this.thirdCol.setCellValueFactory(c -> c.getValue().getNumberProperty(2));
 		tableView.getColumns().add(thirdCol);
 		
 		this.fourthCol = new TableColumn<>("4.");
 		this.fourthCol.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.fourthCol.setCellValueFactory(c -> c.getValue().getNumber4());
+		this.fourthCol.setCellValueFactory(c -> c.getValue().getNumberProperty(3));
 		tableView.getColumns().add(fourthCol);
 		
 		this.fifthCol = new TableColumn<>("5.");
 		this.fifthCol.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.fifthCol.setCellValueFactory(c -> c.getValue().getNumber5());
+		this.fifthCol.setCellValueFactory(c -> c.getValue().getNumberProperty(4));
 		tableView.getColumns().add(fifthCol);
 		
 		this.sixthCol = new TableColumn<>("6.");
 		this.sixthCol.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.sixthCol.setCellValueFactory(c -> c.getValue().getNumber6());
+		this.sixthCol.setCellValueFactory(c -> c.getValue().getNumberProperty(5));
 		tableView.getColumns().add(sixthCol);
 		
 		this.luckyNumCol = new TableColumn<>("Glückszahl");
 		this.luckyNumCol.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.luckyNumCol.setCellValueFactory(c -> c.getValue().getLuckyNumber());
+		this.luckyNumCol.setCellValueFactory(c -> c.getValue().getLuckyNumberProperty());
 		tableView.getColumns().add(luckyNumCol);
 
 		// Finally, attach the tableView to the ObservableList of data

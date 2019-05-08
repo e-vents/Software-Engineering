@@ -11,6 +11,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.*;
 import javafx.util.Duration;
@@ -27,21 +28,8 @@ public class DrawPane extends VBox {
 
 	public DrawPane(Model model) {
 		this.model = model;
-		ScrollPane scrollPane = new ScrollPane();
 		status = new Label("");
 		status.setId("status");
-		
-		scrollPane.setContent(status);
-		scrollPane.autosize();
-		//scrollPane.setMaxHeight(300);
-		//scrollPane.setMinHeight(250);
-		//scrollPane.setMaxWidth(300);
-		//scrollPane.setFitToWidth(true);
-		scrollPane.setId("scrollPane");
-		
-		status.minWidthProperty().bind(Bindings.createDoubleBinding(() -> 
-			scrollPane.getViewportBounds().getWidth(), scrollPane.viewportBoundsProperty()));
-	
 		
 		lottoBalls = new HBox();
 		//instanciate all Draw-Labels
@@ -153,10 +141,10 @@ public class DrawPane extends VBox {
 			turns[i].setCycleCount(3);
 		}
 		//delay for displaying the evaluation
-		FadeTransition statusFade = new FadeTransition(Duration.millis(500), status);
+		FadeTransition statusFade = new FadeTransition(Duration.millis(200), status);
 		statusFade.setFromValue(0.0);
 	    statusFade.setToValue(1.0);
-	    statusFade.delayProperty().set(Duration.millis(800));
+	    statusFade.delayProperty().set(Duration.millis(700));
 		//parallelize animations and play them
 	    ParallelTransition[] parallels = new ParallelTransition[7];
 		for(int i = 0; i < parallels.length; i++) {

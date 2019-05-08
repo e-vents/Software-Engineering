@@ -19,13 +19,18 @@ public class Controller {
 		//button-Events-Handlers
 		view.getTipPane().getAddBtn().setOnAction(e ->{
 			model.addTip();
-			view.getInfoPane().addTipSpend();
+			model.getWallet().addTip();
+			view.getInfoPane().updateSpendingLabel();
 		});
 		view.getTipPane().getDeleteBtn().setOnAction(e -> {
 			model.deleteTip();
-			view.getInfoPane().deleteTipSpend();
+			model.getWallet().deleteTip();
+			view.getInfoPane().updateSpendingLabel();
 		});
-		view.getTipPane().getPlayBtn().setOnAction(e -> view.getDrawPane().displayDrawArea());
+		view.getTipPane().getPlayBtn().setOnAction(e -> {
+			view.getDrawPane().displayDrawArea();
+			view.getInfoPane().updateInfoArea();
+		});
 		
 		// Event handlers for the table columns: validate user input
 		view.getTipPane().getFirstCol().setOnEditCommit(editEvent -> {

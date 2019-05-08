@@ -8,8 +8,12 @@ public class Model {
 	//List with all tips inside
 	private final ObservableList<Tip> numbers = FXCollections.observableArrayList();
 	public static final int MAX_TIPS = 450;
-	private Tip draw = null; 
+	private Tip draw = null;
+	private Wallet wallet;
 	
+	public Model() {
+		this.wallet = new Wallet();
+	}
 	//deleting and adding Tips
 	public void addTip() {
 		if(numbers.size() < MAX_TIPS)
@@ -35,6 +39,13 @@ public class Model {
 			// for each tip --> evaluate wins
 			winnerTypes.add(WinnerType.evaluateDraw(nextTip, drawNums, isCorrectLuckyNumber(i)));
 		}
+		
+		for(WinnerType wt : winnerTypes) {
+			if(wt != null)
+				//Double.parseDouble(wallet.getWin());
+				wallet.addWin(wt.getWinSum());
+		}
+		
 		return winnerTypes;
 	}
 	//evaluate if lucky number equals draw lucky number
@@ -49,7 +60,7 @@ public class Model {
 		return false;
 	}
 	
-	//	---> getters <---
+	//	---> getters and setters <---
 	public int getNumberOfTips() {
 		return numbers.size();
 	}
@@ -59,6 +70,11 @@ public class Model {
 	public Tip getDraw() {		
 		return draw;
 	}
+	
+	public Wallet getWallet() {
+		return wallet;
+	}
+	
 	/*TODO using stream to get LottoNums as List
 	private ArrayList<Integer> tipAsList(int i) {
 		return (ArrayList<Integer>) numbers.stream().map(e -> e.getInt(i))

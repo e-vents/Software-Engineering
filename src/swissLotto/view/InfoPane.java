@@ -7,6 +7,7 @@ import swissLotto.model.Model;
 
 public class InfoPane extends HBox {
 	
+	private final Model model;
 	private final Label jackpot;
 	private final Label wallet;
 	private final Label spending;
@@ -15,7 +16,7 @@ public class InfoPane extends HBox {
 	private Label spendingText;
 
 	public InfoPane(Model model) {
-		
+		this.model = model;
 		this.jackpot = new Label("Jackpot: ");
 		this.jackpot.getStyleClass().add("jackpot");
 		this.wallet = new Label("Guthaben: ");
@@ -23,11 +24,11 @@ public class InfoPane extends HBox {
 		this.spending = new Label("eingesetztes Geld: ");
 		this.spending.getStyleClass().add("spending");
 		
-		this.jackpotText = new Label("10'000'000");
+		this.jackpotText = new Label(model.getWallet().getJackpot());
 		this.jackpotText.getStyleClass().add("jackpot");
-		this.walletText = new Label("2000.0");
+		this.walletText = new Label(model.getWallet().getMoneyToSpend());
 		this.walletText.getStyleClass().add("wallet");
-		this.spendingText = new Label("0.00");
+		this.spendingText = new Label(model.getWallet().getSpendingMoney());
 		this.spendingText.getStyleClass().add("spending");
 		
 		this.getChildren().addAll(wallet, walletText, spending, spendingText, 
@@ -36,16 +37,17 @@ public class InfoPane extends HBox {
 		this.setId("infoPane");
 	}
 	
-	//TODO make moneythings work
-	public void addTipSpend() {
-		double money = Double.parseDouble(this.spendingText.getText());
-		if(money < Model.MAX_TIPS*2.5)
-		this.spendingText.setText(String.valueOf(money+2.50));
+	public void updateSpendingLabel() {
+		jackpotText.setText(model.getWallet().getJackpot());
+		spendingText.setText(model.getWallet().getSpendingMoney());
+		walletText.setText(model.getWallet().getMoneyToSpend());
 	}
-	public void deleteTipSpend() {
-		double money = Double.parseDouble(this.spendingText.getText());
-		if(money > 0)
-			this.spendingText.setText(String.valueOf(money-2.50));
+	
+	public void updateInfoArea() {
+		model.getWallet().fetchMoney();
+		jackpotText.setText(model.getWallet().getJackpot());
+		spendingText.setText(model.getWallet().getSpendingMoney());
+		walletText.setText(model.getWallet().getMoneyToSpend());
 	}
 
 	//	---> getters and setters <---

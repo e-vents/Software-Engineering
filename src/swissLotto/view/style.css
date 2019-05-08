@@ -142,14 +142,6 @@
 	-fx-border-color: #fceed1;
 	-fx-border-width: 2px;
 }
-
-.scroll-pane > .viewport {
-   -fx-background-color: transparent;
-}
-#scrollPane {
-	-fy-content-color: #fffdf2;
-	-fx-background-color: black;
-}
 #status {
 	-fx-font-size: 14px;
 	-fx-font-weight: bold;

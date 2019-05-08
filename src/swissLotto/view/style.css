@@ -130,6 +130,9 @@
 .table-view > .virtual-flow > .scroll-bar > .decrement-button {
     -fx-opacity: 0;
 }
+.table-view > .corner {
+    -fx-background-color: #fff4f4;
+}
 /*
  * styling of DrawPane and inside Elements
  */
@@ -138,6 +141,14 @@
 	-fx-padding: 30px;
 	-fx-border-color: #fceed1;
 	-fx-border-width: 2px;
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+#scrollPane {
+	-fy-content-color: #fffdf2;
+	-fx-background-color: black;
 }
 #status {
 	-fx-font-size: 14px;

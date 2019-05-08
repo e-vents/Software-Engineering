@@ -39,7 +39,7 @@ public class InfoPane extends HBox {
 	//TODO make moneythings work
 	public void addTipSpend() {
 		double money = Double.parseDouble(this.spendingText.getText());
-		if(money < 112.5)
+		if(money < Model.MAX_TIPS*2.5)
 		this.spendingText.setText(String.valueOf(money+2.50));
 	}
 	public void deleteTipSpend() {

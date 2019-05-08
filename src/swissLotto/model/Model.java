@@ -7,7 +7,7 @@ import javafx.collections.ObservableList;
 public class Model {
 	//List with all tips inside
 	private final ObservableList<Tip> numbers = FXCollections.observableArrayList();
-	private static final int MAX_TIPS = 45;
+	public static final int MAX_TIPS = 450;
 	private Tip draw = null; 
 	
 	//deleting and adding Tips

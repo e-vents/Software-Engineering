@@ -6,8 +6,10 @@ import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.PathTransition;
 import javafx.animation.RotateTransition;
+import javafx.beans.binding.Bindings;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.*;
@@ -25,9 +27,22 @@ public class DrawPane extends VBox {
 
 	public DrawPane(Model model) {
 		this.model = model;
-		
+		ScrollPane scrollPane = new ScrollPane();
 		status = new Label("");
 		status.setId("status");
+		
+		scrollPane.setContent(status);
+		scrollPane.autosize();
+		//scrollPane.setMaxHeight(300);
+		//scrollPane.setMinHeight(250);
+		//scrollPane.setMaxWidth(300);
+		//scrollPane.setFitToWidth(true);
+		scrollPane.setId("scrollPane");
+		
+		status.minWidthProperty().bind(Bindings.createDoubleBinding(() -> 
+			scrollPane.getViewportBounds().getWidth(), scrollPane.viewportBoundsProperty()));
+	
+		
 		lottoBalls = new HBox();
 		//instanciate all Draw-Labels
 		lottoNums = new Label[7];

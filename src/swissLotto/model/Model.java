@@ -49,7 +49,7 @@ public class Model {
 		return false;
 	}
 	
-	//getters
+	//	---> getters <---
 	public int getNumberOfTips() {
 		return numbers.size();
 	}

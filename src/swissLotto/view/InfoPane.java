@@ -48,7 +48,7 @@ public class InfoPane extends HBox {
 			this.spendingText.setText(String.valueOf(money-2.50));
 	}
 
-	//getters and setters
+	//	---> getters and setters <---
 	public Label getJackpotText() {
 		return jackpotText;
 	}

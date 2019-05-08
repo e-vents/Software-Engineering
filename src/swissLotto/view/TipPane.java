@@ -107,7 +107,7 @@ public class TipPane extends VBox {
 		return tableView;
 	}
 	
-	//getters for the Buttons
+	//	---> getters <---
 	public Button getAddBtn() {
 		return this.addBtn;
 	}
@@ -117,7 +117,7 @@ public class TipPane extends VBox {
 	public Button getPlayBtn() {
 		return playBtn;
 	}
-	//getters for the table & columns
+	
 	public TableView<Tip> getTableView() {
 		return tableView;
 	}

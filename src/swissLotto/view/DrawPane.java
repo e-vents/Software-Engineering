@@ -79,7 +79,7 @@ public class DrawPane extends VBox {
 				if(winnerTypes.get(i).equals(WinnerType.SixPlusOne))
 					status.setText(status.getText()+WinnerType.SixPlusOne.toString()+" mit Nr. "+(i+1)+"\n");
 			}
-		}//if no tip is winning
+		}//if no tip wins
 		if(status.getText().equals(""))
 			status.setText("Leider kein Gewinn");
 	}
@@ -101,9 +101,9 @@ public class DrawPane extends VBox {
 		}
 	}
 	
-	//all animations for the lottoBalls
+	//animating lottoBalls & luckyBall
 	private void animateBalls() {
-		//list with all starting points
+		//starting points for the Balls
 		PathElement[] starts = new PathElement[7];
 		for(int i = 0; i < starts.length; i++) {
 			if(i != 6)
@@ -111,7 +111,7 @@ public class DrawPane extends VBox {
 			else
 				starts[i] = new MoveTo(300, -300);
 		}
-		//list with all lineto-points
+		//lineTo points for all Balls
 		PathElement[] lines = new PathElement[7];
 		for(int i = 0; i < lines.length; i++) {
 			if(i != 6)
@@ -125,12 +125,12 @@ public class DrawPane extends VBox {
 			paths[i] = new Path();
 			paths[i].getElements().addAll(starts[i], lines[i]);
 		}
-		//creating Transitions including lottoNum-labels
+		//creating pathTransitions on Balls
 		PathTransition[] transitions = new PathTransition[7];
 		for(int i = 0; i < transitions.length; i++) {
 			transitions[i] = new PathTransition(Duration.millis(800), paths[i], lottoNums[i]);
 		}
-		//creating rotation including lottoNum-Labels
+		//creating rotations on Balls
 		RotateTransition[] turns = new RotateTransition[7];
 		for(int i = 0; i < turns.length; i++) {
 			turns[i] = new RotateTransition(Duration.millis(300), lottoNums[i]);
@@ -142,7 +142,7 @@ public class DrawPane extends VBox {
 		statusFade.setFromValue(0.0);
 	    statusFade.setToValue(1.0);
 	    statusFade.delayProperty().set(Duration.millis(800));
-		//make animations parallel and play them
+		//parallelize animations and play them
 	    ParallelTransition[] parallels = new ParallelTransition[7];
 		for(int i = 0; i < parallels.length; i++) {
 			//TODO conditional instead of if else

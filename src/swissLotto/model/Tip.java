@@ -23,13 +23,13 @@ public class Tip {
 		this.lottoIntegers = new ArrayList<>();
 		for (int i=1; i<43; i++) {
             lottoIntegers.add(i);
-        }
+        }//shuffle numbers for coincidence
 		Collections.shuffle(lottoIntegers);
 		//get a list with all posible luckyNumbers
 		this.luckyNumbers = new ArrayList<>();
 		for (int i=1; i<7; i++) {
             luckyNumbers.add(i);
-        }
+        }//shuffle numbers for coincidence
 		Collections.shuffle(luckyNumbers);
 		updateRepresentations(size);
 	}
@@ -53,7 +53,6 @@ public class Tip {
 	}
 	//makes a Integer-list out of the Properties 
 	public ArrayList<Integer> LottoNumsAsList() {
-		//TODO make as stream!
 		ArrayList<Integer> intList = new ArrayList<>();
 		for(int i = 0; i < 6; i++) {
 			intList.add(getInt(i));
@@ -61,7 +60,7 @@ public class Tip {
 		return intList; 
 	}
 	
-	//getters and setters
+	//	---> getters and setters <---
 	public SimpleStringProperty getTipProperty() {
 		return tip;
 	}

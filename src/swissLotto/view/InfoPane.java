@@ -1,53 +1,76 @@
 package swissLotto.view;
 
+import javafx.event.Event;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import swissLotto.model.Model;
 
 public class InfoPane extends HBox {
 	
 	private final Model model;
+	private final TipPane tipPane;
 	private final Label jackpot;
 	private final Label wallet;
 	private final Label spending;
+	private final Label win;
 	private Label jackpotText;
 	private Label walletText;
 	private Label spendingText;
+	private Label winText;
 
-	public InfoPane(Model model) {
+	public InfoPane(Model model, TipPane tipPane) {
+		
 		this.model = model;
-		this.jackpot = new Label("Jackpot: ");
-		this.jackpot.getStyleClass().add("jackpot");
-		this.wallet = new Label("Guthaben: ");
-		this.wallet.getStyleClass().add("wallet");
-		this.spending = new Label("eingesetztes Geld: ");
-		this.spending.getStyleClass().add("spending");
+		this.tipPane = tipPane;
 		
-		this.jackpotText = new Label(model.getWallet().getJackpot());
-		this.jackpotText.getStyleClass().add("jackpot");
-		this.walletText = new Label(model.getWallet().getMoneyToSpend());
-		this.walletText.getStyleClass().add("wallet");
+		this.jackpot = new Label("Jackpot:");
+		this.wallet = new Label("\tKosten:");
+		this.spending = new Label("Kosten pro Spiel:");
+		this.win = new Label("Gewinn:");
+		
+		this.jackpotText = new Label(model.getWallet().getJackpot()+"\t\t");
+		this.walletText = new Label(model.getWallet().getCosts());
 		this.spendingText = new Label(model.getWallet().getSpendingMoney());
-		this.spendingText.getStyleClass().add("spending");
+		this.winText = new Label(model.getWallet().getWin());
+
+		Region spacer = new Region();
+		HBox.setHgrow(spacer, Priority.ALWAYS);
 		
-		this.getChildren().addAll(wallet, walletText, spending, spendingText, 
+		this.jackpot.getStyleClass().add("infoLabel");
+		this.wallet.getStyleClass().add("infoLabel");
+		this.spending.getStyleClass().add("infoLabel");
+		this.win.getStyleClass().add("infoLabel");
+		this.jackpotText.getStyleClass().add("infoText");
+		this.walletText.getStyleClass().add("infoText");
+		this.spendingText.getStyleClass().add("infoText");
+		this.winText.getStyleClass().add("infoText");
+		
+		this.getChildren().addAll(wallet, walletText, 
+				spending, spendingText, spacer, 
+				win, winText,
 				jackpot, jackpotText);
-		this.setAlignment(Pos.BOTTOM_RIGHT);
-		this.setId("infoPane");
+		this.setAlignment(Pos.BASELINE_CENTER);
 	}
 	
-	public void updateSpendingLabel() {
-		jackpotText.setText(model.getWallet().getJackpot());
-		spendingText.setText(model.getWallet().getSpendingMoney());
-		walletText.setText(model.getWallet().getMoneyToSpend());
-	}
-	
-	public void updateInfoArea() {
-		model.getWallet().fetchMoney();
-		jackpotText.setText(model.getWallet().getJackpot());
-		spendingText.setText(model.getWallet().getSpendingMoney());
-		walletText.setText(model.getWallet().getMoneyToSpend());
+	//updating info data, depending on the action-event
+	public void updateInfoArea(Event e) {
+		if(e.getSource() == tipPane.addBtn) {
+			model.addTip();
+			spendingText.setText(model.getWallet().getSpendingMoney());
+		}
+		if(e.getSource() == tipPane.deleteBtn) {
+			model.deleteTip();
+			spendingText.setText(model.getWallet().getSpendingMoney());
+		}
+		if(e.getSource() == tipPane.playBtn) {
+			model.getWallet().fetchMoney();
+			jackpotText.setText(model.getWallet().getJackpot()+"\t\t");
+			walletText.setText(model.getWallet().getCosts());
+			winText.setText(model.getWallet().getLongTermWin());
+		}
 	}
 
 	//	---> getters and setters <---

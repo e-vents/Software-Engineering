@@ -17,19 +17,15 @@ public class Controller {
 		this.model = model;
 		
 		//button-Events-Handlers
-		view.getTipPane().getAddBtn().setOnAction(e ->{
-			model.addTip();
-			model.getWallet().addTip();
-			view.getInfoPane().updateSpendingLabel();
+		view.getTipPane().getAddBtn().setOnAction(e -> {
+			view.getInfoPane().updateInfoArea(e);
 		});
 		view.getTipPane().getDeleteBtn().setOnAction(e -> {
-			model.deleteTip();
-			model.getWallet().deleteTip();
-			view.getInfoPane().updateSpendingLabel();
+			view.getInfoPane().updateInfoArea(e);
 		});
 		view.getTipPane().getPlayBtn().setOnAction(e -> {
-			view.getDrawPane().displayDrawArea();
-			view.getInfoPane().updateInfoArea();
+			view.getDrawPane().updateDrawArea();
+			view.getInfoPane().updateInfoArea(e);
 		});
 		
 		// Event handlers for the table columns: validate user input

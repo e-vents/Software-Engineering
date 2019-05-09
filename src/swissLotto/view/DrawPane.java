@@ -49,10 +49,10 @@ public class DrawPane extends VBox {
 		this.getChildren().addAll(lottoBalls, status);
 		this.setSpacing(50);
 		this.setAlignment(Pos.CENTER);
-		this.setId("drawPane");
 	}
+	
 	//displays wins or losses
-	public void displayDrawArea() {
+	public void updateDrawArea() {
 		winnerTypes = model.evaluateDraw();
 		lottoBalls.setVisible(true);
 		displayDraw();

@@ -5,24 +5,25 @@ import java.text.DecimalFormat;
 public class Wallet {
 	
 	public DecimalFormat fmt;
-	private double moneyToSpend;
+	private double costs;
 	private double jackpot;
 	private double spendingMoney;
 	private double win;
+	private double longTermWin;
 	private static final double TIP_COST = 2.5;
 
 	public Wallet() {
 		fmt = new DecimalFormat("##,###,##0.00 CHF");
-		moneyToSpend = 5000.0;
+		costs = 0;
 		jackpot = 10000000.0;
 		spendingMoney = 0;
 		win = 0;
+		longTermWin = 0;
 	}
 	
 	public void addTip() {
 		if(spendingMoney < Model.MAX_TIPS*TIP_COST)
 			spendingMoney += TIP_COST;
-		
 	}
 	public void deleteTip() {
 		if(spendingMoney > 0)
@@ -30,16 +31,17 @@ public class Wallet {
 	}
 	public void fetchMoney() {
 		jackpot += spendingMoney;
-		moneyToSpend -= spendingMoney;
-		moneyToSpend += win;
+		costs += spendingMoney;
+		costs -= win;
 		win = 0;
 	}
 
-	public String getMoneyToSpend() {
-		return fmt.format(moneyToSpend);
+	//	---> getters and setters <---
+	public String getCosts() {
+		return fmt.format(costs);
 	}
-	public void setMoneyToSpend(double moneyToSpend) {
-		this.moneyToSpend = moneyToSpend;
+	public void setCosts(double moneyToSpend) {
+		this.costs = moneyToSpend;
 	}
 	
 	public String getJackpot() {
@@ -63,5 +65,16 @@ public class Wallet {
 	}
 	public void addWin(double win) {
 		this.win += win;
+		this.longTermWin += win;
 	}
+
+	public String getLongTermWin() {
+		return fmt.format(longTermWin);
+	}
+	/*
+	public void addToLongTermWin(double longTermWin) {
+		this.longTermWin += longTermWin;
+	}
+	*/
+	
 }

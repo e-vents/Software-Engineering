@@ -23,13 +23,16 @@ public class View {
 		this.borderPane = new BorderPane();
 		this.borderPane.setId("borderPane");
 		
-		this.infoPane = new InfoPane(model);
 		this.drawPane = new DrawPane(model);
 		this.tipPane = new TipPane(model);
+		this.infoPane = new InfoPane(model, tipPane);
+		this.drawPane.setId("drawPane");
+		this.tipPane.setId("tipPane");
+		this.infoPane.setId("infoPane");
 		
-		this.borderPane.setBottom(this.infoPane);
-		this.borderPane.setLeft(this.tipPane);
-		this.borderPane.setCenter(this.drawPane);
+		this.borderPane.setBottom(infoPane);
+		this.borderPane.setLeft(tipPane);
+		this.borderPane.setCenter(drawPane);
 		
 		Scene scene = new Scene(this.borderPane, 1310, 578);
 		 scene.getStylesheets().add(

@@ -156,21 +156,15 @@
 	-fx-border-width: 2px;
 	-fx-padding: 5px;
 }
-.jackpot {
+.infoText {
 	-fx-padding: 10px;
 	-fx-font-size: 12px;
 	-fx-font-weight: bold;
 	-fx-text-fill: #777777;
 }
-.wallet {
+.infoLabel {
 	-fx-padding: 10px;
 	-fx-font-size: 12px;
-	-fx-font-weight: bold;
-	-fx-text-fill: #777777;
-}
-.spending {
-	-fx-padding: 10px;
-	-fx-font-size: 12px;
-	-fx-font-weight: bold;
+	-fx-font-weight: normal;
 	-fx-text-fill: #777777;
 }

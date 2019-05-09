@@ -14,7 +14,7 @@ import swissLotto.model.Tip;
 
 public class TipPane extends VBox {
 	
-	private Model model;
+	private final Model model;
 	protected HBox buttons;
 	protected Button addBtn = new Button("Tip hinzufügen");
 	protected Button deleteBtn = new Button("Tip löschen");
@@ -48,7 +48,6 @@ public class TipPane extends VBox {
 		this.setSpacing(10); // between elements
 		VBox.setVgrow(tableView, Priority.ALWAYS); // Vertical resize goes to the table
 		this.getChildren().addAll(tableView, buttons);
-		this.setId("tipPane");
 	}
 	
 	private TableView<Tip> createTableView() {

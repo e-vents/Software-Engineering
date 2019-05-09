@@ -18,10 +18,12 @@ public class Model {
 	public void addTip() {
 		if(numbers.size() < MAX_TIPS)
 			numbers.add(new Tip(numbers.size()));
+		wallet.addTip();
 	}
 	public void deleteTip() {
 		if(!numbers.isEmpty())
 			numbers.remove(numbers.size()-1);
+		wallet.deleteTip();
 	}
 	
 	//return list with the WinnerType of all Tips including null
@@ -39,13 +41,10 @@ public class Model {
 			// for each tip --> evaluate wins
 			winnerTypes.add(WinnerType.evaluateDraw(nextTip, drawNums, isCorrectLuckyNumber(i)));
 		}
-		
 		for(WinnerType wt : winnerTypes) {
 			if(wt != null)
-				//Double.parseDouble(wallet.getWin());
 				wallet.addWin(wt.getWinSum());
 		}
-		
 		return winnerTypes;
 	}
 	//evaluate if lucky number equals draw lucky number

@@ -35,13 +35,16 @@ public class Wallet {
 	}
 	public void fetchMoney() {
 		jackpot += spendingMoney;
-		costs += spendingMoney;
-		costs -= win;
+		costs -= spendingMoney;
+		costs += win;
 		win = 0;
 	}
 
 	//	---> getters and setters <---
-	public String getCosts() {
+	public double getCosts() {
+		return costs;
+	}
+	public String getCostsString() {
 		return fmt.format(costs);
 	}
 	public String getJackpot() {

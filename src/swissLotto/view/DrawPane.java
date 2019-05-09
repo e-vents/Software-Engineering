@@ -145,7 +145,7 @@ public class DrawPane extends VBox {
 		//parallelize animations and play them
 	    ParallelTransition[] parallels = new ParallelTransition[7];
 		for(int i = 0; i < parallels.length; i++) {
-			//TODO conditional instead of if else
+
 			if(i != 6) {
 				parallels[i] = new ParallelTransition(transitions[i], turns[i]);
 				parallels[i].play();

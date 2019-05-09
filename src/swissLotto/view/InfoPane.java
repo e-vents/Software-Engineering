@@ -13,7 +13,7 @@ public class InfoPane extends HBox {
 	private final Model model;
 	private final TipPane tipPane;
 	private final Label jackpot;
-	private final Label wallet;
+	private Label wallet;
 	private final Label spending;
 	private final Label win;
 	private Label jackpotText;
@@ -27,12 +27,12 @@ public class InfoPane extends HBox {
 		this.tipPane = tipPane;
 		
 		this.jackpot = new Label("Jackpot:");
-		this.wallet = new Label("\tKosten - Gewinn:");
+		this.wallet = new Label("\tBilanz:");
 		this.spending = new Label("Kosten pro Spiel:");
-		this.win = new Label("Gewinn:");
+		this.win = new Label("Gewinnsumme:");
 		
 		this.jackpotText = new Label(model.getWallet().getJackpot()+"\t\t");
-		this.walletText = new Label(model.getWallet().getCosts());
+		this.walletText = new Label(model.getWallet().getCostsString());
 		this.spendingText = new Label(model.getWallet().getSpendingMoney());
 		this.winText = new Label(model.getWallet().getWin());
 
@@ -61,15 +61,17 @@ public class InfoPane extends HBox {
 		if(e.getSource() == tipPane.playBtn) {
 			model.getWallet().fetchMoney();
 			jackpotText.setText(model.getWallet().getJackpot()+"\t\t");
-			walletText.setText(model.getWallet().getCosts());
+			wallet.setText((model.getWallet().getCosts() < 0) ? "\tVerlust:": "\tGewinn:");
+			walletText.setText(model.getWallet().getCostsString());
 			winText.setText(model.getWallet().getLongTermWin());
 		}
 		
 		if(e.getSource() == tipPane.addBtn) {
 			model.addTip();
 			spendingText.setText(model.getWallet().getSpendingMoney());
-			
-		} else {
+		} 
+		
+		if(e.getSource() == tipPane.deleteBtn) {
 			model.deleteTip();
 			spendingText.setText(model.getWallet().getSpendingMoney());
 		}

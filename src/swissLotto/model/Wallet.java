@@ -40,24 +40,14 @@ public class Wallet {
 	public String getCosts() {
 		return fmt.format(costs);
 	}
-	public void setCosts(double moneyToSpend) {
-		this.costs = moneyToSpend;
-	}
-	
 	public String getJackpot() {
 		return fmt.format(jackpot);
 	}
-	public void setJackpot(double jackpot) {
-		this.jackpot = jackpot;
-
-	}
-
 	public String getSpendingMoney() {
 		return fmt.format(spendingMoney);
 	}
-	public void setSpendingMoney(double spendingMoney) {
-		this.spendingMoney = spendingMoney;
-
+	public String getLongTermWin() {
+		return fmt.format(longTermWin);
 	}
 
 	public String getWin() {
@@ -67,14 +57,4 @@ public class Wallet {
 		this.win += win;
 		this.longTermWin += win;
 	}
-
-	public String getLongTermWin() {
-		return fmt.format(longTermWin);
-	}
-	/*
-	public void addToLongTermWin(double longTermWin) {
-		this.longTermWin += longTermWin;
-	}
-	*/
-	
 }

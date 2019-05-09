@@ -51,6 +51,7 @@ public class View {
 		stage.hide();
 		Platform.exit();
 	}
+	
 	//	---> getters <---
 	public TipPane getTipPane() {
 		return tipPane;

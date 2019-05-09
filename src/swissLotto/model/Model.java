@@ -41,12 +41,14 @@ public class Model {
 			// for each tip --> evaluate wins
 			winnerTypes.add(WinnerType.evaluateDraw(nextTip, drawNums, isCorrectLuckyNumber(i)));
 		}
+		//gathering money from wins made
 		for(WinnerType wt : winnerTypes) {
 			if(wt != null)
 				wallet.addWin(wt.getWinSum());
 		}
 		return winnerTypes;
 	}
+	
 	//evaluate if lucky number equals draw lucky number
 	private boolean isCorrectLuckyNumber(int i) {
 		int luckyDrawNum = this.draw.getLuckyInt();

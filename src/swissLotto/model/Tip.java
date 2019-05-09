@@ -42,6 +42,7 @@ public class Tip {
 		}
 		luckyNumber.set(Integer.toString(this.luckyNumbers.remove(0)));
 	}
+	
 	//make shure the Lotto number are sorted
 	private int getLottoNum(int index) {
 		ArrayList<Integer> tempNums = new ArrayList<Integer>();
@@ -51,6 +52,7 @@ public class Tip {
 		Collections.sort(tempNums);
 		return tempNums.get(index);
 	}
+	
 	//makes a Integer-list out of the Properties 
 	public ArrayList<Integer> LottoNumsAsList() {
 		ArrayList<Integer> intList = new ArrayList<>();

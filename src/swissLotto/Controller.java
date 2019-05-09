@@ -16,7 +16,7 @@ public class Controller {
 		this.view = view;
 		this.model = model;
 		
-		//button-Events-Handlers
+		//Event-Handlers for all buttons
 		view.getTipPane().getAddBtn().setOnAction(e -> {
 			view.getInfoPane().updateInfoArea(e);
 		});
@@ -97,6 +97,7 @@ public class Controller {
 		}
 		return valid;
 	}
+	
 	//check if input is a real lotto number
 	private boolean isLottoNumber(String number) {
 		if(Integer.parseInt(number) <= 42 && Integer.parseInt(number) >= 1)
@@ -104,6 +105,7 @@ public class Controller {
 		else
 			return false;
 	}
+	
 	//check if input is a lucky lotto number
 	private boolean isLuckyNumber(String number) {
 		if(Integer.parseInt(number) <= 6 && Integer.parseInt(number) >= 1)
@@ -111,6 +113,7 @@ public class Controller {
 		else
 			return false;
 	}
+	
 	//check if input isn't allready used
 	private boolean numberIsFree(String number, CellEditEvent<Tip, String> editEvent) {
 		

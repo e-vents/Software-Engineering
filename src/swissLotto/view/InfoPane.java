@@ -27,7 +27,7 @@ public class InfoPane extends HBox {
 		this.tipPane = tipPane;
 		
 		this.jackpot = new Label("Jackpot:");
-		this.wallet = new Label("\tKosten:");
+		this.wallet = new Label("\tKosten - Gewinn:");
 		this.spending = new Label("Kosten pro Spiel:");
 		this.win = new Label("Gewinn:");
 		

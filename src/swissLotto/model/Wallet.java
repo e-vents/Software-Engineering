@@ -29,6 +29,10 @@ public class Wallet {
 		if(spendingMoney > 0)
 			spendingMoney -= TIP_COST;
 	}
+	public void addWin(double win) {
+		this.win += win;
+		this.longTermWin += win;
+	}
 	public void fetchMoney() {
 		jackpot += spendingMoney;
 		costs += spendingMoney;
@@ -49,12 +53,7 @@ public class Wallet {
 	public String getLongTermWin() {
 		return fmt.format(longTermWin);
 	}
-
 	public String getWin() {
 		return fmt.format(win);
-	}
-	public void addWin(double win) {
-		this.win += win;
-		this.longTermWin += win;
 	}
 }

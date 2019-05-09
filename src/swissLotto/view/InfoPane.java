@@ -57,19 +57,21 @@ public class InfoPane extends HBox {
 	
 	//updating info data, depending on the action-event
 	public void updateInfoArea(Event e) {
-		if(e.getSource() == tipPane.addBtn) {
-			model.addTip();
-			spendingText.setText(model.getWallet().getSpendingMoney());
-		}
-		if(e.getSource() == tipPane.deleteBtn) {
-			model.deleteTip();
-			spendingText.setText(model.getWallet().getSpendingMoney());
-		}
+		
 		if(e.getSource() == tipPane.playBtn) {
 			model.getWallet().fetchMoney();
 			jackpotText.setText(model.getWallet().getJackpot()+"\t\t");
 			walletText.setText(model.getWallet().getCosts());
 			winText.setText(model.getWallet().getLongTermWin());
+		}
+		
+		if(e.getSource() == tipPane.addBtn) {
+			model.addTip();
+			spendingText.setText(model.getWallet().getSpendingMoney());
+			
+		} else {
+			model.deleteTip();
+			spendingText.setText(model.getWallet().getSpendingMoney());
 		}
 	}
 

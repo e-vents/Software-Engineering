@@ -12,13 +12,9 @@ public enum WinnerType {
 	private String name;
 	
 	private WinnerType(int winSum, String name) {
+		
 		this.winSum = winSum;
 		this.name = name;
-	}
-	
-	//getter
-	public int getWinSum() {
-		return this.winSum;
 	}
 	
 	//evaluate a single tip with the draw
@@ -36,6 +32,11 @@ public enum WinnerType {
         if (tip.size() == 6 && luckyNum) winType = SixPlusOne;
         return winType;
     }
+    
+	// --> getter <---
+	public int getWinSum() {
+		return this.winSum;
+	}
     
     @Override
     public String toString() {

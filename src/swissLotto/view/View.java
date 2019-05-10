@@ -35,8 +35,8 @@ public class View {
 		this.borderPane.setCenter(drawPane);
 		
 		Scene scene = new Scene(this.borderPane, 1310, 578);
-		 scene.getStylesheets().add(
-	                getClass().getResource("style.css").toExternalForm());
+		scene.getStylesheets().add(
+	               getClass().getResource("style.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setMinHeight(350);
 		stage.setMinWidth(1200);

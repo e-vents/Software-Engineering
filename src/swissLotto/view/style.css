@@ -168,3 +168,7 @@
 	-fx-font-weight: normal;
 	-fx-text-fill: #777777;
 }
+#stats {
+	-fx-padding: 60px;
+	
+}

@@ -53,6 +53,8 @@ public class InfoPane extends HBox {
 				win, winText,
 				jackpot, jackpotText);
 		this.setAlignment(Pos.BASELINE_CENTER);
+		//make infoPane clickable to show statistics
+		this.setOnMouseReleased(e -> StatPopUp.getPopUp());
 	}
 	
 	//updating info data, depending on the action-event

@@ -8,11 +8,10 @@ public class StatPopUp extends Stage {
 
 	private static StatPopUp singleton;
 	// ---> factory method <---
-	public static StatPopUp getPopUp() {
+	public static void showPopUp() {
 		if(singleton == null)
 			singleton = new StatPopUp();
 		singleton.show();
-		return singleton;
 	}
 	//unreachable constructor
 	private StatPopUp() {

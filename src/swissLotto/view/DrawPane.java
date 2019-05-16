@@ -18,13 +18,15 @@ import swissLotto.model.WinnerType;
 public class DrawPane extends VBox {
 	
 	private Model model;
+	private TipPane tipPane;
 	private ArrayList<WinnerType> winnerTypes;
 	private HBox lottoBalls;
 	private Label status;
 	private Label[] lottoNums;
 
-	public DrawPane(Model model) {
+	public DrawPane(Model model, TipPane tipPane) {
 		this.model = model;
+		this.tipPane = tipPane;
 		status = new Label("");
 		status.setId("status");
 		

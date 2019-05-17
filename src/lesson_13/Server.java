@@ -10,18 +10,19 @@ public class Server {
 
 	public static void main(String[] args) {
 		try(ServerSocket listener = new ServerSocket(8080, 10, null)) {
-			
+			// loops till program is closed --> daemon 
 			while(true) {
+				
 				try(Socket client = listener.accept();
 					BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 					PrintWriter out = new PrintWriter(client.getOutputStream());
 				) {
-					String message = in.readLine();
-					System.out.println("Received: " + message);
-					String reply = "Hello from server!";
-					out.write(reply + "\n");
+					//receives client request
+					System.out.println("Received: " + in.readLine());
+					
+					//sends an answer
+					out.write("Hello from server!\n");
 					out.flush();
-					System.out.println("Sent: " + reply);
 					
 				} catch (Exception e) {
 					e.printStackTrace();

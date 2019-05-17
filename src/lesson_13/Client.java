@@ -9,22 +9,22 @@ import java.net.Socket;
 public class Client {
 	
 	public static void main(String[] args) {
-	        
+	    //try/catch enclosed with curved braces for classes which implements autocolseable
 	    try (Socket s = new Socket("127.0.0.1", 8080);
 	    		OutputStreamWriter out = new OutputStreamWriter(s.getOutputStream());
+	    		//BufferedReader is more confortable
 	    		BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 	    	) {
-	    	
-	    	String message = "Hello from client!";
-	    	out.write(message + "\n");
+	    	//sends request
+	    	out.write("Hello from client!\n");
 	    	out.flush();
 	    	
-	    	String reply = in.readLine();
-			System.out.println("Received: " + reply);
+			System.out.println(in.readLine());
 	        	
 	    } catch (Exception e) {
-	        	
+	        
 	    }
+	    //no need of a finally statement that closed all the resources
 	}
 }
 

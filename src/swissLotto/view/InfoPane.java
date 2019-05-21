@@ -49,7 +49,7 @@ public class InfoPane extends HBox {
 		this.winText.getStyleClass().add("infoText");
 		
 		this.getChildren().addAll(wallet, walletText, 
-				spending, spendingText, spacer, 
+				spending, spendingText, spacer,
 				win, winText,
 				jackpot, jackpotText);
 		this.setAlignment(Pos.BASELINE_CENTER);

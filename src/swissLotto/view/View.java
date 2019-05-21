@@ -24,7 +24,7 @@ public class View {
 		this.borderPane.setId("borderPane");
 		
 		this.tipPane = new TipPane(model);
-		this.drawPane = new DrawPane(model, tipPane);
+		this.drawPane = new DrawPane(model);
 		this.infoPane = new InfoPane(model, tipPane);
 		this.drawPane.setId("drawPane");
 		this.tipPane.setId("tipPane");
@@ -34,7 +34,7 @@ public class View {
 		this.borderPane.setLeft(tipPane);
 		this.borderPane.setCenter(drawPane);
 		
-		Scene scene = new Scene(this.borderPane, 1310, 578);
+		Scene scene = new Scene(this.borderPane, 1260, 578);
 		scene.getStylesheets().add(
 	               getClass().getResource("style.css").toExternalForm());
 		stage.setScene(scene);

@@ -8,7 +8,6 @@ import javafx.animation.PathTransition;
 import javafx.animation.RotateTransition;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.*;
@@ -19,22 +18,15 @@ import swissLotto.model.WinnerType;
 public class DrawPane extends VBox {
 	
 	private Model model;
-	private TipPane tipPane;
 	private ArrayList<WinnerType> winnerTypes;
 	private HBox lottoBalls;
-	private TextArea status;
-	//private Label status;
+	private Label status;
 	private Label[] lottoNums;
 
-	public DrawPane(Model model, TipPane tipPane) {
+	public DrawPane(Model model) {
 		this.model = model;
-		this.tipPane = tipPane;
-		/*
+		
 		status = new Label("");
-		status.setId("status");
-		*/
-		status = new TextArea();
-		status.setEditable(false);
 		status.setId("status");
 		
 		lottoBalls = new HBox();

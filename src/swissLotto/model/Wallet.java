@@ -39,6 +39,9 @@ public class Wallet {
 		costs += win;
 		win = 0;
 	}
+	public void jackpotCracked() {
+		//TODO
+	}
 
 	//	---> getters and setters <---
 	public double getCosts() {

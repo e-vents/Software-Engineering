@@ -152,6 +152,11 @@
  */
 #infoPane {
 	-fx-background-color: #f1f1f1;
+	-fx-background-image: url("../images/click-me.png");
+	-fx-background-size: 80 40;
+	-fx-background-attachment: fixed;
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center center;
 	-fx-border-color: #dddddd;
 	-fx-border-width: 2px;
 	-fx-padding: 5px;
@@ -170,9 +175,10 @@
 }
 #stats {
 	-fx-padding: 60px;
-	
-}
-.scene{
 	-fx-font-size: 12px;
 	-fx-font-weight: bold;
+	-fx-text-fill: #777777;
+	-fx-border-color: #8de0e0;
+	-fx-border-width: 2px;
+	-fx-background-color: #dbf9f9;
 }

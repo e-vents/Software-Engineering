@@ -172,3 +172,7 @@
 	-fx-padding: 60px;
 	
 }
+.scene{
+	-fx-font-size: 12px;
+	-fx-font-weight: bold;
+}

@@ -8,6 +8,7 @@ import javafx.animation.PathTransition;
 import javafx.animation.RotateTransition;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.*;
@@ -21,13 +22,19 @@ public class DrawPane extends VBox {
 	private TipPane tipPane;
 	private ArrayList<WinnerType> winnerTypes;
 	private HBox lottoBalls;
-	private Label status;
+	private TextArea status;
+	//private Label status;
 	private Label[] lottoNums;
 
 	public DrawPane(Model model, TipPane tipPane) {
 		this.model = model;
 		this.tipPane = tipPane;
+		/*
 		status = new Label("");
+		status.setId("status");
+		*/
+		status = new TextArea();
+		status.setEditable(false);
 		status.setId("status");
 		
 		lottoBalls = new HBox();
@@ -44,7 +51,7 @@ public class DrawPane extends VBox {
 		lottoBalls.setSpacing(15);
 		lottoBalls.setAlignment(Pos.CENTER);
 		lottoBalls.setVisible(false);
-		
+
 		this.getChildren().addAll(lottoBalls, status);
 		this.setSpacing(50);
 		this.setAlignment(Pos.CENTER);

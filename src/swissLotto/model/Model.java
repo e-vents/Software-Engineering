@@ -43,11 +43,8 @@ public class Model {
 		}
 		//gathering money from wins made
 		for(WinnerType wt : winnerTypes) {
-			if(wt != null) {
+			if(wt != null)
 				wallet.addWin(wt.getWinSum());
-				if(wt == WinnerType.SixPlusOne)
-					wallet.jackpotCracked();
-			}	
 		}
 		return winnerTypes;
 	}

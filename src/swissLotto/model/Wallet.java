@@ -34,13 +34,14 @@ public class Wallet {
 		this.longTermWin += win;
 	}
 	public void fetchMoney() {
-		jackpot += spendingMoney;
+		if(win < 10000000) //check if jackpot is cracked
+			jackpot += spendingMoney;
+		else 
+			jackpot = 10000000;
+		
 		costs -= spendingMoney;
 		costs += win;
 		win = 0;
-	}
-	public void jackpotCracked() {
-		//TODO
 	}
 
 	//	---> getters and setters <---

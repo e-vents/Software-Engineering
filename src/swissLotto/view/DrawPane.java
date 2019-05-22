@@ -10,6 +10,7 @@ import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Bounds;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -111,13 +112,17 @@ public class DrawPane extends VBox {
 	
 	//animating lottoBalls & luckyBall
 	private void animateBalls() {
+		//relative ball positioning
+		Bounds bis = this.localToScene(this.getBoundsInLocal());
 		//starting points for the Balls
 		PathElement[] starts = new PathElement[7];
 		for(int i = 0; i < starts.length; i++) {
 			if(i != 6)
-				starts[i] = new MoveTo(130-(i*65), -300);
+				starts[i] = new MoveTo(130-(i*65), bis.getMaxY());
+				//starts[i] = new MoveTo(130-(i*65), -300);
 			else
 				starts[i] = new MoveTo(300, -300);
+				//starts[i] = new MoveTo(300, -300);
 		}
 		//lineTo points for all Balls
 		PathElement[] lines = new PathElement[7];

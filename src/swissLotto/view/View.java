@@ -24,7 +24,7 @@ public class View {
 		this.borderPane.setId("borderPane");
 		
 		this.tipPane = new TipPane(model);
-		this.drawPane = new DrawPane(model);
+		this.drawPane = new DrawPane(model, tipPane);
 		this.infoPane = new InfoPane(model, tipPane);
 		this.drawPane.setId("drawPane");
 		this.tipPane.setId("tipPane");

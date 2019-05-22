@@ -4,33 +4,29 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
-public class Angestellter {
-
-	String vname, nname;
-	int AHVNr;
+public class AngestellterRepository {
 	
-	public Angestellter(int AHVNr, String vname, String nname) {
-		this.AHVNr = AHVNr;
-		this.nname = nname;
-		this.vname = vname;
+	private Connection con;
+	
+	public AngestellterRepository(Connection con) {
+		this.con = con;
 	}
 
-	@Override
-	public String toString() {
-		return "Angestellter [vname=" + vname + ", nname=" + nname + ", AHVNr=" + AHVNr + "]";
-	}
-
-	/*
-	public static void saveAngestellter(Connection con, Angestellter a) {
+	public void saveAngestellter(Angestellter a) {
 		PreparedStatement stmt;
 		try {
 			stmt = con.prepareStatement(
-					"INSERT INTO Angestellter (AHVNr, vname, nname) VALUES (?,?,?) ON DUPLICATE KEY UPDATE AHVNr=?");
+					"INSERT INTO Angestellter (AHVNr, vname, nname) VALUES (?,?,?) ON DUPLICATE KEY "
+					+ "UPDATE AHVNr = ?, vname = ?, nname = ?");
 			stmt.setString(1, String.valueOf(a.AHVNr));
 			stmt.setString(2, a.vname);
 			stmt.setString(3, a.nname);
 			stmt.setString(4, String.valueOf(a.AHVNr));
+			stmt.setString(5, a.vname);
+			stmt.setString(6, a.nname);
 			stmt.execute();
 			stmt.close();
 			
@@ -39,7 +35,7 @@ public class Angestellter {
 		}	
 	}
 	
-	public static Angestellter getAngestellterById(Connection con, int id) {
+	public Angestellter getAngestellterById(int id) {
 		Angestellter tempA = null;
 		
 		PreparedStatement stmt;
@@ -59,28 +55,21 @@ public class Angestellter {
 		}
 		return tempA;
 	}
-	 */
-	public String getVname() {
-		return vname;
-	}
-
-	public void setVname(String vname) {
-		this.vname = vname;
-	}
-
-	public String getNname() {
-		return nname;
-	}
-
-	public void setNname(String nname) {
-		this.nname = nname;
-	}
-
-	public int getAHVNr() {
-		return AHVNr;
-	}
-
-	public void setAHVNr(int aHVNr) {
-		AHVNr = aHVNr;
+	
+	public ArrayList<Angestellter> getAll() {
+		Statement stmt;
+		ArrayList<Angestellter> tempList = new ArrayList<>();
+		try {
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from angestellter");
+			while(rs.next()) {
+				tempList.add(new Angestellter(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			stmt.close();
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return tempList;
 	}
 }

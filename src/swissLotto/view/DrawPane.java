@@ -3,9 +3,13 @@ package swissLotto.view;
 import java.util.ArrayList;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
 import javafx.animation.ParallelTransition;
 import javafx.animation.PathTransition;
 import javafx.animation.RotateTransition;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -18,13 +22,15 @@ import swissLotto.model.WinnerType;
 public class DrawPane extends VBox {
 	
 	private Model model;
+	private TipPane tipPane;
 	private ArrayList<WinnerType> winnerTypes;
 	private HBox lottoBalls;
 	private Label status;
 	private Label[] lottoNums;
 
-	public DrawPane(Model model) {
+	public DrawPane(Model model, TipPane tipPane) {
 		this.model = model;
+		this.tipPane = tipPane;
 		
 		status = new Label("");
 		status.setId("status");
@@ -55,6 +61,7 @@ public class DrawPane extends VBox {
 		lottoBalls.setVisible(true);
 		displayDraw();
 		animateBalls();
+		protectAnimation();
 		status.setText("");
 		for(int i = 0; i < winnerTypes.size(); i++) {
 			//if there are any tips winning
@@ -156,5 +163,19 @@ public class DrawPane extends VBox {
 				parallels[i].play();
 			}
 		}
+	}
+	//disable button for the time of the animation to protect them
+	private void protectAnimation() {
+		tipPane.playBtn.setDisable(true);
+		final Timeline animation = new Timeline(
+	            new KeyFrame(Duration.millis(800),
+	            new EventHandler<ActionEvent>() {
+	                @Override 
+	                public void handle(ActionEvent actionEvent) {
+	                    tipPane.playBtn.setDisable(false);
+	                }
+	            }));
+	  animation.setCycleCount(1);
+	  animation.play();
 	}
 }

@@ -31,17 +31,23 @@ public class Wallet {
 	}
 	public void addWin(double win) {
 		this.win += win;
-		this.longTermWin += win;
+		if(win != 10000000)
+			this.longTermWin += win;
+		else
+			this.longTermWin += jackpot;
 	}
 	public void fetchMoney() {
-		if(win < 10000000) //check if jackpot is cracked
+		if(win < 10000000) {//check if jackpot is cracked
 			jackpot += spendingMoney;
-		else 
+			costs -= spendingMoney;
+			costs += win;
+			win = 0;
+		} else {
+			costs -= spendingMoney;
+			costs += win;
+			win = 0;
 			jackpot = 10000000;
-		
-		costs -= spendingMoney;
-		costs += win;
-		win = 0;
+		}		
 	}
 
 	//	---> getters and setters <---

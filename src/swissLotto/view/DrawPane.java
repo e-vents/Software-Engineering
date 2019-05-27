@@ -119,10 +119,8 @@ public class DrawPane extends VBox {
 		for(int i = 0; i < starts.length; i++) {
 			if(i != 6)
 				starts[i] = new MoveTo(130-(i*65), bis.getMaxY());
-				//starts[i] = new MoveTo(130-(i*65), -300);
 			else
-				starts[i] = new MoveTo(300, -300);
-				//starts[i] = new MoveTo(300, -300);
+				starts[i] = new MoveTo(300, -bis.getMinX());
 		}
 		//lineTo points for all Balls
 		PathElement[] lines = new PathElement[7];

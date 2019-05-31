@@ -158,7 +158,7 @@ public class PokerGameController {
     	if(d.getSource() == view.getFourPlayer()) {
     		game.setNumOfPlayers(4);
     	}
-    	//reloads Model first
+    	//reloads ClientModel first
     	model.updateModel();
     	//relooads view after adn shuffles cards
 		view.updateView(stage, model);

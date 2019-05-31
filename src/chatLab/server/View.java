@@ -6,13 +6,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class View extends VBox {
+public class View extends BorderPane {
 	
 	final private ServerModel serverModel;
 	final private Stage stage;
@@ -31,29 +32,36 @@ public class View extends VBox {
 		this.startBtn = new Button("Start");
 		this.console = new TextArea();
 		Region spacer = new Region();
+		
+		// Prevent labels and button from shrinking below their preferred size
+		port.setMinSize(Button.USE_PREF_SIZE, Button.USE_PREF_SIZE);
+		startBtn.setMinSize(Button.USE_PREF_SIZE, Button.USE_PREF_SIZE);
+				
+		// Set sizes for top TextFields
+		portField.setMinWidth(60); portField.setPrefWidth(60);
+		
+		HBox controls = new HBox(this.port, this.portField, spacer, this.startBtn);
+		controls.getStyleClass().add("hbox");
 		HBox.setHgrow(spacer, Priority.ALWAYS);
 		
-		HBox controls = new HBox();
-		controls.getChildren().addAll(this.port, this.portField, spacer, this.startBtn);
-		controls.getStyleClass().add("serverModel");
-		
-		HBox.setHgrow(console, Priority.ALWAYS);
-		VBox.setVgrow(console, Priority.ALWAYS);
-		this.getChildren().addAll(controls, this.console);
-		this.getStyleClass().add("serverModel");
+		this.setTop(controls);
+		this.setCenter(console);
+		this.getStyleClass().add("root");
 		
 		Scene scene = new Scene(this);
 		scene.getStylesheets().add(
 	               getClass().getResource("style.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setTitle("SimpleChatServer");
-		stage.setMinHeight(150);
-		stage.setMinWidth(300);
 		stage.show();
 	}
 	
 	public void start() {
 		stage.show();
+		
+		// Prevent resizing below initial size
+		stage.setMinWidth(stage.getWidth());
+		stage.setMinHeight(stage.getHeight());
 	}
 	
 	public void stop() {
@@ -65,9 +73,13 @@ public class View extends VBox {
 		return stage;
 	}
 
-	public Object updateClients() {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateClients() {
+		StringBuffer sb = new StringBuffer();
+		for(Client c : serverModel.clients) {
+			sb.append(c.toString());
+			sb.append("\n");
+		}
+		console.setText(sb.toString());
 	}
 }
 

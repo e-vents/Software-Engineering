@@ -32,9 +32,9 @@ public class View extends VBox {
 		this.clientModel = clientModel;
 		this.stage = stage;
 		
-		this.ip = new Label("IP Address   ");
-		this.port = new Label("   Port   ");
-		this.name = new Label("   Name   ");
+		this.ip = new Label("IP Address");
+		this.port = new Label("Port");
+		this.name = new Label("Name");
 		this.ipField = new TextField();
 		this.portField = new TextField();
 		this.nameField = new TextField();
@@ -45,20 +45,32 @@ public class View extends VBox {
 		HBox.setHgrow(nameField, Priority.ALWAYS);
 		HBox.setHgrow(prompter, Priority.ALWAYS);
 		
+		// Prevent labels and button from shrinking below their preferred size
+		port.setMinSize(Button.USE_PREF_SIZE, Button.USE_PREF_SIZE);
+		ip.setMinSize(Button.USE_PREF_SIZE, Button.USE_PREF_SIZE);
+		name.setMinSize(Button.USE_PREF_SIZE, Button.USE_PREF_SIZE);
+		connectBtn.setMinSize(Button.USE_PREF_SIZE, Button.USE_PREF_SIZE);
+		send.setMinSize(Button.USE_PREF_SIZE, Button.USE_PREF_SIZE);
+		
+		// Set sizes for top TextFields
+		ipField.setMinWidth(150); ipField.setPrefWidth(150);
+		portField.setMinWidth(60); portField.setPrefWidth(60);
+		nameField.setMinWidth(150); nameField.setPrefWidth(150);
+		
 		HBox controls = new HBox();
 		controls.getChildren().addAll(this.ip, this.ipField, 
 										this.port, this.portField, 
 										this.name, this.nameField, this.connectBtn);
-		controls.getStyleClass().add("clientModel");
+		controls.getStyleClass().add("hbox");
 		
 		HBox promtControl = new HBox();
 		promtControl.getChildren().addAll(this.prompter, this.send);
-		promtControl.getStyleClass().add("clientModel");
+		promtControl.getStyleClass().add("hbox");
 		
 		HBox.setHgrow(console, Priority.ALWAYS);
 		VBox.setVgrow(console, Priority.ALWAYS);
 		this.getChildren().addAll(controls, this.console, promtControl);
-		this.getStyleClass().add("clientModel");
+		this.getStyleClass().add("root");
 		
 		Scene scene = new Scene(this);
 		scene.getStylesheets().add(
@@ -72,6 +84,10 @@ public class View extends VBox {
 	
 	public void start() {
 		stage.show();
+		
+		// Prevent resizing below initial size
+		stage.setMinWidth(stage.getWidth());
+		stage.setMinHeight(stage.getHeight());
 	}
 	
 	public void stop() {

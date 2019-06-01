@@ -7,21 +7,22 @@ import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
 
 public class Controller {
-	final private ServerModel serverModel;
+	final private Model model;
 	final private View view;
 	
-	public Controller(ServerModel serverModel, View view) {
-		this.serverModel = serverModel;
+	public Controller(Model model, View view) {
+		this.model = model;
 		this.view = view;
 		
 		view.startBtn.setOnAction(event -> {
-				Integer port = new Integer(view.portField.getText());
-				serverModel.startServer(port);
+			view.startBtn.setDisable(true);
+			Integer port = new Integer(view.portField.getText());
+			model.startServer(port);
 		});
 		
-		view.getStage().setOnCloseRequest(event -> serverModel.stopServer());
+		view.getStage().setOnCloseRequest(event -> model.stopServer());
 		
-		serverModel.clients.addListener((ListChangeListener) (event -> view.updateClients()));
+		model.clients.addListener((ListChangeListener) (event -> view.updateClients()));
 	}
 }
 

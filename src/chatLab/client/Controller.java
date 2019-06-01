@@ -1,25 +1,30 @@
 package chatLab.client;
 
 public class Controller {
-	final private ClientModel clientModel;
+	final private Model model;
 	final private View view;
 	
-	public Controller(ClientModel clientModel, View view) {
-		this.clientModel = clientModel;
+	public Controller(Model model, View view) {
+		this.model = model;
 		this.view = view;
 		
 		view.connectBtn.setOnAction(event -> {
+			view.connectBtn.setDisable(true);
 			Integer port = new Integer(view.portField.getText());
 			String ipAddress = view.ipField.getText();
 			String name = view.nameField.getText();
-			clientModel.connect(ipAddress, port, name);
+			model.connect(ipAddress, port, name);
 		});
 		
-		view.getStage().setOnCloseRequest(event -> clientModel.disconnect());
+		view.getStage().setOnCloseRequest(event -> model.disconnect());
 		
-		view.send.setOnAction(event -> clientModel.sendMessage(view.prompter.getText()));
+		view.send.setOnAction(event -> model.sendMessage(view.prompter.getText()));
 		
-		clientModel.newestMessage.addListener( (o, oldValue, newValue) -> view.console.appendText(newValue) );
+		model.newestMessage.addListener( (o, oldValue, newValue) -> {
+			if(!newValue.isEmpty())
+				view.console.appendText(newValue+"\n");
+		} );
+		
 	}	
 }
 

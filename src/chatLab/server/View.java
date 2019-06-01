@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 public class View extends BorderPane {
 	
-	final private ServerModel serverModel;
+	final private Model serverModel;
 	final private Stage stage;
 	
 	private Label port;
@@ -23,7 +23,7 @@ public class View extends BorderPane {
 	protected Button startBtn;
 	protected TextArea console;
 	
-	public View(ServerModel serverModel, Stage stage) {
+	public View(Model serverModel, Stage stage) {
 		this.serverModel = serverModel;
 		this.stage = stage;
 		
@@ -31,6 +31,7 @@ public class View extends BorderPane {
 		this.portField = new TextField();
 		this.startBtn = new Button("Start");
 		this.console = new TextArea();
+		console.setEditable(false);
 		Region spacer = new Region();
 		
 		// Prevent labels and button from shrinking below their preferred size

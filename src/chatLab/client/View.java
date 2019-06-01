@@ -1,6 +1,6 @@
 package chatLab.client;
 
-import chatLab.client.ClientModel;
+import chatLab.client.Model;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 public class View extends VBox {
 	
-	final private ClientModel clientModel;
+	final private Model clientModel;
 	final private Stage stage;
 	
 	private Label ip;
@@ -28,7 +28,7 @@ public class View extends VBox {
 	protected TextField prompter;
 	protected Button send;
 	
-	public View(ClientModel clientModel, Stage stage) {
+	public View(Model clientModel, Stage stage) {
 		this.clientModel = clientModel;
 		this.stage = stage;
 		
@@ -40,6 +40,7 @@ public class View extends VBox {
 		this.nameField = new TextField();
 		this.connectBtn = new Button("Connect");
 		this.console = new TextArea();
+		console.setEditable(false);
 		this.prompter = new TextField();
 		this.send = new Button("Send");
 		HBox.setHgrow(nameField, Priority.ALWAYS);

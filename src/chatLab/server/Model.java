@@ -5,10 +5,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Logger;
 
+import chatLab.commons.ChatMsg;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class ServerModel {
+public class Model {
 	
 	protected ServerSocket listener;
 	protected ObservableList<Client> clients = 
@@ -26,7 +27,7 @@ public class ServerModel {
 					while(!stop) {
 						try {
 							Socket socket = listener.accept();
-							Client client = new Client(socket);
+							Client client = new Client(Model.this, socket);
 							clients.add(client);
 						} catch(Exception e) {
 							e.printStackTrace();
@@ -59,5 +60,13 @@ public class ServerModel {
 	public ObservableList<Client> getClientList(){
 		logger.info("Get client list");
 		return clients;
+	}
+
+	public void broadcast(ChatMsg outMsg) {
+		logger.info("Boreadcasting message to clients");
+		for(Client c : clients) {
+			c.send(outMsg);
+		}
+		
 	}
 }

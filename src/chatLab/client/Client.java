@@ -7,7 +7,7 @@ public class Client extends Application {
 	
 	private View view;
 	private Controller controller;
-	private ClientModel clientModel;
+	private Model model;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -15,9 +15,9 @@ public class Client extends Application {
 
 	public void start(Stage stage) throws Exception {
 		
-		this.clientModel = new ClientModel();
-		this.view = new View(clientModel, stage);
-		this.controller = new Controller(clientModel, view);
+		this.model = new Model();
+		this.view = new View(model, stage);
+		this.controller = new Controller(model, view);
 		
 		view.start();
 	}

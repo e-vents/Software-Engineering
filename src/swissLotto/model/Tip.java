@@ -2,12 +2,14 @@ package swissLotto.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
+
 import javafx.beans.property.SimpleStringProperty;
 
 public class Tip {
 	
 	private ArrayList<Integer> lottoIntegers;
-	private ArrayList<Integer> luckyNumbers;
+	private Random rand = new Random();
 	private final SimpleStringProperty tip = new SimpleStringProperty();
 	private final SimpleStringProperty[] lottoNums;
 	private final SimpleStringProperty luckyNumber = new SimpleStringProperty();
@@ -25,12 +27,6 @@ public class Tip {
             lottoIntegers.add(i);
         }//shuffle numbers for coincidence
 		Collections.shuffle(lottoIntegers);
-		//get a list with all posible luckyNumbers
-		this.luckyNumbers = new ArrayList<>();
-		for (int i=1; i<7; i++) {
-            luckyNumbers.add(i);
-        }//shuffle numbers for coincidence
-		Collections.shuffle(luckyNumbers);
 		updateRepresentations(size);
 	}
 	
@@ -40,7 +36,7 @@ public class Tip {
 		for(int i = 0; i < lottoNums.length; i++) {
 			lottoNums[i].set(Integer.toString(getLottoNum(i)));
 		}
-		luckyNumber.set(Integer.toString(this.luckyNumbers.remove(0)));
+		luckyNumber.set(Integer.toString(rand.nextInt(6)+1));
 	}
 	
 	//make shure the Lotto number are sorted

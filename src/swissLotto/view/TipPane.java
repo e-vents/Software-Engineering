@@ -15,25 +15,23 @@ import swissLotto.model.Tip;
 public class TipPane extends VBox {
 	
 	private final Model model;
-	protected HBox buttons;
-	protected Button addBtn = new Button("Tip hinzufügen");
-	protected Button deleteBtn = new Button("Tip löschen");
-	protected Button playBtn = new Button("Spielen");
-	protected TableView<Tip> tableView;
-	protected TableColumn<Tip, String> tip;
-	protected TableColumn<Tip, String> firstCol;
-	protected TableColumn<Tip, String> secondCol;
-	protected TableColumn<Tip, String> thirdCol;
-	protected TableColumn<Tip, String> fourthCol;
-	protected TableColumn<Tip, String> fifthCol;
-	protected TableColumn<Tip, String> sixthCol;
-	protected TableColumn<Tip, String> luckyNumCol;
+	Button addBtn = new Button("Tip hinzufügen");
+	Button deleteBtn = new Button("Tip löschen");
+	Button playBtn = new Button("Spielen");
+	private TableView<Tip> tableView;
+	private TableColumn<Tip, String> firstCol;
+	private TableColumn<Tip, String> secondCol;
+	private TableColumn<Tip, String> thirdCol;
+	private TableColumn<Tip, String> fourthCol;
+	private TableColumn<Tip, String> fifthCol;
+	private TableColumn<Tip, String> sixthCol;
+	private TableColumn<Tip, String> luckyNumCol;
 
-	public TipPane(Model model) {
+	TipPane(Model model) {
 		this.model = model;
 		// Initialize TableView
 		TableView<Tip> tableView = createTableView();
-		buttons = new HBox();
+		HBox buttons = new HBox();
 		addBtn.setPrefWidth(250);
 		addBtn.getStyleClass().add("controls");
 		deleteBtn.setPrefWidth(250);
@@ -56,10 +54,10 @@ public class TipPane extends VBox {
 
 		// Each column needs a title, and a source of data.
 		// For editable columns, each column needs to contain a TextField.
-		this.tip = new TableColumn<>("Tip");
-		this.tip.setCellFactory(TextFieldTableCell.forTableColumn());
-		this.tip.setCellValueFactory(c -> c.getValue().getTipProperty());
-		this.tip.setMaxWidth(35);
+		TableColumn<Tip, String> tip = new TableColumn<>("Tip");
+		tip.setCellFactory(TextFieldTableCell.forTableColumn());
+		tip.setCellValueFactory(c -> c.getValue().getTipProperty());
+		tip.setMaxWidth(35);
 		tableView.getColumns().add(tip);
 		
 		this.firstCol = new TableColumn<>("1.");

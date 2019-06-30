@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 
 public class Wallet {
 	
-	public DecimalFormat fmt;
+	private DecimalFormat fmt;
 	private double costs;
 	private double jackpot;
 	private double spendingMoney;
@@ -12,7 +12,7 @@ public class Wallet {
 	private double longTermWin;
 	private static final double TIP_COST = 2.5;
 
-	public Wallet() {
+	Wallet() {
 		fmt = new DecimalFormat("##,###,##0.00 CHF");
 		costs = 0;
 		jackpot = 10000000.0;
@@ -21,15 +21,15 @@ public class Wallet {
 		longTermWin = 0;
 	}
 	
-	public void addTip() {
+	void addTip() {
 		if(spendingMoney < Model.MAX_TIPS*TIP_COST)
 			spendingMoney += TIP_COST;
 	}
-	public void deleteTip() {
+	void deleteTip() {
 		if(spendingMoney > 0)
 			spendingMoney -= TIP_COST;
 	}
-	public void addWin(double win) {
+	void addWin(double win) {
 		this.win += win;
 		if(win != 10000000)
 			this.longTermWin += win;

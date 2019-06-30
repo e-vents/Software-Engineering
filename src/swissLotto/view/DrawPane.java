@@ -8,8 +8,6 @@ import javafx.animation.ParallelTransition;
 import javafx.animation.PathTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -24,12 +22,11 @@ public class DrawPane extends VBox {
 	
 	private Model model;
 	private TipPane tipPane;
-	private ArrayList<WinnerType> winnerTypes;
 	private HBox lottoBalls;
 	private Label status;
 	private Label[] lottoNums;
 
-	public DrawPane(Model model, TipPane tipPane) {
+	DrawPane(Model model, TipPane tipPane) {
 		this.model = model;
 		this.tipPane = tipPane;
 		
@@ -37,7 +34,7 @@ public class DrawPane extends VBox {
 		status.setId("status");
 		
 		lottoBalls = new HBox();
-		//instanciate all Draw-Labels
+		//instantiate all Draw-Labels
 		lottoNums = new Label[7];
 		for(int i = 0; i < lottoNums.length; i++) {
 			lottoNums[i] = new Label();
@@ -58,7 +55,7 @@ public class DrawPane extends VBox {
 	
 	//displays wins or losses
 	public void updateDrawArea() {
-		winnerTypes = model.evaluateDraw();
+		ArrayList<WinnerType> winnerTypes = model.evaluateDraw();
 		lottoBalls.setVisible(true);
 		displayDraw();
 		animateBalls();
@@ -102,14 +99,14 @@ public class DrawPane extends VBox {
 			Label l = (Label) lottoBalls.getChildren().get(i);
 			if(i != 6) {
 				if(draw.get(i) < 10)
-					l.setText(" "+Integer.toString(draw.get(i)));
+					l.setText(" "+(draw.get(i)));
 				else
 					l.setText(Integer.toString(draw.get(i)));
 			} else
-				l.setText(" "+Integer.toString(luckyNum));
+				l.setText(" "+(luckyNum));
 		}
 	}
-	
+
 	//animating lottoBalls & luckyBall
 	private void animateBalls() {
 		//relative ball positioning
@@ -172,12 +169,7 @@ public class DrawPane extends VBox {
 		tipPane.playBtn.setDisable(true);
 		final Timeline animation = new Timeline(
 	            new KeyFrame(Duration.millis(800),
-	            new EventHandler<ActionEvent>() {
-	                @Override 
-	                public void handle(ActionEvent actionEvent) {
-	                    tipPane.playBtn.setDisable(false);
-	                }
-	            }));
+						actionEvent -> tipPane.playBtn.setDisable(false)));
 	  animation.setCycleCount(1);
 	  animation.play();
 	}

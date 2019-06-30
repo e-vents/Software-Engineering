@@ -9,20 +9,13 @@ import swissLotto.model.Tip;
 import swissLotto.view.View;
 
 public class Controller {
-	private final Model model;
-	private final View view;
-	
+
 	public Controller(Model model, View view) {
-		this.view = view;
-		this.model = model;
-		
+
 		//Event-Handlers for all buttons
-		view.getTipPane().getAddBtn().setOnAction(e -> {
-			view.getInfoPane().updateInfoArea(e);
-		});
-		view.getTipPane().getDeleteBtn().setOnAction(e -> {
-			view.getInfoPane().updateInfoArea(e);
-		});
+		view.getTipPane().getAddBtn().setOnAction(e -> view.getInfoPane().updateInfoArea(e));
+		view.getTipPane().getDeleteBtn().setOnAction(e -> view.getInfoPane().updateInfoArea(e));
+
 		view.getTipPane().getPlayBtn().setOnAction(e -> {
 			view.getDrawPane().updateDrawArea();
 			view.getInfoPane().updateInfoArea(e);
@@ -100,18 +93,12 @@ public class Controller {
 	
 	//check if input is a real lotto number
 	private boolean isLottoNumber(String number) {
-		if(Integer.parseInt(number) <= 42 && Integer.parseInt(number) >= 1)
-			return true;
-		else
-			return false;
+		return Integer.parseInt(number) <= 42 && Integer.parseInt(number) >= 1;
 	}
 	
 	//check if input is a lucky lotto number
 	private boolean isLuckyNumber(String number) {
-		if(Integer.parseInt(number) <= 6 && Integer.parseInt(number) >= 1)
-			return true;
-		else
-			return false;
+		return Integer.parseInt(number) <= 6 && Integer.parseInt(number) >= 1;
 	}
 	
 	//check if input isn't allready used

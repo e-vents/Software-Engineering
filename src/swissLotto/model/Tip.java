@@ -15,7 +15,7 @@ public class Tip {
 	private final SimpleStringProperty luckyNumber = new SimpleStringProperty();
 	
 	//constructor for tips and lottery draw
-	public Tip(int size) {
+	Tip(int size) {
 		//instancciate regular Lotto numbers
 		this.lottoNums = new SimpleStringProperty[6];
 		for(int i = 0; i < lottoNums.length; i++) {
@@ -32,7 +32,7 @@ public class Tip {
 	
 	//updates the properties with the recent numbers
 	private void updateRepresentations(int size) {
-		tip.set(Integer.toString(size+1)+"."); //display tipNumber
+		tip.set((size+1)+"."); //display tipNumber
 		for(int i = 0; i < lottoNums.length; i++) {
 			lottoNums[i].set(Integer.toString(getLottoNum(i)));
 		}
@@ -41,7 +41,7 @@ public class Tip {
 	
 	//make shure the Lotto number are sorted
 	private int getLottoNum(int index) {
-		ArrayList<Integer> tempNums = new ArrayList<Integer>();
+		ArrayList<Integer> tempNums = new ArrayList<>();
 		for(int i = 0; i < 6; i++) {
 			tempNums.add(this.lottoIntegers.get(i));
 		}
@@ -85,13 +85,14 @@ public class Tip {
 	
 	@Override
 	public String toString() {
-		String toString = "";
+		StringBuilder tipString = new StringBuilder();
 		//lottoNums to string
 		for(int i = 0; i < 6; i++) {
-			toString = toString+ getInt(i)+", ";
+			tipString.append(getInt(i)+", ");
 		}
 		//luckyNum to string
-		toString = toString+"& luckyNum: "+getLuckyInt();
-		return toString;
+		tipString.append("& luckyNum: ");
+		tipString.append(getLuckyInt());
+		return tipString.toString();
 	}
 }

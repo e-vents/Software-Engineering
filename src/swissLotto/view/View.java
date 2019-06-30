@@ -11,8 +11,7 @@ import swissLotto.model.Model;
 public class View {
 	
 	final private Stage stage;
-	private BorderPane borderPane;
-	
+
 	private InfoPane infoPane;
 	private TipPane tipPane;
 	private DrawPane drawPane;
@@ -20,8 +19,8 @@ public class View {
 	public View(Stage stage, Model model) {
 		//this.model = model;
 		this.stage = stage;
-		this.borderPane = new BorderPane();
-		this.borderPane.setId("borderPane");
+		BorderPane borderPane = new BorderPane();
+		borderPane.setId("borderPane");
 		
 		this.tipPane = new TipPane(model);
 		this.drawPane = new DrawPane(model, tipPane);
@@ -30,11 +29,11 @@ public class View {
 		this.tipPane.setId("tipPane");
 		this.infoPane.setId("infoPane");
 		
-		this.borderPane.setBottom(infoPane);
-		this.borderPane.setLeft(tipPane);
-		this.borderPane.setCenter(drawPane);
+		borderPane.setBottom(infoPane);
+		borderPane.setLeft(tipPane);
+		borderPane.setCenter(drawPane);
 		
-		Scene scene = new Scene(this.borderPane, 1260, 578);
+		Scene scene = new Scene(borderPane, 1260, 578);
 		scene.getStylesheets().add(
 	               getClass().getResource("style.css").toExternalForm());
 		stage.setScene(scene);

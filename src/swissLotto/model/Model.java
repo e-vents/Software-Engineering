@@ -7,7 +7,7 @@ import javafx.collections.ObservableList;
 public class Model {
 	//List with all tips inside
 	private final ObservableList<Tip> numbers = FXCollections.observableArrayList();
-	public static final int MAX_TIPS = 450;
+	static final int MAX_TIPS = 450;
 	private Tip draw = null;
 	private Wallet wallet;
 	
@@ -55,16 +55,9 @@ public class Model {
 		int luckyTipNum;
 		
 			luckyTipNum = numbers.get(i).getLuckyInt();
-			if(luckyTipNum == luckyDrawNum) {
-				return true;
-		}
-		return false;
+		return luckyTipNum == luckyDrawNum;
 	}
-	
-	//	---> getters and setters <---
-	public int getNumberOfTips() {
-		return numbers.size();
-	}
+
 	public ObservableList<Tip> getTips() {
 		return numbers;
 	}

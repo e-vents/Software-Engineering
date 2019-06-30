@@ -12,24 +12,21 @@ public class InfoPane extends HBox {
 	
 	private final Model model;
 	private final TipPane tipPane;
-	private final Label jackpot;
 	private Label wallet;
-	private final Label spending;
-	private final Label win;
 	private Label jackpotText;
 	private Label walletText;
 	private Label spendingText;
 	private Label winText;
 
-	public InfoPane(Model model, TipPane tipPane) {
+	InfoPane(Model model, TipPane tipPane) {
 		
 		this.model = model;
 		this.tipPane = tipPane;
-		
-		this.jackpot = new Label("Jackpot:");
+
+		Label jackpot = new Label("Jackpot:");
 		this.wallet = new Label("\tBilanz:");
-		this.spending = new Label("Kosten pro Spiel:");
-		this.win = new Label("Gewinnsumme:");
+		Label spending = new Label("Kosten pro Spiel:");
+		Label win = new Label("Gewinnsumme:");
 		
 		this.jackpotText = new Label(model.getWallet().getJackpot()+"\t\t");
 		this.walletText = new Label(model.getWallet().getCostsString());
@@ -39,16 +36,16 @@ public class InfoPane extends HBox {
 		Region spacer = new Region();
 		HBox.setHgrow(spacer, Priority.ALWAYS);
 		
-		this.jackpot.getStyleClass().add("infoLabel");
+		jackpot.getStyleClass().add("infoLabel");
 		this.wallet.getStyleClass().add("infoLabel");
-		this.spending.getStyleClass().add("infoLabel");
-		this.win.getStyleClass().add("infoLabel");
+		spending.getStyleClass().add("infoLabel");
+		win.getStyleClass().add("infoLabel");
 		this.jackpotText.getStyleClass().add("infoText");
 		this.walletText.getStyleClass().add("infoText");
 		this.spendingText.getStyleClass().add("infoText");
 		this.winText.getStyleClass().add("infoText");
 		
-		this.getChildren().addAll(wallet, walletText, 
+		this.getChildren().addAll(wallet, walletText,
 				spending, spendingText, spacer,
 				win, winText,
 				jackpot, jackpotText);
@@ -77,25 +74,5 @@ public class InfoPane extends HBox {
 			model.deleteTip();
 			spendingText.setText(model.getWallet().getSpendingMoney());
 		}
-	}
-
-	//	---> getters and setters <---
-	public Label getJackpotText() {
-		return jackpotText;
-	}
-	public void setJackpotText(String text) {
-		this.jackpotText.setText(text);
-	}
-	public Label getWalletText() {
-		return walletText;
-	}
-	public void setWalletText(String text) {
-		this.walletText.setText(text);
-	}
-	public Label getSpendingText() {
-		return spendingText;
-	}
-	public void setSpendingText(String text) {
-		this.spendingText.setText(text);
 	}
 }

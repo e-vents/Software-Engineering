@@ -11,7 +11,7 @@ public enum WinnerType {
 	private int winSum;
 	private String name;
 	
-	private WinnerType(int winSum, String name) {
+	WinnerType(int winSum, String name) {
 		
 		this.winSum = winSum;
 		this.name = name;

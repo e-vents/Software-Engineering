@@ -5,11 +5,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class StatPopUp extends Stage {
+class StatPopUp extends Stage {
 
 	private static StatPopUp singleton;
 	// ---> factory method <---
-	public static void showPopUp() {
+	static void showPopUp() {
 		if(singleton == null)
 			singleton = new StatPopUp();
 		singleton.show();

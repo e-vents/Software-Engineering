@@ -16,12 +16,12 @@ public class Tip {
 	
 	//constructor for tips and lottery draw
 	Tip(int size) {
-		//instancciate regular Lotto numbers
+		//instantiate regular Lotto numbers
 		this.lottoNums = new SimpleStringProperty[6];
 		for(int i = 0; i < lottoNums.length; i++) {
 			lottoNums[i] = new SimpleStringProperty();
 		}
-		//get a list with all posible lottoNumbers
+		//get a list with all possible lottoNumbers
 		this.lottoIntegers = new ArrayList<>();
 		for (int i=1; i<43; i++) {
             lottoIntegers.add(i);
@@ -88,7 +88,8 @@ public class Tip {
 		StringBuilder tipString = new StringBuilder();
 		//lottoNums to string
 		for(int i = 0; i < 6; i++) {
-			tipString.append(getInt(i)+", ");
+			tipString.append(getInt(i));
+			tipString.append(", ");
 		}
 		//luckyNum to string
 		tipString.append("& luckyNum: ");

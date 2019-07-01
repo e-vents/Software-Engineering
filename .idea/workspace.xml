@@ -4,28 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/src/swissLotto/model/Tip.java" line="90" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81d655ea-90cc-4e85-8b02-cb7d3c351985" name="Default Changelist" comment="1th commit">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/06 SE-Learning.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/examPreparation/dataStructures/singlyLinkedList/ListException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/examPreparation/dataStructures/singlyLinkedList/SinglyLinkedList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/examPreparation/dataStructures/singlyLinkedList/SinglyLinkedListTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/examPreparation/dataStructures/singlyLinkedList/SortedList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/poker/version_graphics/model/HandTypeTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swissLotto/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swissLotto/Controller.java" afterDir="false" />
+    <list default="true" id="81d655ea-90cc-4e85-8b02-cb7d3c351985" name="Default Changelist" comment="3th commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/swissLotto/LottoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swissLotto/LottoGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swissLotto/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swissLotto/model/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/swissLotto/model/Tip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swissLotto/model/Tip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swissLotto/model/Wallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swissLotto/model/Wallet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swissLotto/model/WinnerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swissLotto/model/WinnerType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swissLotto/view/DrawPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swissLotto/view/DrawPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swissLotto/view/InfoPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swissLotto/view/InfoPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swissLotto/view/StatPopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swissLotto/view/StatPopUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swissLotto/view/TipPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swissLotto/view/TipPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swissLotto/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swissLotto/view/View.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -36,19 +18,27 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="06 SE-Learning" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/swissLotto/LottoGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="18" column="51" lean-forward="true" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
+            <state relative-caret-position="255">
+              <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/swissLotto/view/StatPopUp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -56,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/swissLotto/model/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="793">
-              <caret line="75" column="5" lean-forward="true" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+            <state relative-caret-position="935">
+              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
             </state>
           </provider>
         </entry>
@@ -65,8 +55,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/swissLotto/model/Tip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="90" column="45" lean-forward="true" selection-start-line="90" selection-start-column="45" selection-end-line="90" selection-end-column="45" />
+            <state relative-caret-position="482">
+              <caret line="93" column="28" lean-forward="true" selection-start-line="93" selection-start-column="28" selection-end-line="93" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -74,8 +64,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/swissLotto/model/Wallet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="44" column="16" lean-forward="true" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
+            <state relative-caret-position="393">
+              <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/swissLotto/view/DrawPane.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2703">
+              <caret line="175" column="1" selection-start-line="175" selection-start-column="1" selection-end-line="175" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -83,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/swissLotto/model/WinnerType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="8" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+            <state relative-caret-position="478">
+              <caret line="30" column="43" lean-forward="true" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -93,6 +92,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="856fd7b4-dd8c-4e39-afe5-76c8b789ae21" />
@@ -107,10 +111,10 @@
         <option value="$PROJECT_DIR$/src/swissLotto/view/TipPane.java" />
         <option value="$PROJECT_DIR$/src/swissLotto/view/View.java" />
         <option value="$PROJECT_DIR$/src/swissLotto/Controller.java" />
-        <option value="$PROJECT_DIR$/src/swissLotto/LottoGame.java" />
         <option value="$PROJECT_DIR$/src/swissLotto/model/Model.java" />
         <option value="$PROJECT_DIR$/src/swissLotto/model/Wallet.java" />
         <option value="$PROJECT_DIR$/src/swissLotto/model/WinnerType.java" />
+        <option value="$PROJECT_DIR$/src/swissLotto/LottoGame.java" />
         <option value="$PROJECT_DIR$/src/swissLotto/model/Tip.java" />
       </list>
     </option>
@@ -149,13 +153,6 @@
               <item name="Software-Engineering" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="swissLotto" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="06 SE-Learning" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Software-Engineering" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="swissLotto" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -169,7 +166,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -216,63 +213,59 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" sideWeight="0.5015015" side_tool="true" weight="0.24975026" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49899396" visible="true" weight="0.24975026" />
-      <window_info id="Structure" order="1" sideWeight="0.501006" side_tool="true" weight="0.24975026" />
-      <window_info anchor="bottom" id="Version Control" weight="0.32997987" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.19416499" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" weight="0.32997987" />
-      <window_info anchor="bottom" id="Messages" weight="0.32997987" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4968789" visible="true" weight="0.15484515" />
+      <window_info id="Structure" order="1" sideWeight="0.5031211" side_tool="true" weight="0.15484515" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" sideWeight="0.5031211" side_tool="true" weight="0.15484515" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32997987" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.1971831" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.1971831" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.19818914" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32997987" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.19818914" />
+      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.32997987" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24975026" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1th commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="1th commit" />
+    <MESSAGE value="3th commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="3th commit" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/poker/version_graphics/model/HandTypeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="45" lean-forward="true" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/examPreparation/dataStructures/singlyLinkedList/SinglyLinkedListTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/poker/version_graphics/model/HandTypeTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/examPreparation/dataStructures/singlyLinkedList/SinglyLinkedListTest.java" />
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.base/javafx/event/EventHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -305,13 +298,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/swissLotto/view/StatPopUp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="36" column="1" lean-forward="true" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/swissLotto/view/InfoPane.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1088">
@@ -326,30 +312,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/swissLotto/view/DrawPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1791">
-          <caret line="20" column="36" lean-forward="true" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swissLotto/LottoGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="51" lean-forward="true" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swissLotto/model/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="793">
-          <caret line="75" column="5" lean-forward="true" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -361,24 +323,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/swissLotto/model/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/swissLotto/model/Wallet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" column="16" lean-forward="true" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
+        <state relative-caret-position="393">
+          <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/swissLotto/model/WinnerType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="8" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+        <state relative-caret-position="478">
+          <caret line="30" column="43" lean-forward="true" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swissLotto/view/DrawPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2703">
+          <caret line="175" column="1" selection-start-line="175" selection-start-column="1" selection-end-line="175" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swissLotto/LottoGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swissLotto/view/StatPopUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/swissLotto/model/Tip.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="90" column="45" lean-forward="true" selection-start-line="90" selection-start-column="45" selection-end-line="90" selection-end-column="45" />
+        <state relative-caret-position="482">
+          <caret line="93" column="28" lean-forward="true" selection-start-line="93" selection-start-column="28" selection-end-line="93" selection-end-column="28" />
         </state>
       </provider>
     </entry>

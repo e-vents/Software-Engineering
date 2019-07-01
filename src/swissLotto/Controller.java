@@ -71,7 +71,7 @@ public class Controller {
 				else // Erase invalid edited value by refreshing
 					editEvent.getTableView().refresh();
 		});
-		//make shure the last added element is allways visible
+		//make shure the last added element is always visible
 		model.getTips().addListener((ListChangeListener<Tip>) c -> {
 			while (c.next()) {
 				view.getTipPane().getTableView().scrollTo(c.getFrom());
@@ -101,7 +101,7 @@ public class Controller {
 		return Integer.parseInt(number) <= 6 && Integer.parseInt(number) >= 1;
 	}
 	
-	//check if input isn't allready used
+	//check if input isn't already used
 	private boolean numberIsFree(String number, CellEditEvent<Tip, String> editEvent) {
 		
 		int newNumber = Integer.parseInt(number);

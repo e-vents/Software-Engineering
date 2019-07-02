@@ -39,7 +39,7 @@ public class Tip {
 		luckyNumber.set(Integer.toString(rand.nextInt(6)+1));
 	}
 	
-	//make shure the Lotto number are sorted
+	//make sure the Lotto number are sorted
 	private int getLottoNum(int index) {
 		ArrayList<Integer> tempNums = new ArrayList<>();
 		for(int i = 0; i < 6; i++) {
@@ -86,7 +86,7 @@ public class Tip {
 	@Override
 	public String toString() {
 		StringBuilder tipString = new StringBuilder();
-		//lottoNums to string
+		//lottoNumbs to string
 		for(int i = 0; i < 6; i++) {
 			tipString.append(getInt(i));
 			tipString.append(", ");
